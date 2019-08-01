@@ -5,7 +5,7 @@ const EventSchema = new Schema(
   {
     title: String,
     subtitle: String,
-    back-img: String,
+    backImg: String,
     place: String,
     duration: String,
     language: { type: String, enum: ["Português", "Inglês", "Espanhol"] },
@@ -23,7 +23,7 @@ const EventSchema = new Schema(
         description: String
       }
     },
-    host: String
+    host: { type: Schema.Types.ObjectId, ref: "Users" }
   },
   {
     timestamps: true
