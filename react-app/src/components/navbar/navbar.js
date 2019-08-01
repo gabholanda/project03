@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class Navbar extends Component {
   constructor(props) {
@@ -6,23 +7,16 @@ class Navbar extends Component {
 
   }
 
-
-  
   render() {
-      return (
-        <div>
+    return (
+      <div>
         <nav className="navbar" role="navigation" aria-label="main navigation">
-        <div className="navbar-brand">
-          <Link to > <img src="https://bulma.io/images/bulma-logo.png" alt="Bulma" width="112" height="28" /></Link>
-
-        <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" />
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        </div>
+          <div className="navbar-brand">
+            <Link to="/">Agora foi</Link>
+          </div>
         </nav>
-        </div>
-      )
+      </div>
+    )
 
   }
 }
