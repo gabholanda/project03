@@ -13,7 +13,6 @@ const cors = require("cors");
 const session = require('express-session');
 const passport = require('passport');
 
-
 mongoose
   .connect('mongodb://localhost/api', { useNewUrlParser: true })
   .then(x => {
@@ -87,11 +86,4 @@ app.use((req, res, next) => {
   // If no routes match, send them the React HTML.
   res.sendFile(__dirname + "/public/index.html");
 });
-app.use(
-  cors({
-    credentials: true,
-    origin: ["http://localhost:3000"]
-  })
-);
-
 module.exports = app;
