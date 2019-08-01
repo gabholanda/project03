@@ -5,8 +5,8 @@ const bcrypt = require('bcryptjs');
 const nodemailer = require('nodemailer');
 
 
-router.get('signup', (req, res, next) => {
-  res.render('/signup');
+router.get('/signup', (req, res, next) => {
+  res.render('index');
 })
 
 router.post('/signup', (req, res, next) => {
@@ -15,6 +15,12 @@ router.post('/signup', (req, res, next) => {
   if(req.file) {
     image = req.file.secure_url;
   }
+  const characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  let token = '';
+  for (let i = 0; i < 25; i++) {
+  token += characters[Math.floor(Math.random() * characters.length )];
+  }
+  const confirmationCode = token;
 
   if (!username || !password || !name || !email || !age) {
     res.status(400).json({ message: 'Provide username and password' });
@@ -46,21 +52,9 @@ router.post('/signup', (req, res, next) => {
     const salt = bcrypt.genSaltSync(10);
     const hashPass = bcrypt.hashSync(password, salt);
 
-    const NewUser = new User({
-      username: username,
-      password: hashPass
-    });
-
-    NewUser.save(err => {
-      if (err) {
-        res.status(400).json({ message: 'Saving user to database went wrong.' });
-        return;
-      }
-    });
+    const newUser = User.create({username, password, name, email, age, occupation, cellphone, city, favoriteMovie, interest, about, role}, {omitUndefined: true})
   });
+  res.status(200).json(newUser);
 });
-
-
-
 
 module.exports = router;
