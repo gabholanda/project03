@@ -27,15 +27,15 @@ router.post("/events", (req, res, next) => {
     language: req.body.language,
     description: {
       interation1: {
-        image: req.body.image1,
+        image: req.file.image1,
         description: req.body.description1
       },
       interation2: {
-        image: req.body.image2,
+        image: req.file.image2,
         description: req.body.description2
       },
       interation3: {
-        image: req.body.image3,
+        image: req.file.image3,
         description: req.body.description3
       }
     },
