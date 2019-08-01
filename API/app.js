@@ -10,6 +10,9 @@ const logger = require('morgan');
 const path = require('path');
 const bcrypt = require('bcrypt');
 const cors = require("cors");
+const session = require('express-session');
+const passport = require('passport');
+
 
 mongoose
   .connect('mongodb://localhost/api', { useNewUrlParser: true })
@@ -84,7 +87,6 @@ app.use((req, res, next) => {
   // If no routes match, send them the React HTML.
   res.sendFile(__dirname + "/public/index.html");
 });
-=======
 app.use(
   cors({
     credentials: true,

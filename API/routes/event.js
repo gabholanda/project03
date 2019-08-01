@@ -18,6 +18,7 @@ router.get("/events", (req, res, next) => {
 
 // POST route => to create a new event
 router.post("/events", (req, res, next) => {
+  
   Event.create({
     title: req.body.title,
     subtitle: req.body.substitle,
