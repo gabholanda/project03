@@ -14,25 +14,28 @@ const cors = require("cors");
 mongoose
   .connect('mongodb://localhost/api', { useNewUrlParser: true })
   .then(x => {
-    console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
+    console.log(
+      `Connected to Mongo! Database name: "${x.connections[0].name}"`
+    );
   })
   .catch(err => {
-    console.error('Error connecting to mongo', err)
+    console.error("Error connecting to mongo", err);
   });
 
-const app_name = require('./package.json').name;
-const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.')[0]}`);
+const app_name = require("./package.json").name;
+const debug = require("debug")(
+  `${app_name}:${path.basename(__filename).split(".")[0]}`
+);
 
 const app = express();
 
 // Middleware Setup
-app.use(logger('dev'));
+app.use(logger("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 // Express View engine setup
-
 app.use(require('node-sass-middleware')({
   src: path.join(__dirname, 'public'),
   dest: path.join(__dirname, 'public'),
@@ -56,8 +59,10 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+
 // default value for title local
-app.locals.title = 'Express - Generated with IronGenerator';
+app.locals.title = "Express - Generated with IronGenerator";
+
 
 // CORS Sets
 app.use(cors({
@@ -65,17 +70,26 @@ app.use(cors({
   origin: ['http://localhost:3000'] // <== this will be the URL of our React app (it will be running on port 3000)
 }));
 
-const index = require('./routes/index');
-app.use('/', index);
+const index = require("./routes/index");
+app.use("/", index);
 
-const user = require('./routes/user')
-app.use('/auth', user)
-0
+const user = require("./routes/user");
+app.use("/auth", user);
+
+const event = require("./routes/event");
+app.use("/api", event);
 
 // index for react
 app.use((req, res, next) => {
   // If no routes match, send them the React HTML.
   res.sendFile(__dirname + "/public/index.html");
 });
+=======
+app.use(
+  cors({
+    credentials: true,
+    origin: ["http://localhost:3000"]
+  })
+);
 
 module.exports = app;
