@@ -9,7 +9,7 @@ const mongoose = require('mongoose');
 const logger = require('morgan');
 const path = require('path');
 const bcrypt = require('bcrypt');
-
+const cors = require("cors");
 
 mongoose
   .connect('mongodb://localhost/api', { useNewUrlParser: true })
@@ -45,12 +45,25 @@ app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
+// Session sets
+app.use(session({
+  secret: "cinex",
+  resave: true,
+  saveUninitialized: true
+}));
 
+// passport initialize session
+app.use(passport.initialize());
+app.use(passport.session());
 
 // default value for title local
 app.locals.title = 'Express - Generated with IronGenerator';
 
-
+// CORS Sets
+app.use(cors({
+  credentials: true,
+  origin: ['http://localhost:3000'] // <== this will be the URL of our React app (it will be running on port 3000)
+}));
 
 const index = require('./routes/index');
 app.use('/', index);
@@ -58,4 +71,11 @@ app.use('/', index);
 const user = require('./routes/user')
 app.use('/auth', user)
 0
+
+// index for react
+app.use((req, res, next) => {
+  // If no routes match, send them the React HTML.
+  res.sendFile(__dirname + "/public/index.html");
+});
+
 module.exports = app;
