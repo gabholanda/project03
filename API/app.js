@@ -10,6 +10,8 @@ const logger = require('morgan');
 const path = require('path');
 const bcrypt = require('bcrypt');
 const cors = require("cors");
+const session = require('express-session');
+const passport = require('passport');
 
 mongoose
   .connect('mongodb://localhost/api', { useNewUrlParser: true })
