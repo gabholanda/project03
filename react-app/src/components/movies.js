@@ -8,16 +8,17 @@ class Movies extends Component {
 
     }
   }
-  componentDidMount() {
-  axios.get(`https://api-content.ingresso.com/v0/events/partnership/ironhackapp`)
-    .then(movie => console.log(movie))
-    .catch(err => console(err))
   
-  }
+  // componentDidMount() {
+  // axios.get(`https://api-content.ingresso.com/v0/events/partnership/ironhackapp`)
+  //   .then(movie => console.log(movie))
+  //   .catch(err => console(err))
+
+  // }
 
   render() {
-    return(
-      <h1></h1>
+    return (
+      <h1>Olá</h1>
     )
   }
 }
