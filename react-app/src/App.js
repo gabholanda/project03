@@ -1,12 +1,16 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Navbar from './components/navbar/navbar';
+import Login from './components/auth/Login'
+import { Switch, Route } from 'react-router-dom';
+import Signup from './components/auth/Signup'
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
+      {/* <Signup /> */}
+      {/* <Navbar /> */}
+      {/* <Login /> */}
     </div>
   );
 }
