@@ -10,7 +10,7 @@ class Movies extends Component {
   }
   
   // componentDidMount() {
-  // axios.get(`https://api-content.ingresso.com/v0/events/partnership/ironhackapp`)
+  // axios.get(`https://api-content.ingresso.com/v0/events/partnership/`)
   //   .then(movie => console.log(movie))
   //   .catch(err => console(err))
 
