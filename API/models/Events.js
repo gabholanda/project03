@@ -30,7 +30,8 @@ const EventSchema = new Schema(
       theaterId: String,
       roomName: String,
       sessionId: String
-    }
+    },
+    participants: 0
   },
   {
     timestamps: true
