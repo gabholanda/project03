@@ -16,9 +16,29 @@ router.get("/events", (req, res, next) => {
     });
 });
 
+// GET route => to get all the events by movie
+router.get("/events/:movieId", (req, res, next) => {
+  const movieId = req.params.movieId;
+  Event.find({ "event.movieId": { $eq: movieId } })
+    .then(allTheEvents => {
+      const event = allTheEvents.map(event => {
+        return {
+          id: event._id,
+          title: event.title,
+          place: event.place,
+          movieDate: event.movieDate,
+          typeOfActivity: event.typeOfActivity
+        };
+      });
+      res.json(event);
+    })
+    .catch(err => {
+      res.json(err);
+    });
+});
+
 // POST route => to create a new event
 router.post("/events", (req, res, next) => {
-  
   Event.create({
     title: req.body.title,
     subtitle: req.body.substitle,
@@ -28,19 +48,26 @@ router.post("/events", (req, res, next) => {
     language: req.body.language,
     description: {
       interation1: {
-        image: req.file.image1,
+        // image: req.file.image1,
         description: req.body.description1
       },
       interation2: {
-        image: req.file.image2,
+        // image: req.file.image2,
         description: req.body.description2
       },
       interation3: {
-        image: req.file.image3,
+        // image: req.file.image3,
         description: req.body.description3
       }
     },
-    host: req.body.userId
+    host: req.body.userId,
+    event: {
+      movieId: req.body.movieId,
+      dateMovie: req.body.dateMovie,
+      theaterId: req.body.theaterId,
+      roomName: req.body.roomName,
+      sessionId: req.body.sessionId
+    }
   })
     .then(response => {
       res.json(response);
