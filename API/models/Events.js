@@ -23,7 +23,14 @@ const EventSchema = new Schema(
         description: String
       }
     },
-    host: { type: Schema.Types.ObjectId, ref: "Users" }
+    host: { type: Schema.Types.ObjectId, ref: "Users" },
+    event: {
+      movieId: String,
+      dateMovie: String,
+      theaterId: String,
+      roomName: String,
+      sessionId: String
+    }
   },
   {
     timestamps: true
