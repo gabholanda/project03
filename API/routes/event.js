@@ -46,20 +46,14 @@ router.post("/events", (req, res, next) => {
     place: req.body.place,
     duration: req.body.duration,
     language: req.body.language,
-    description: {
-      interation1: {
-        // image: req.file.image1,
-        description: req.body.description1
-      },
-      interation2: {
-        // image: req.file.image2,
-        description: req.body.description2
-      },
-      interation3: {
-        // image: req.file.image3,
-        description: req.body.description3
+    description: [
+      {
+        interation: {
+          image: String,
+          description: String
+        }
       }
-    },
+    ],
     host: req.body.userId,
     event: {
       movieId: req.body.movieId,
@@ -78,14 +72,14 @@ router.post("/events", (req, res, next) => {
 });
 
 // GET route => to get a specific event/detailed view
-router.get("/events/:id", (req, res, next) => {
+router.get("/event/:id", (req, res, next) => {
   if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
     res.status(400).json({ message: "Specified id is not valid" });
     return;
   }
 
   Event.findById(req.params.id)
-    // .populate("tasks")
+
     .then(response => {
       res.status(200).json(response);
     })
@@ -94,17 +88,17 @@ router.get("/events/:id", (req, res, next) => {
     });
 });
 
-// PUT route => to update a specific event
-router.put("/events/:id", (req, res, next) => {
+// PUT route => to update a specific project
+router.put("/event/:id", (req, res, next) => {
   if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
     res.status(400).json({ message: "Specified id is not valid" });
     return;
   }
 
-  Event.findByIdAndUpdate(req.params.id, req.body)
+  Event.findOneAndUpdate({ _id: req.params.id }, req.body)
     .then(() => {
-      res.json({
-        message: `Event with ${req.params.id} is updated successfully.`
+      res.status(200).json({
+        message: `Project with ${req.params.id} is updated successfully.`
       });
     })
     .catch(err => {

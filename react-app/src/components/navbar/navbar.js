@@ -10,7 +10,7 @@ class Navbar extends Component {
   render() {
     return (
       <nav className='navbar navbar-expand-lg navbar-light navBody'>
-        <Link className='navbar-brand' href='#'>
+        <Link className='navbar-brand' to='/home'>
           CineXP
         </Link>
         <button
@@ -35,12 +35,12 @@ class Navbar extends Component {
           </form>
           <ul className='navbar-nav mr-auto'>
             <li className='nav-item active signup-btn'>
-              <Link className='nav-link signup signup' href='#'>
+              <Link className='nav-link signup signup' to='/login'>
                 Login <span className='sr-only'>(current)</span>
               </Link>
             </li>
             <li className='nav-item'>
-              <Link className='nav-link' href='#'>
+              <Link className='nav-link' to='/signup'>
                 Signup
               </Link>
             </li>
