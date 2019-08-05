@@ -21,6 +21,17 @@ class Profile extends Component {
       .catch(error => console.log(error));
   };
 
+  // getMovie = () => {
+  //   axios
+  //     .get(`${process.env.REACT_APP_API_URL}/filme/${this.props.match.params.movieId}`)
+  //     .then(responseFromApi => {
+  //       this.setState({
+  //         movie: responseFromApi.data
+  //       });
+  //     })
+  //     .catch(error => console.log(error));
+  // };
+
   getEvents = () => {
     axios
       .get(
@@ -33,6 +44,19 @@ class Profile extends Component {
       })
       .catch(error => console.log(error));
   };
+
+  // getEvents = () => {
+  //   axios
+  //     .get(
+  //       `${process.env.REACT_APP_API_URL}/events/${this.props.match.params.movieId}`
+  //     )
+  //     .then(responseFromApi => {
+  //       this.setState({
+  //         events: responseFromApi.data
+  //       });
+  //     })
+  //     .catch(error => console.log(error));
+  // };
 
   componentDidMount() {
     this.getUser();

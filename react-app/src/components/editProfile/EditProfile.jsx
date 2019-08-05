@@ -9,7 +9,7 @@ class Movie extends Component {
 
     this.state = { movie: 0, events: [] };
   }
-
+  
   getMovie = () => {
     axios
       .get(`http://localhost:5000/api/filme/${this.props.match.params.movieId}`)
@@ -21,7 +21,18 @@ class Movie extends Component {
       .catch(error => console.log(error));
   };
 
-  getEvents = () => {
+  // getMovie = () => {
+  //   axios
+  //     .get(`${process.env.REACT_APP_API_URL}/filme/${this.props.match.params.movieId}`)
+  //     .then(responseFromApi => {
+  //       this.setState({
+  //         movie: responseFromApi.data
+  //       });
+  //     })
+  //     .catch(error => console.log(error));
+  // };
+
+getEvents = () => {
     axios
       .get(
         `http://localhost:5000/api/events/${this.props.match.params.movieId}`
@@ -33,6 +44,19 @@ class Movie extends Component {
       })
       .catch(error => console.log(error));
   };
+
+  // getEvents = () => {
+  //   axios
+  //     .get(
+  //       `${process.env.REACT_APP_API_URL}/events/${this.props.match.params.movieId}`
+  //     )
+  //     .then(responseFromApi => {
+  //       this.setState({
+  //         events: responseFromApi.data
+  //       });
+  //     })
+  //     .catch(error => console.log(error));
+  // };
 
   componentDidMount() {
     this.getMovie();
