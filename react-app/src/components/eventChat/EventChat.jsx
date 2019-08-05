@@ -36,6 +36,22 @@ class EventMovie extends Component {
     console.log();
     return (
       <div className=''>
+        <nav aria-label='breadcrumb'>
+          <ol class='breadcrumb'>
+            <li class='breadcrumb-item'>
+              <Link to='/home'>Início</Link>
+            </li>
+            <li class='breadcrumb-item'>
+              <Link to='/home'>Filme</Link>
+            </li>
+            <li class='breadcrumb-item'>
+              <Link to='/home'>Evento</Link>
+            </li>
+            <li class='breadcrumb-item active' aria-current='page'>
+              Chat
+            </li>
+          </ol>
+        </nav>
         <h5>Chat</h5>
         <h1 className=''>{this.state.event.title}</h1>
         <h5>0 pessoas online</h5>
