@@ -15,15 +15,15 @@
   }
 
   &:not(&--open) .item:hover {
-    transform: scale(1.5) !important;
+    transform: scale(1.2) !important;
     z-index: 3;
   }
 
   &:not(&--open):hover .item {
-    transform: translateX(-25%);
+    transform: translateX(-6.25%);
   }
 
   &:not(&--open) .item:hover ~ .item {
-    transform: translateX(25%);
+    transform: translateX(12.5%);
   }
 }
