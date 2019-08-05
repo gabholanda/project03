@@ -16,6 +16,27 @@ router.get("/events", (req, res, next) => {
     });
 });
 
+// GET route => to get all the events by movie
+router.get("/events/:movieId", (req, res, next) => {
+  const movieId = req.params.movieId;
+  Event.find({ "event.movieId": { $eq: movieId } })
+    .then(allTheEvents => {
+      const event = allTheEvents.map(event => {
+        return {
+          id: event._id,
+          title: event.title,
+          place: event.place,
+          movieDate: event.movieDate,
+          typeOfActivity: event.typeOfActivity
+        };
+      });
+      res.json(event);
+    })
+    .catch(err => {
+      res.json(err);
+    });
+});
+
 // POST route => to create a new event
 router.post("/events", (req, res, next) => {
   Event.create({
@@ -25,21 +46,22 @@ router.post("/events", (req, res, next) => {
     place: req.body.place,
     duration: req.body.duration,
     language: req.body.language,
-    description: {
-      interation1: {
-        image: req.body.image1,
-        description: req.body.description1
-      },
-      interation2: {
-        image: req.body.image2,
-        description: req.body.description2
-      },
-      interation3: {
-        image: req.body.image3,
-        description: req.body.description3
+    description: [
+      {
+        interation: {
+          image: String,
+          description: String
+        }
       }
-    },
-    host: req.body.userId
+    ],
+    host: req.body.userId,
+    event: {
+      movieId: req.body.movieId,
+      dateMovie: req.body.dateMovie,
+      theaterId: req.body.theaterId,
+      roomName: req.body.roomName,
+      sessionId: req.body.sessionId
+    }
   })
     .then(response => {
       res.json(response);
@@ -50,14 +72,14 @@ router.post("/events", (req, res, next) => {
 });
 
 // GET route => to get a specific event/detailed view
-router.get("/events/:id", (req, res, next) => {
+router.get("/event/:id", (req, res, next) => {
   if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
     res.status(400).json({ message: "Specified id is not valid" });
     return;
   }
 
   Event.findById(req.params.id)
-    // .populate("tasks")
+
     .then(response => {
       res.status(200).json(response);
     })
@@ -66,17 +88,17 @@ router.get("/events/:id", (req, res, next) => {
     });
 });
 
-// PUT route => to update a specific event
-router.put("/events/:id", (req, res, next) => {
+// PUT route => to update a specific project
+router.put("/event/:id", (req, res, next) => {
   if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
     res.status(400).json({ message: "Specified id is not valid" });
     return;
   }
 
-  Event.findByIdAndUpdate(req.params.id, req.body)
+  Event.findOneAndUpdate({ _id: req.params.id }, req.body)
     .then(() => {
-      res.json({
-        message: `Event with ${req.params.id} is updated successfully.`
+      res.status(200).json({
+        message: `Project with ${req.params.id} is updated successfully.`
       });
     })
     .catch(err => {
