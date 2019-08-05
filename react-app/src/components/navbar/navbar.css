@@ -1,28 +1,98 @@
-.navBody {
-  background-color: #191a1b !important;
-}
-
-/* Rectangle 3.1 */
-
-.signup-btn {
-  background: #f5f5f5 !important;
-  border-radius: 3px;
-}
-
-/* Signup */
-.signup {
-  /* position: absolute; */
-  /* width: 48px;
-  height: 20px;
-  left: calc(50% - 48px / 2 + 535px);
-  top: 27px; */
-
-  font-family: IBM Plex Sans;
-  font-style: normal;
-  font-weight: 500;
+.main-navbar {
+  background-color: #191a1b;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   font-size: 15px;
-  /* line-height: 19px; */
-  /* identical to box height */
+  height: 55px;
+  padding: 30px 20px;
+  border-bottom: 1px solid #c4c4c4;
+}
 
-  color: #191a1b !important;
+.navbar-brand {
+  margin-left: 30px;
+}
+
+.right-nav {
+  display: flex;
+  align-items: center;
+}
+
+/* searchbar */
+
+.search-bar {
+  display: flex;
+  margin-right: 30px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  width: 230px;
+  height: 30px;
+  border: 1px solid #ffea2f;
+}
+
+.search-icon {
+  border: 1px soldi red;
+}
+
+.search-input {
+  background-color: #191a1b;
+  color: #c4c4c4;
+  padding-left: 10px;
+  font-size: 15px;
+  height: 30px;
+  border: none;
+  border-top: 1px solid #ffea2f;
+  border-bottom: 1px solid #ffea2f;
+  border-radius: 0;
+}
+
+.search-input:focus {
+  outline: none;
+}
+
+.vertical-line {
+  height: 60px;
+  width: 1px;
+  border-left: 1px solid #c4c4c4;
+  margin-right: 25px;
+}
+
+/* avatar */
+
+.avatar {
+  border-radius: 50px;
+  background-color: #ea4646;
+  padding: 15px;
+  margin-right: 10px;
+}
+
+/* Nav links */
+
+.login {
+  padding: 5px 30px;
+  margin-left: 20px;
+  border: 1px solid #c4c4c4;
+  color: #c4c4c4;
+  border-radius: 3px;
+  text-decoration: none;
+}
+
+.signup {
+  padding: 6px 11px;
+  margin-left: 15px;
+  background-color: #c4c4c4;
+  color: #191a1b;
+  border-radius: 3px;
+  margin-right: 30px;
+  text-decoration: none;
+}
+
+.bm-cross-button {
+  border: 1px solid red;
+  background-color: #ffea2f;
+}
+
+.bm-overlay {
+  border: 1px solid red;
 }

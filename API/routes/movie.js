@@ -36,7 +36,10 @@ router.get("/destaques", (req, res, next) => {
         return {
           id: movie.event.id,
           title: movie.event.title,
-          image: movie.event.images[0].url
+          image: movie.event.images[0].url,
+          poster: movie.event.images[1].url,
+          trailer: movie.event.trailers[0].url,
+          description: movie.event.synopsis
         };
       });
       res.json(movie);

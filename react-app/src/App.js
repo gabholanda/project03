@@ -3,7 +3,7 @@ import "./App.css";
 import Navbar from "./components/navbar/navbar";
 import { Switch, Route } from "react-router-dom";
 
-import Home from "./components/home.js";
+import Home from "./components/home/home";
 import Signup from "./components/auth/Signup";
 import Login from "./components/auth/Login";
 import Movie from "./components/movie/Movie.jsx";
@@ -30,7 +30,7 @@ function App() {
           component={EditProfile}
         />
         <Route exact path='/usuario/:userId/perfil' component={Profile} />
-        <Route exact path='/evento/criar' component={CreateEvent} />
+        <Route exact path='/criar_evento' component={CreateEvent} />
       </Switch>
     </div>
   );
