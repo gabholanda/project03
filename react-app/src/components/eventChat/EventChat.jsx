@@ -33,21 +33,21 @@ class EventMovie extends Component {
   }
 
   render() {
-    console.log();
+    console.log("ois");
     return (
       <div className=''>
         <nav aria-label='breadcrumb'>
-          <ol class='breadcrumb'>
-            <li class='breadcrumb-item'>
+          <ol className='breadcrumb'>
+            <li className='breadcrumb-item'>
               <Link to='/home'>Início</Link>
             </li>
-            <li class='breadcrumb-item'>
+            <li className='breadcrumb-item'>
               <Link to='/home'>Filme</Link>
             </li>
-            <li class='breadcrumb-item'>
+            <li className='breadcrumb-item'>
               <Link to='/home'>Evento</Link>
             </li>
-            <li class='breadcrumb-item active' aria-current='page'>
+            <li className='breadcrumb-item active' aria-current='page'>
               Chat
             </li>
           </ol>
