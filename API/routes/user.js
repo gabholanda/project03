@@ -55,7 +55,7 @@ router.post('/signup', (req, res, next) => {
 
     const salt = bcrypt.genSaltSync(10);
     const hashPass = bcrypt.hashSync(password, salt);
-    // Creates new user to sabe on DB
+    // Creates new user to save on DB
     const newUser = new User({
       username,
       password,
@@ -78,8 +78,8 @@ router.post('/signup', (req, res, next) => {
         return;
       }
     })
+    res.status(200).json(newUser);
   });
-  res.status(200).json(newUser);
 });
 
 // Login post route
