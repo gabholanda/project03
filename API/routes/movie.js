@@ -9,7 +9,7 @@ const router = express.Router();
 router.get("/destaque", (req, res, next) => {
   axios
     .get(
-      `https://api-content.ingresso.com/v0/templates/highlights/1?partnership=ironhackapp`
+      `${process.env.INGRESSOS_API}`
     )
     .then(movies => {
       const movie = movies.data.map(movie => {
@@ -29,7 +29,7 @@ router.get("/destaque", (req, res, next) => {
 router.get("/destaques", (req, res, next) => {
   axios
     .get(
-      `https://api-content.ingresso.com/v0/templates/highlights/1?partnership=ironhackapp`
+      `${process.env.INGRESSOS_API}`
     )
     .then(movies => {
       const movie = movies.data.map(movie => {
@@ -49,7 +49,7 @@ router.get("/destaques", (req, res, next) => {
 router.get("/cartaz", (req, res, next) => {
   axios
     .get(
-      `https://api-content.ingresso.com/v0/templates/nowplaying/1?partnership=ironhackapp`
+      `${process.env.INGRESSOS_API}`
     )
     .then(movies => {
       const movie = movies.data.map(movie => {
@@ -65,7 +65,7 @@ router.get("/cartaz", (req, res, next) => {
 router.get("/breve", (req, res, next) => {
   axios
     .get(
-      `https://api-content.ingresso.com/v0/templates/soon/1?partnership=ironhackapp`
+      `${process.env.INGRESSOS_API}`
     )
     .then(movies => {
       const movie = movies.data.map(movie => {
@@ -82,7 +82,7 @@ router.get("/filme/:movieId", (req, res, next) => {
   const movieId = req.params.movieId;
   axios
     .get(
-      `https://api-content.ingresso.com/v0/events/${movieId}/partnership/ironhackapp`
+      `${process.env.INGRESSOS_EVENTS}/${movieId}/partnership/ironhackapp`
     )
     .then(movie => {
       const movieInfo = {
@@ -108,7 +108,7 @@ router.get(
     const { cityId, eventId, date } = req.params;
     axios
       .get(
-        `https://api-content.ingresso.com/v0/sessions/city/${cityId}/event/${eventId}/partnership/ironhackapp?date=${date}`
+        `${process.env.INGRESSOS_SESSIONS}/${cityId}/event/${eventId}/partnership/ironhackapp?date=${date}`
       )
       .then(theaters => {
         const theater = theaters.data[0].theaters.map(theater => {

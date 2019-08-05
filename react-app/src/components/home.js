@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Slider from "./NetflixSlider";
 import { Link } from "react-router-dom";
 import axios from "axios";
+require("dotenv").config();
 
 class Movies extends Component {
   constructor(props) {
@@ -13,9 +14,18 @@ class Movies extends Component {
       moviesSoon: [{ id: "", title: "", image: "" }]
     };
   }
-
+  
   getMovieHigh = () => {
-    axios
+  //   axios
+  //     .get(`${process.env.REACT_APP_API_URL}/destaques`)
+  //     .then(responseFromApi => {
+  //       this.setState({
+  //         moviesHigh: responseFromApi.data
+  //       });
+  //     })
+  //     .catch(error => console.log(error));
+  // };
+  axios
       .get(`http://localhost:5000/api/destaques`)
       .then(responseFromApi => {
         this.setState({
@@ -24,6 +34,17 @@ class Movies extends Component {
       })
       .catch(error => console.log(error));
   };
+
+  // getMovie = () => {
+  //   axios
+  //     .get(`${process.env.REACT_APP_API_URL}/cartaz`)
+  //     .then(responseFromApi => {
+  //       this.setState({
+  //         movies: responseFromApi.data
+  //       });
+  //     })
+  //     .catch(error => console.log(error));
+  // };
 
   getMovie = () => {
     axios
@@ -35,6 +56,17 @@ class Movies extends Component {
       })
       .catch(error => console.log(error));
   };
+
+  // getMovieSoon = () => {
+  //   axios
+  //     .get(`${process.env.REACT_APP_API_URL}/breve`)
+  //     .then(responseFromApi => {
+  //       this.setState({
+  //         moviesSoon: responseFromApi.data
+  //       });
+  //     })
+  //     .catch(error => console.log(error));
+  // };
 
   getMovieSoon = () => {
     axios

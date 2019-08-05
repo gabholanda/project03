@@ -13,8 +13,6 @@ import CreateEvent from "./components/createEvent/CreateEvent.jsx";
 import EditProfile from "./components/editProfile/EditProfile.jsx";
 import Profile from "./components/profile/Profile.jsx";
 
-// import Movies from "./components/home.js/index.js";
-
 function App() {
   return (
     <div className='App'>

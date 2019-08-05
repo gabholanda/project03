@@ -14,11 +14,7 @@ const session = require("express-session");
 const passport = require("passport");
 
 mongoose
-<<<<<<< HEAD
   .connect(process.env.MONGODB_URI, { useNewUrlParser: true })
-=======
-  .connect("mongodb://localhost/api", { useNewUrlParser: true })
->>>>>>> ed10f685a4f88ec4e0cfd45cc0034773f01afbbe
   .then(x => {
     console.log(
       `Connected to Mongo! Database name: "${x.connections[0].name}"`
@@ -72,25 +68,16 @@ app.use(passport.session());
 app.locals.title = "Express - Generated with IronGenerator";
 
 // CORS Sets
-<<<<<<< HEAD
 app.use(cors({
   credentials: true,
   origin: [process.env.REACT_APP] // <== this will be the URL of our React app (it will be running on port 3000)
 }));
-=======
-app.use(
-  cors({
-    credentials: true,
-    origin: ["http://localhost:3000"] // <== this will be the URL of our React app (it will be running on port 3000)
-  })
-);
->>>>>>> ed10f685a4f88ec4e0cfd45cc0034773f01afbbe
 
 const index = require("./routes/index");
 app.use("/", index);
 
 const user = require("./routes/user");
-app.use("/auth", user);
+app.use("/api", user);
 
 const event = require("./routes/event");
 app.use("/api", event);

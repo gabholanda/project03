@@ -28,6 +28,17 @@ class EventMovie extends Component {
       .catch(error => console.log(error));
   };
 
+  // getEvents = () => {
+  //   axios
+  //     .get(`${process.env.REACT_APP_API_URL}/event/${this.props.match.params.eventId}`)
+  //     .then(responseFromApi => {
+  //       this.setState({
+  //         event: responseFromApi.data
+  //       });
+  //     })
+  //     .catch(error => console.log(error));
+  // };
+
   componentDidMount() {
     this.getEvents();
   }
@@ -70,7 +81,7 @@ class EventMovie extends Component {
           </div>
           <div>
             <h2>Local do Filme</h2>
-            // GOOGLE MAPS HERE
+          // GOOGLE MAPS HERE
           </div>
           <div>
             <img src='' alt='' />
