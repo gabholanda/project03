@@ -5,7 +5,20 @@ import { Link } from 'react-router-dom';
 class Signup extends Component {
   constructor(props) {
     super(props);
-    this.state = { username: '', password: '' };
+    this.state = {
+      username: '',
+      password: '',
+      name: '',
+      email: '',
+      age: '',
+      occupation: '',
+      image: '',
+      cellphone: '',
+      city: '',
+      favoriteMovie: '',
+      about: '',
+      interest: '',
+    };
     this.service = new AuthService();
   }
 
@@ -13,8 +26,18 @@ class Signup extends Component {
     event.preventDefault();
     const username = this.state.username;
     const password = this.state.password;
+    const name = this.state.name;
+    const email = this.state.email;
+    const age = this.state.age;
+    const occupation = this.state.occupation;
+    const image = this.state.image;
+    const cellphone = this.state.cellphone;
+    const city = this.state.city;
+    const favoriteMovie = this.state.favoriteMovie;
+    const about = this.state.about;
+    const interest = this.state.interest;
 
-    this.service.signup(username, password)
+    this.service.signup(username, password, name, email, age, occupation, image, cellphone, city, favoriteMovie, about, interest)
       .then(response => {
         this.setState({
           username: "",
