@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import "./Movie.css";
 import { Link } from "react-router-dom";
+import "./EditProfile.css";
 import axios from "axios";
 
 class Movie extends Component {
@@ -45,7 +45,7 @@ class Movie extends Component {
         <nav aria-label='breadcrumb'>
           <ol class='breadcrumb'>
             <li class='breadcrumb-item'>
-              <Link to='/'>Início</Link>
+              <Link to='/home'>Início</Link>
             </li>
             <li class='breadcrumb-item active' aria-current='page'>
               Filme

@@ -31,26 +31,30 @@ class Login extends Component {
     return (
       <div>
         <form onSubmit={this.handleFormSubmit}>
-          <label>Usuário:</label>
           <input
             type='text'
             name='username'
+            placeholder='Insira seu email'
             value={this.state.username}
             onChange={e => this.handleChange(e)}
           />
-          <label>Senha:</label>
           <input
             type='password'
             name='password'
+            placeholder='Senha'
             value={this.state.password}
             onChange={e => this.handleChange(e)}
           />
-          <input type='submit' value='Login' />
+          <input type='submit' value='Entrar' />
         </form>
-        <p>
-          Não possui conta?
-          <Link to={"/signup"}> Cadastrar</Link>
-        </p>
+        <button className=''>
+          <Link to='/evento/criar'>Entrar pelo Google</Link>
+        </button>
+        <hr />
+        <p>Não possui conta?</p>
+        <button className=''>
+          <Link to='/evento/criar'>Entre aqui</Link>
+        </button>
       </div>
     );
   }

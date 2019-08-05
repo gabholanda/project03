@@ -33,9 +33,22 @@ class EventMovie extends Component {
   }
 
   render() {
-    console.log();
+    console.log(this.state.event.movieId);
     return (
       <div className=''>
+        <nav aria-label='breadcrumb'>
+          <ol class='breadcrumb'>
+            <li class='breadcrumb-item'>
+              <Link to='/home'>Início</Link>
+            </li>
+            <li class='breadcrumb-item'>
+              <Link to={`/filme/${this.state.event.movieId}`}>Filme</Link>
+            </li>
+            <li class='breadcrumb-item active' aria-current='page'>
+              Evento
+            </li>
+          </ol>
+        </nav>
         <img className='' src={this.state.movie.posterV} alt='' />
         <div>
           <button className=''>
