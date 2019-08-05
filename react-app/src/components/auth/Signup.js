@@ -49,6 +49,7 @@ class Signup extends Component {
           <input
             type='text'
             name='username'
+            placeholder='Insira seu melhor email'
             value={this.state.username}
             onChange={e => this.handleChange(e)}
           />
@@ -57,11 +58,21 @@ class Signup extends Component {
           <input
             type='password'
             name='password'
+            placeholder='Crie uma senha'
             value={this.state.password}
             onChange={e => this.handleChange(e)}
           />
 
-          <label>Nome:</label>
+          <label>Cidade:</label>
+          <input
+            type='text'
+            name='city'
+            placeholder='Cidade'
+            value={this.state.city}
+            onChange={e => this.handleChange(e)}
+          />
+
+          {/* <label>Nome:</label>
           <input
             type='text'
             name='name'
@@ -109,13 +120,6 @@ class Signup extends Component {
             onChange={e => this.handleChange(e)}
           />
 
-          <label>Cidade:</label>
-          <input
-            type='text'
-            name='city'
-            value={this.state.city}
-            onChange={e => this.handleChange(e)}
-          />
 
           <label>Filme favorito:</label>
           <input
@@ -139,7 +143,7 @@ class Signup extends Component {
             name='interest'
             value={this.state.interest}
             onChange={e => this.handleChange(e)}
-          />
+          /> */}
 
           <input type='submit' value='Signup' />
         </form>
