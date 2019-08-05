@@ -32,7 +32,7 @@ function App() {
           component={EditProfile}
         />
         <Route exact path='/usuario/:userId/perfil' component={Profile} />
-        <Route exact path='/evento/criar' component={CreateEvent} />
+        <Route exact path='/criar_evento' component={CreateEvent} />
       </Switch>
     </div>
   );
