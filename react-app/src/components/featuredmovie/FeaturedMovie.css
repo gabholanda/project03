@@ -1,0 +1,42 @@
+.bg-image-filter {
+  height: 100px;
+  width: 100px;
+}
+
+.featured-image {
+  position: relative;
+  background-blend-mode: multiply;
+  height: 400px;
+  top: 0;
+  left: 0;
+}
+
+.featured-info {
+  position: absolute;
+  top: 150px;
+  left: 50px;
+  background: none;
+}
+
+h1 {
+  color: #C4C4C4;
+  font-size: 50px;
+}
+
+p {
+  color: #C4C4C4;
+  font-size: 15px;
+}
+
+.featured-link {
+  display: flex;
+  align-items: center;
+  padding: 6px 20px;
+  width: 120px;
+  margin-top: 10px;
+  background-color: #C4C4C4;
+  color: #191A1B;
+  border-style: none;
+  border-radius: 3px;
+  text-decoration: none;
+}
