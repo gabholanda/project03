@@ -1,26 +1,31 @@
-.form.container {
+.form.container{
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.login-box {
+.login-box{
   align-self: center;
   padding: 60px;
-  background-color: #191a1b;
+  background-color:#191a1b;
 }
-​ .back-home {
+
+.back-home{
   position: relative;
-  top: -25px;
-  left: 850px;
+  top:-25px;
+  left:850px;
+
 }
-​ .login-title {
+
+.login-title{
   font-weight: 800;
-  color: #c4c4c4;
+  color:#c4c4c4;
   font-size: 20px;
   margin-bottom: 30px;
+  
 }
-​ .login-form {
+
+.login-form{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,7 +33,8 @@
   border-radius: 3px;
   background-color: #212121;
 }
-​ .login-form input {
+
+.login-form input{
   background-color: #191a1b;
   margin-bottom: 20px;
   text-align: center;
@@ -37,10 +43,11 @@
   font-size: 15px;
   height: 40px;
   width: 400px;
-  border: none;
+  border:none;
   border-radius: 3px;
 }
-​ .signup-google {
+
+.signup-google{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -52,34 +59,42 @@
   font-size: 15px;
   height: 40px;
   width: 400px;
-  border: none;
+  border:none;
   border-radius: 3px;
   text-decoration: none;
 }
-​ ​ .signup-google img {
+
+
+.signup-google img{
   height: 25px;
   padding: 1%;
 }
-​ .signup-google a {
+
+.signup-google a{
   color: #c4c4c4;
 }
-​ .signup-google a:hover {
+
+.signup-google a:hover{
   text-decoration: none;
   color: #ffea2f;
 }
-​ ​ .login-div {
+
+
+.login-div{
   border: 0.5px solid #ffea2f;
   width: 400px;
   box-shadow: black;
   margin-bottom: 30px;
 }
-​ .login-cta {
+
+.login-cta{
   font-weight: 400;
-  color: #c4c4c4;
+  color:#c4c4c4;
   font-size: 15px;
   margin-bottom: 10px;
 }
-​ .signup-create {
+
+.signup-create{
   display: flex;
   align-items: center;
   justify-content: center;
@@ -91,19 +106,23 @@
   font-size: 15px;
   height: 40px;
   width: 400px;
-  border: none;
+  border:none;
   border-radius: 3px;
 }
-​ .signup-create a {
+
+.signup-create a{
   color: #c4c4c4;
 }
-​ .signup-create a:hover {
+
+.signup-create a:hover{
   text-decoration: none;
   color: #ffea2f;
 }
-​ .login-form:focus {
+
+.login-form:focus {
   outline: none;
 }
-​ .login-form input:-internal-autofill-selected {
+
+.login-form input:-internal-autofill-selected {
   background-color: #212121;
 }
