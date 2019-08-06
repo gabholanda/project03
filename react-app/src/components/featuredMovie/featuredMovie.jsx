@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./FeaturedMovie.css";
+import "./featuredMovie.css";
 
 const FeaturedMovie = props => {
   return (
@@ -8,13 +8,13 @@ const FeaturedMovie = props => {
       <div className='featured-movie-bg'>
         <img
           className='featured-image'
-          src='../images/featured_movie.jpg'
+          src={props.image}
           alt='movies'
         />
         <div className='featured-info'>
-          <h1>Título do filme</h1>
-          <p>Descrição do filme e do evento em pelo menos 100 caracteres.</p>
-          <Link to='#' className='featured-link'>
+          <h1>{props.title}</h1>
+          <p>{props.description}</p>
+          <Link to={props.way} className='featured-link'>
             <img className='search-icon' src='../images/play.svg' />
             Veja mais
           </Link>

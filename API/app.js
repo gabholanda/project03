@@ -13,6 +13,8 @@ const cors = require("cors");
 const session = require("express-session");
 const passport = require("passport");
 
+require('./config/passport');
+
 mongoose
   .connect(process.env.MONGODB_URI, { useNewUrlParser: true })
   .then(x => {
@@ -54,7 +56,7 @@ app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
 // Session sets
 app.use(
   session({
-    secret: "cinex",
+    secret: "cinexp",
     resave: true,
     saveUninitialized: true
   })

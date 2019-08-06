@@ -2,9 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const Event = require("../models/Events");
 const axios = require("axios");
-
 const router = express.Router();
-
 //GET route => Top Movie
 router.get("/destaque", (req, res, next) => {
   axios
@@ -24,7 +22,6 @@ router.get("/destaque", (req, res, next) => {
     .catch(err => console.log(err));
 });
 //----------------------------------------------------------------------------------
-
 //GET route => Top Movies
 router.get("/destaques", (req, res, next) => {
   axios
@@ -47,7 +44,6 @@ router.get("/destaques", (req, res, next) => {
     .catch(err => console.log(err));
 });
 //----------------------------------------------------------------------------------
-
 // GET route => On the cinema
 router.get("/cartaz", (req, res, next) => {
   axios
@@ -63,7 +59,6 @@ router.get("/cartaz", (req, res, next) => {
     .catch(err => console.log(err));
 });
 //------------------------------------------------------------------------------------
-
 // GET route => coming soon movies
 router.get("/breve", (req, res, next) => {
   axios
@@ -79,7 +74,6 @@ router.get("/breve", (req, res, next) => {
     .catch(err => console.log(err));
 });
 //--------------------------------------------------------------------------------------
-
 //GET route => Single Movie
 router.get("/filme/:movieId", (req, res, next) => {
   const movieId = req.params.movieId;
@@ -103,7 +97,6 @@ router.get("/filme/:movieId", (req, res, next) => {
     .catch(err => console.log(err));
 });
 //--------------------------------------------------------------------------------------
-
 // GET route => Movie by city and date
 router.get(
   `/sessions/city/:cityId/event/:eventId/date/:date`,
@@ -150,5 +143,4 @@ router.get(
   }
 );
 //---------------------------------------------------------------------------------
-
 module.exports = router;

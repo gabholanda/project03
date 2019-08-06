@@ -3,6 +3,8 @@ import Slider from '../NetflixSlider'
 import { Link } from "react-router-dom";
 import axios from "axios";
 import './home.css'
+import '../featuredMovie/featuredMovie'
+import FeaturedMovie from "../featuredMovie/featuredMovie";
 
 class Movies extends Component {
   constructor(props) {
@@ -57,14 +59,19 @@ class Movies extends Component {
   render() {
     return (
       <div className=''>
-        <div className='main-movie'>
+        {/* <div className='main-movie'>
           <img src={this.state.moviesHigh[0].poster}/>
           <h1>{this.state.moviesHigh[0].title}</h1>
           <p>{this.state.moviesHigh[0].description}</p>
           <Link to={`filme/${this.state.moviesHigh[0].id}`}>
             <button>Veja mais</button>
           </Link>         
-        </div>
+        </div> */}
+        <FeaturedMovie title={this.state.moviesHigh[0].title}
+        // description={this.state.moviesHigh[0].description}
+        image={this.state.moviesHigh[0].poster}
+        way={`filme/${this.state.moviesHigh[0].id}`}
+        />
       <div>
         <div className="movie-title-section">
             <h2>Destaques</h2>
