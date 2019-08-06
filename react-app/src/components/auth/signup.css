@@ -1,0 +1,158 @@
+.form-container{
+  background-color: #212121;
+}
+
+.signup-container{
+  display: flex;
+  justify-content: center;
+  align-items: center
+}
+
+.signup-box{
+  display: flex;
+  padding-left: 200px;
+  justify-items: center;
+  align-items: center;
+  padding: 50px;
+  background-color:#212121;
+}
+
+.signup-call{
+  margin-left: 100px;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.signup-call img{
+  align-self: flex-start;
+  padding-bottom: 15px;
+}
+
+.back-home{
+  position: relative;
+  top:-25px;
+  left:850px;
+
+}
+
+.signup-title{
+  align-items: center;
+  font-weight: 800;
+  color:#c4c4c4;
+  font-size: 20px;
+  margin-bottom: 30px;
+  width: 300px;
+}
+
+.signup-description{
+  font-weight: 400;
+  color:#c4c4c4;
+  font-size: 15px;
+  margin-bottom: 10px;
+  width: 200px;
+}
+
+.signup-form{
+  display: flex;
+  margin-left: 140px;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  border-radius: 3px;
+  background-color: #212121;
+}
+
+.signup-form input{
+  background-color: #191a1b;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #c4c4c4;
+  padding-left: 10px;
+  font-size: 15px;
+  height: 40px;
+  width: 400px;
+  border:none;
+  border-radius: 3px;
+}
+
+.signup-google{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #191a1b;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #c4c4c4;
+  padding-left: 10px;
+  font-size: 15px;
+  height: 40px;
+  width: 400px;
+  border:none;
+  border-radius: 3px;
+  text-decoration: none;
+}
+
+
+.signup-google img{
+  height: 25px;
+  padding: 1%;
+}
+
+.signup-google a{
+  color: #c4c4c4;
+}
+
+.signup-google a:hover{
+  text-decoration: none;
+  color: #ffea2f;
+}
+
+
+.signup-div{
+  border: 0.5px solid #ffea2f;
+  width: 400px;
+  box-shadow: black;
+  margin-bottom: 30px;
+}
+
+.signup-cta{
+  font-weight: 400;
+  color:#c4c4c4;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.signup-create{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #191a1b;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #ffea2f;
+  padding-left: 10px;
+  font-size: 15px;
+  height: 40px;
+  width: 400px;
+  border:none;
+  border-radius: 3px;
+}
+
+.signup-create a{
+  color: #c4c4c4;
+}
+
+.signup-create a:hover{
+  text-decoration: none;
+  color: #ffea2f;
+}
+
+.signup-form:focus {
+  outline: none;
+}
+
+.signup-form input:-internal-autofill-selected {
+  background-color: #212121;
+}
