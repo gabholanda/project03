@@ -5,7 +5,7 @@ import axios from "axios";
 import './home.css'
 import '../featuredMovie/featuredMovie'
 import FeaturedMovie from "../featuredMovie/featuredMovie";
-import Footer from '../footer/footer'
+import Footer from "../footer/footer"
 
 class Movies extends Component {
   constructor(props) {
@@ -78,12 +78,12 @@ class Movies extends Component {
           </Link>         
         </div> */}
         <FeaturedMovie title={this.state.moviesHigh[0].title}
-        // description={this.state.moviesHigh[0].description}
-        image={this.state.moviesHigh[0].poster}
-        way={`filme/${this.state.moviesHigh[0].id}`}
+          // description={this.state.moviesHigh[0].description}
+          image={this.state.moviesHigh[0].poster}
+          way={`filme/${this.state.moviesHigh[0].id}`}
         />
-      <div>
-        <div className="movie-title-section">
+        <div>
+          <div className="movie-title-section">
             <h2>Destaques</h2>
           </div>
           <Slider>
@@ -117,7 +117,7 @@ class Movies extends Component {
               {this.state.moviesSoon.map(movie => (
                 <Link to={`filme/${movie.id}`}>
                   <Slider.Item movie={movie} key={movie.id}>
-                    item1
+
                   </Slider.Item>
                 </Link>
               ))}
@@ -126,6 +126,7 @@ class Movies extends Component {
         </div>
         <Footer />
       </div>
+
     );
   }
 }

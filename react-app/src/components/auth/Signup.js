@@ -29,7 +29,6 @@ class Signup extends Component {
           name: "",
           email: "",
         });
-        this.props.getUser(response);
       })
       .catch(error => console.log(error));
   };
@@ -48,15 +47,17 @@ class Signup extends Component {
               <h3 className='signup-title'>Escolha um filme, entre em um grupo e faça amigos de uma maneira diferente!</h3>
               <p className='signup-description'>Conheça uma plataforma diferente de tudo o que você já testou. Você simplesmente vai amar!</p>
               </div>
-            <form className='signup-form' onSubmit={this.handleFormSubmit}>
-            <Link to='/'><img className='back-home' src='./images/close.svg'/></Link>
-            <input
-            type='text'
-            placeholder='Seu nome'
-            name='name'
-            value={this.state.name}
-            onChange={e => this.handleChange(e)}
-            />
+              <form className='signup-form' onSubmit={this.handleFormSubmit}>
+                <Link to='/'>
+                  <img className='back-home' src='./images/close.svg' alt="home" />
+                </Link>
+                <input
+                  type='text'
+                  placeholder='Seu nome'
+                  name='name'
+                  value={this.state.name}
+                  onChange={e => this.handleChange(e)}
+                />
 
             <input
             type='text'

@@ -34,14 +34,14 @@
         <div className='form-container'>
           <div className='login-box'>
           <form className='login-form'onSubmit={this.handleFormSubmit}>
-          <Link to='/'><img className='back-home' src='./images/close.svg'/></Link>
+          <Link to='/'><img className='back-home' src='./images/close.svg' alt ="home-logo"/></Link>
         
           <h3 className='login-title'>Entre agora na melhor de rede de eventos de cinema do Brasil</h3>
   
             <input
               type='text'
               name='username'
-              placeholder='Insira seu email'
+              placeholder='Insira seu username'
               value={this.state.username}
               onChange={e => this.handleChange(e)}
             />
@@ -55,14 +55,11 @@
               />
               {/* button */}
             <input type='submit' value='Entrar' />
-  
-          <button className='signup-google'>
-            <img src='./images/google-logo.svg'/>
-            <Link to='/evento/criar'>Entrar pelo Google</Link>
-          </button>
-  
-          <hr className='login-div'/>
-  
+            <button className='signup-google'>
+              <img src='./images/google-logo.svg' alt="google-logo" />
+              <Link to='/evento/criar'>Entrar pelo Google</Link>
+            </button>
+            <hr className='login-div' />
             <p className='login-cta'>Não possui conta?</p>
             <Link className='signup-create'to='/evento/criar'>Entre aqui seu cuzao</Link>
           </form>
