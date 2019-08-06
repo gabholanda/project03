@@ -80,7 +80,7 @@ class Movies extends Component {
               {this.state.moviesHigh.map(movie => (
                 <Link to={`filme/${movie.id}`}>
                   <Slider.Item movie={movie} key={movie.id}>
-                    item1
+                    
                   </Slider.Item>
                 </Link>
               ))}
@@ -94,7 +94,7 @@ class Movies extends Component {
                 {this.state.movies.map(movie => (
                   <Link to={`filme/${movie.id}`}>
                     <Slider.Item movie={movie} key={movie.id}>
-                      item1
+                      
                     </Slider.Item>
                   </Link>
                 ))}
@@ -107,7 +107,7 @@ class Movies extends Component {
                 {this.state.moviesSoon.map(movie => (
                   <Link to={`filme/${movie.id}`}>
                     <Slider.Item movie={movie} key={movie.id}>
-                      item1
+                      
                     </Slider.Item>
                   </Link>
                 ))}

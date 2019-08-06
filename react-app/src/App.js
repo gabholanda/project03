@@ -54,7 +54,7 @@ class App extends Component {
           <Route exact path='/' component={Home} />
           <Route exact path='/filme/:movieId' component={Movie} />
           <Route exact path='/evento/:eventId' component={Event} />
-          <Route exact path='/chat' component={Chat} />
+          {/* <Route exact path='/chat' component={Chat} /> */}
           <Route exact path='/login' render={() => <Login getUser={this.getTheUser} />} />
           <Route exact path='/signup' render={() => <Signup getUser={this.getTheUser} />} />
           <Route
