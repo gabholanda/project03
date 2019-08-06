@@ -71,7 +71,7 @@ class Signup extends Component {
           <input
             type='text'
             name='username'
-            placeholder='Insira seu melhor email'
+            placeholder='Insira seu email'
             value={this.state.username}
             onChange={e => this.handleChange(e)}
           />

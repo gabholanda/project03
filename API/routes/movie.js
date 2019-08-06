@@ -2,14 +2,12 @@ const express = require("express");
 const mongoose = require("mongoose");
 const Event = require("../models/Events");
 const axios = require("axios");
-
 const router = express.Router();
-
 //GET route => Top Movie
 router.get("/destaque", (req, res, next) => {
   axios
     .get(
-      `${process.env.INGRESSOS_API}`
+      `https://api-content.ingresso.com/v0/templates/highlights/1?partnership=ironhackapp`
     )
     .then(movies => {
       const movie = movies.data.map(movie => {
@@ -24,12 +22,11 @@ router.get("/destaque", (req, res, next) => {
     .catch(err => console.log(err));
 });
 //----------------------------------------------------------------------------------
-
 //GET route => Top Movies
 router.get("/destaques", (req, res, next) => {
   axios
     .get(
-      `${process.env.INGRESSOS_API}`
+      `https://api-content.ingresso.com/v0/templates/highlights/1?partnership=ironhackapp`
     )
     .then(movies => {
       const movie = movies.data.map(movie => {
@@ -47,12 +44,11 @@ router.get("/destaques", (req, res, next) => {
     .catch(err => console.log(err));
 });
 //----------------------------------------------------------------------------------
-
 // GET route => On the cinema
 router.get("/cartaz", (req, res, next) => {
   axios
     .get(
-      `${process.env.INGRESSOS_API}`
+      `https://api-content.ingresso.com/v0/templates/nowplaying/1?partnership=ironhackapp`
     )
     .then(movies => {
       const movie = movies.data.map(movie => {
@@ -63,12 +59,11 @@ router.get("/cartaz", (req, res, next) => {
     .catch(err => console.log(err));
 });
 //------------------------------------------------------------------------------------
-
 // GET route => coming soon movies
 router.get("/breve", (req, res, next) => {
   axios
     .get(
-      `${process.env.INGRESSOS_API}`
+      `https://api-content.ingresso.com/v0/templates/soon/1?partnership=ironhackapp`
     )
     .then(movies => {
       const movie = movies.data.map(movie => {
@@ -79,13 +74,12 @@ router.get("/breve", (req, res, next) => {
     .catch(err => console.log(err));
 });
 //--------------------------------------------------------------------------------------
-
 //GET route => Single Movie
 router.get("/filme/:movieId", (req, res, next) => {
   const movieId = req.params.movieId;
   axios
     .get(
-      `${process.env.INGRESSOS_EVENTS}/${movieId}/partnership/ironhackapp`
+      `https://api-content.ingresso.com/v0/events/${movieId}/partnership/ironhackapp`
     )
     .then(movie => {
       const movieInfo = {
@@ -103,7 +97,6 @@ router.get("/filme/:movieId", (req, res, next) => {
     .catch(err => console.log(err));
 });
 //--------------------------------------------------------------------------------------
-
 // GET route => Movie by city and date
 router.get(
   `/sessions/city/:cityId/event/:eventId/date/:date`,
@@ -111,7 +104,7 @@ router.get(
     const { cityId, eventId, date } = req.params;
     axios
       .get(
-        `${process.env.INGRESSOS_SESSIONS}/${cityId}/event/${eventId}/partnership/ironhackapp?date=${date}`
+        `https://api-content.ingresso.com/v0/sessions/city/${cityId}/event/${eventId}/partnership/ironhackapp?date=${date}`
       )
       .then(theaters => {
         const theater = theaters.data[0].theaters.map(theater => {
@@ -150,5 +143,4 @@ router.get(
   }
 );
 //---------------------------------------------------------------------------------
-
 module.exports = router;

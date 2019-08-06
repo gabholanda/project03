@@ -14,10 +14,9 @@ const nodemailer = require('nodemailer');
 
 router.post('/signup', (req, res, next) => {
   const { username, password, name, email, age, occupation, cellphone, city, favoriteMovie, interest, about, role } = req.body;
-  let image = undefined;
-  if (req.file) {
-    image = req.file.secure_url;
-  }
+  // if (req.file) {
+  //   let image = req.file.secure_url;
+  // }
   // Creates random confirmation Code
   const characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
   let token = '';
@@ -62,7 +61,7 @@ router.post('/signup', (req, res, next) => {
       name,
       email,
       age,
-      image,
+      // image,
       occupation,
       cellphone,
       confirmationCode,
@@ -71,14 +70,16 @@ router.post('/signup', (req, res, next) => {
       about,
       interest,
       role
-    }, { omitUndefined: true })
+    }, 
+    // { omitUndefined: true }
+    )
     newUser.save(err => {
       if (err) {
         res.status(400).json({ message: 'Error upon saving user on DB.' });
         return;
       }
     })
-    res.status(200).json(newUser);
+    res.status(201).json(newUser);
   });
 });
 
