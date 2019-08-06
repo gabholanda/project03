@@ -21,8 +21,9 @@ class Signup extends Component {
     const name = this.state.name;
     const email = this.state.email;
 
-    this.service.signup(username, password, name, email)
+    this.service.signup(username, password, email, name)
       .then(response => {
+        console.log(username, password, email, name)
         this.setState({
           username: "",
           password: "",

@@ -7,7 +7,7 @@ const router = express.Router();
 router.get("/destaque", (req, res, next) => {
   axios
     .get(
-      `${process.env.INGRESSOS_API}`
+      `${process.env.INGRESSOS_DESTAQUE_API}`
     )
     .then(movies => {
       const movie = movies.data.map(movie => {
