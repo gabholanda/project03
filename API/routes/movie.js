@@ -26,7 +26,7 @@ router.get("/destaque", (req, res, next) => {
 router.get("/destaques", (req, res, next) => {
   axios
     .get(
-      `${process.env.INGRESSOS_API}`
+      `${process.env.INGRESSOS_HIGHLIGHTS_API}`
     )
     .then(movies => {
       const movie = movies.data.map(movie => {
@@ -48,7 +48,7 @@ router.get("/destaques", (req, res, next) => {
 router.get("/cartaz", (req, res, next) => {
   axios
     .get(
-      `${process.env.INGRESSOS_API}`
+      `${process.env.INGRESSOS_CARTAZ_API}`
     )
     .then(movies => {
       const movie = movies.data.map(movie => {
@@ -63,7 +63,7 @@ router.get("/cartaz", (req, res, next) => {
 router.get("/breve", (req, res, next) => {
   axios
     .get(
-      `${process.env.INGRESSOS_API}`
+      `${process.env.INGRESSOS_BREVE_API}`
     )
     .then(movies => {
       const movie = movies.data.map(movie => {

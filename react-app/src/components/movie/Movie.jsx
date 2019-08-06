@@ -122,7 +122,9 @@ class Movie extends Component {
         </div>
         <br/>
           <button className=''>
-            <Link to='/evento/criar'>+ Criar um evento</Link>
+            <Link to={`${this.props.match.params.movieId}/criar_evento`}>
+              + Criar um evento
+            </Link>
           </button>
       </div>
     );
