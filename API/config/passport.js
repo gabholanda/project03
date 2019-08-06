@@ -1,4 +1,3 @@
-
 const User = require('../models/Users');
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcryptjs');
