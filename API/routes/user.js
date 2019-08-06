@@ -13,11 +13,10 @@ const nodemailer = require('nodemailer');
 
 
 router.post('/signup', (req, res, next) => {
-  const { username, password, name, email, age, occupation, cellphone, city, favoriteMovie, interest, about, role } = req.body;
-  let image = undefined;
-  if (req.file) {
-    image = req.file.secure_url;
-  }
+  const { username, password, name, email } = req.body;
+  // if (req.file) {
+  //   let image = req.file.secure_url;
+  // }
   // Creates random confirmation Code
   const characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
   let token = '';
@@ -26,13 +25,8 @@ router.post('/signup', (req, res, next) => {
   }
   const confirmationCode = token;
 
-  if (!username || !password || !name || !email || !age) {
-    res.status(400).json({ message: 'Provide username, password, name, email and age' });
-    return;
-  }
-
-  if (age < 18) {
-    res.status(400).json({ message: 'You need to be at least 18.' });
+  if (!username || !password || !name || !email) {
+    res.status(400).json({ message: 'Provide username, password, name, email' });
     return;
   }
 
@@ -55,31 +49,24 @@ router.post('/signup', (req, res, next) => {
 
     const salt = bcrypt.genSaltSync(10);
     const hashPass = bcrypt.hashSync(password, salt);
-    // Creates new user to sabe on DB
+    // Creates new user to save on DB
     const newUser = new User({
       username,
-      password,
+      password: hashPass,
       name,
       email,
-      age,
-      image,
-      occupation,
-      cellphone,
       confirmationCode,
-      city,
-      favoriteMovie,
-      about,
-      interest,
-      role
-    }, { omitUndefined: true })
+    },
+      // { omitUndefined: true }
+    )
     newUser.save(err => {
       if (err) {
         res.status(400).json({ message: 'Error upon saving user on DB.' });
         return;
       }
-    })
+      res.status(200).json(newUser);
+    });
   });
-  res.status(200).json(newUser);
 });
 
 // Login post route
@@ -103,7 +90,6 @@ router.post('/login', (req, res, next) => {
         res.status(500).json({ message: 'Session save went bad.' });
         return;
       }
-
       // We are now logged in (that's why we can also send req.user)
       res.status(200).json(theUser);
     });

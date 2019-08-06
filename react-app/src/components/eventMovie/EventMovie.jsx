@@ -16,7 +16,7 @@ class EventMovie extends Component {
       }
     };
   }
-
+  
   getEvents = () => {
     axios
       .get(`http://localhost:5000/api/event/${this.props.match.params.eventId}`)
@@ -27,6 +27,17 @@ class EventMovie extends Component {
       })
       .catch(error => console.log(error));
   };
+
+  // getEvents = () => {
+  //   axios
+  //     .get(`${process.env.REACT_APP_API_URL}/event/${this.props.match.params.eventId}`)
+  //     .then(responseFromApi => {
+  //       this.setState({
+  //         event: responseFromApi.data
+  //       });
+  //     })
+  //     .catch(error => console.log(error));
+  // };
 
   componentDidMount() {
     this.getEvents();

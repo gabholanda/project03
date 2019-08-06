@@ -5,13 +5,14 @@
 .featured-image {
   position: relative;
   background-blend-mode: multiply;
-  height: 400px;
+  height: auto;
+  width: auto;
   top: 0;
   left: 0;
 }
 .featured-info {
   position: absolute;
-  top: 150px;
+  top: 420px;
   left: 50px;
   background: none;
 }
