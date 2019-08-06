@@ -10,6 +10,21 @@ class EventMovie extends Component {
     this.state = {
       city: 1,
       date: "",
+      sessions: [
+        {
+          id: "",
+          price: 0,
+          type: [""],
+          realDate: {
+            dayOfWeek: "",
+            hour: "",
+            year: ""
+          },
+          siteURL: "",
+          enabled: false,
+          blockMessage: ""
+        }
+      ],
       event: [
         {
           id: "",
@@ -160,11 +175,21 @@ class EventMovie extends Component {
               onChange={event => this.handleChange(event)}
             />
             //Theater
-            <select>
+            <select onChange={event => this.handleChange(event)} name='session'>
               {this.state.event.map(event => {
                 return <option value={event.id}>{event.name}</option>;
               })}
             </select>
+            //Theater
+            {/* <select>
+              {this.state.session.map(event => {
+                return event.rooms.map(room => {
+                  return room.sessions.map(session => {
+                    return <option value={session.id}>{room.name}</option>;
+                  });
+                });
+              })}
+            </select> */}
             <input type='time' name='' id='' placeholder='Duração do evento' />
             <input
               type='text'
