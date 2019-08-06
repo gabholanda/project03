@@ -123,29 +123,6 @@ class Movies extends Component {
               ))}
             </Slider>
           </div>
-          <Slider>
-            {this.state.movies.map(movie => (
-              <Link to={`filme/${movie.id}`}>
-                <Slider.Item movie={movie} key={movie.id}>
-
-                </Slider.Item>
-              </Link>
-            ))}
-          </Slider>
-        </div>
-        <div className="movie-title-section">
-          <div>
-            <h2>Em Breve</h2>
-            <Slider>
-              {this.state.moviesSoon.map(movie => (
-                <Link to={`filme/${movie.id}`}>
-                  <Slider.Item movie={movie} key={movie.id}>
-
-                  </Slider.Item>
-                </Link>
-              ))}
-            </Slider>
-          </div>
         </div>
         <Footer />
       </div>
