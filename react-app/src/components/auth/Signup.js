@@ -6,7 +6,12 @@ import "./signup.css";
 class Signup extends Component {
   constructor(props) {
     super(props);
-    this.state = { username: "", password: "" };
+    this.state = {
+      username: '',
+      password: '',
+      name: '',
+      email: '',
+    };
     this.service = new AuthService();
   }
 
@@ -14,22 +19,15 @@ class Signup extends Component {
     event.preventDefault();
     const username = this.state.username;
     const password = this.state.password;
-    this.service
-      .signup(username, password)
+    const name = this.state.name;
+    const email = this.state.email;
+    this.service.signup(username, password, name, email)
       .then(response => {
         this.setState({
           username: "",
           password: "",
           name: "",
           email: "",
-          age: "",
-          occupation: "",
-          image: "",
-          cellphone: "",
-          city: "",
-          favoriteMovie: "",
-          about: "",
-          interest: ""
         });
         this.props.getUser(response);
       })

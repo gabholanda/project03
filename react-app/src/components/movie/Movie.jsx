@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./Movie.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import './Movie.css'
 
 class Movie extends Component {
   constructor(props) {
@@ -9,7 +10,7 @@ class Movie extends Component {
 
     this.state = { movie: 0, events: [] };
   }
-
+  
   getMovie = () => {
     axios
       .get(`http://localhost:5000/api/filme/${this.props.match.params.movieId}`)
@@ -20,6 +21,17 @@ class Movie extends Component {
       })
       .catch(error => console.log(error));
   };
+
+  // getMovie = () => {
+  //   axios
+  //     .get(`${process.env.REACT_APP_API_URL}/filme/${this.props.match.params.movieId}`)
+  //     .then(responseFromApi => {
+  //       this.setState({
+  //         movie: responseFromApi.data
+  //       });
+  //     })
+  //     .catch(error => console.log(error));
+  // };
 
   getEvents = () => {
     axios
@@ -34,6 +46,19 @@ class Movie extends Component {
       .catch(error => console.log(error));
   };
 
+  // getEvents = () => {
+  //   axios
+  //     .get(
+  //       `${process.env.REACT_APP_API_URL}/events/${this.props.match.params.movieId}`
+  //     )
+  //     .then(responseFromApi => {
+  //       this.setState({
+  //         events: responseFromApi.data
+  //       });
+  //     })
+  //     .catch(error => console.log(error));
+  // };
+
   componentDidMount() {
     this.getMovie();
     this.getEvents();
@@ -43,17 +68,21 @@ class Movie extends Component {
     return (
       <div className=''>
         <nav aria-label='breadcrumb'>
-          <ol class='breadcrumb'>
-            <li class='breadcrumb-item'>
+          <ol className='breadcrumb'>
+            <li className='breadcrumb-item'>
               <Link to='/'>Início</Link>
             </li>
-            <li class='breadcrumb-item active' aria-current='page'>
+            <li className='breadcrumb-item active' aria-current='page'>
               Filme
             </li>
           </ol>
         </nav>
-        <div className=''>
-          <img className='' src={this.state.movie.posterV} alt='' />
+        <div className='movie-information'>
+          <div className="movie-poster">
+            <img className='' src={this.state.movie.posterV} alt='' />
+          </div>
+          <div className="movie-details">
+
           <h1 className=''>{this.state.movie.title}</h1>
           <p className=''>{this.state.movie.genre}</p>
           <p className=''>{this.state.movie.duration} minutos</p>
@@ -62,11 +91,10 @@ class Movie extends Component {
               target='_blank'
               rel='noopener noreferrer'
               href={this.state.movie.trailer}
-            >
+              >
               Traler
             </a>
           </button>
-        </div>
         <hr className='' />
         <div className=''>
           <h2 className=''>Sinopse</h2>
@@ -74,6 +102,7 @@ class Movie extends Component {
         </div>
         <hr className='' />
         <div>
+        </div>
           <h2 className=''>Eventos</h2>
           {this.state.events.map(event => {
             return (
@@ -85,16 +114,18 @@ class Movie extends Component {
                 <button className=''>
                   <Link to={`/evento/${event.id}`}>Saiba Mais</Link>
                 </button>
-              </div>
+                </div>
             );
           })}
-
+              </div>
+          
+        </div>
+        <br/>
           <button className=''>
             <Link to={`${this.props.match.params.movieId}/criar_evento`}>
               + Criar um evento
             </Link>
           </button>
-        </div>
       </div>
     );
   }
