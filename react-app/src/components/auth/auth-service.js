@@ -10,12 +10,12 @@ class AuthService {
       baseURL: "http://localhost:5000/api",
       withCredentials: true
     });
-    
+
     this.service = service;
   }
 
-  signup = (username, password, name, email) => {
-    return this.service.post('/signup', { username, password, name, email })
+  signup = (username, password, email, name) => {
+    return this.service.post('/signup', { username, password, email, name })
       .then(response => response.data)
   }
 
