@@ -9,7 +9,7 @@ class Signup extends Component {
       username: '',
       password: '',
       name: '',
-      email: '',
+      email: ''
     };
     this.service = new AuthService();
   }
