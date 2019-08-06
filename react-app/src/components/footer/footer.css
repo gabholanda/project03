@@ -1,0 +1,34 @@
+.footer-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background-color: #191a1b;
+  height: 220px;
+  width: 100%;
+  border-top: 2px solid #ffea2f;
+  position: relative;
+  bottom: 0;
+}
+​ .footer-container p {
+  color: #c4c4c4;
+}
+​ .footer-logo {
+  margin-top: 10px;
+  padding: 10px;
+}
+​ .footer-links {
+  display: flex;
+  list-style-type: none;
+  padding: 0px 40px;
+}
+​ .footer-links li {
+  padding: 10px 40px;
+  color: #ffea2f;
+  transition: 0.8s;
+}
+​ .footer-links li:hover {
+  background-color: #ffea2f;
+  border: 3px;
+  color: #191a1b;
+}

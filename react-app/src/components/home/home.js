@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Slider from '../NetflixSlider'
+import Slider from "../NetflixSlider";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import './home.css'
@@ -11,7 +11,16 @@ class Movies extends Component {
     super(props);
 
     this.state = {
-      moviesHigh: [{ id: "", title: "", image: "", poster: "", trailer: "", description: ""}],
+      moviesHigh: [
+        {
+          id: "",
+          title: "",
+          image: "",
+          poster: "",
+          trailer: "",
+          description: ""
+        }
+      ],
       movies: [{ id: "", title: "", image: "" }],
       moviesSoon: [{ id: "", title: "", image: "" }]
     };
@@ -75,9 +84,36 @@ class Movies extends Component {
       <div>
         <div className="movie-title-section">
             <h2>Destaques</h2>
+          </div>
+          <Slider>
+            {this.state.moviesHigh.map(movie => (
+              <Link to={`filme/${movie.id}`}>
+                <Slider.Item movie={movie} key={movie.id}>
+                  item1
+                </Slider.Item>
+              </Link>
+            ))}
+          </Slider>
         </div>
+        <div>
+          <div className='movie-title-section'>
+            <h2>Em Cartaz</h2>
+          </div>
+          <Slider>
+            {this.state.movies.map(movie => (
+              <Link to={`filme/${movie.id}`}>
+                <Slider.Item movie={movie} key={movie.id}>
+                  item1
+                </Slider.Item>
+              </Link>
+            ))}
+          </Slider>
+        </div>
+        <div className='movie-title-section'>
+          <div>
+            <h2>Em Breve</h2>
             <Slider>
-              {this.state.moviesHigh.map(movie => (
+              {this.state.moviesSoon.map(movie => (
                 <Link to={`filme/${movie.id}`}>
                   <Slider.Item movie={movie} key={movie.id}>
                     item1
@@ -85,35 +121,9 @@ class Movies extends Component {
                 </Link>
               ))}
             </Slider>
+          </div>
         </div>
-        <div>
-          <div className="movie-title-section">
-            <h2>Em Cartaz</h2>
-          </div>
-              <Slider>
-                {this.state.movies.map(movie => (
-                  <Link to={`filme/${movie.id}`}>
-                    <Slider.Item movie={movie} key={movie.id}>
-                      item1
-                    </Slider.Item>
-                  </Link>
-                ))}
-              </Slider>
-          </div>
-          <div className="movie-title-section">
-            <div>
-              <h2>Em Breve</h2>
-              <Slider>
-                {this.state.moviesSoon.map(movie => (
-                  <Link to={`filme/${movie.id}`}>
-                    <Slider.Item movie={movie} key={movie.id}>
-                      item1
-                    </Slider.Item>
-                  </Link>
-                ))}
-              </Slider>
-            </div>
-            </div>
+        <Footer />
       </div>
     );
   }
