@@ -1,0 +1,13 @@
+* {
+  color:yellow;
+}
+
+.movie-information {
+  display: flex;
+  flex-direction: row;
+}
+
+.movie-details {
+  display: flex;
+  flex-direction: column;
+}
