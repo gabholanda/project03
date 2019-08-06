@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import Slider from '../NetflixSlider'
 import { Link } from "react-router-dom";
 import axios from "axios";
-import './home.css'
+import './home.css';
+import Footer from '../footer/footer'
 
 class Movies extends Component {
   constructor(props) {
@@ -69,7 +70,7 @@ class Movies extends Component {
         <div className="movie-title-section">
             <h2>Destaques</h2>
         </div>
-            <Slider>
+            <Slider className='home-destaques'>
               {this.state.moviesHigh.map(movie => (
                 <Link to={`filme/${movie.id}`}>
                   <Slider.Item movie={movie} key={movie.id}>
@@ -107,6 +108,7 @@ class Movies extends Component {
               </Slider>
             </div>
             </div>
+            <Footer/> 
       </div>
     );
   }

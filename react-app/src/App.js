@@ -34,6 +34,7 @@ function App() {
         <Route exact path='/usuario/:userId/perfil' component={Profile} />
         <Route exact path='/criar_evento' component={CreateEvent} />
       </Switch>
+      
     </div>
   );
 }

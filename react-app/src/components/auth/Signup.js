@@ -1,6 +1,9 @@
-import React, { Component } from "react";
+import React, { Component, Fragment} from "react";
 import AuthService from "./auth-service";
 import { Link } from "react-router-dom";
+import Footer from '../footer/footer'
+import './signup.css';
+
 
 class Signup extends Component {
   constructor(props) {
@@ -43,116 +46,62 @@ class Signup extends Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleFormSubmit}>
-          <label>Usuário:</label>
-          <input
+        <Fragment>
+          <div className='form-container'>
+            <div className='signup-container'>
+            <div className='signup-box'>
+              <div className='signup-call'>
+              <img src='../images/logo.svg' alt='cinex logotype' />
+              <h3 className='signup-title'>Escolha um filme, entre em um grupo e faça amigos de uma maneira diferente!</h3>
+              <p className='signup-description'>Conheça uma plataforma diferente de tudo o que você já testou. Você simplesmente vai amar!</p>
+              </div>
+            <form className='signup-form' onSubmit={this.handleFormSubmit}>
+            <Link to='/'><img className='back-home' src='./images/close.svg'/></Link>
+            <input
+            type='text'
+            placeholder='Seu nome'
+            name='name'
+            value={this.state.name}
+            onChange={e => this.handleChange(e)}
+            />
+
+            <input
+            type='text'
+            name='email'
+            placeholder='Insira seu email'
+            value={this.state.email}
+            onChange={e => this.handleChange(e)}
+            />
+
+            <input
             type='text'
             name='username'
-            placeholder='Insira seu melhor email'
+            placeholder='Crie o seu usuário'
             value={this.state.username}
             onChange={e => this.handleChange(e)}
-          />
+            />
 
-          <label>Senha:</label>
-          <input
+            <input
             type='password'
             name='password'
             placeholder='Crie uma senha'
             value={this.state.password}
             onChange={e => this.handleChange(e)}
-          />
+            />
 
-          <label>Cidade:</label>
-          <input
-            type='text'
-            name='city'
-            placeholder='Cidade'
-            value={this.state.city}
-            onChange={e => this.handleChange(e)}
-          />
+            <input type='submit' value='Signup' />
+            <hr className='signup-div'/>
+            <p className='signup-cta'>
+            Já possui uma conta?
+            </p>
+            <Link className='signup-create'to={"/login"}> Entrar </Link>
+            </form>
 
-          {/* <label>Nome:</label>
-          <input
-            type='text'
-            name='name'
-            value={this.state.name}
-            onChange={e => this.handleChange(e)}
-          />
-
-          <label>Email:</label>
-          <input
-            type='text'
-            name='email'
-            value={this.state.email}
-            onChange={e => this.handleChange(e)}
-          />
-
-          <label>Idade:</label>
-          <input
-            type='Number'
-            name='age'
-            value={this.state.age}
-            onChange={e => this.handleChange(e)}
-          />
-
-          <label>Profissão:</label>
-          <input
-            type='text'
-            name='occupation'
-            value={this.state.occupation}
-            onChange={e => this.handleChange(e)}
-          />
-
-          <label>foto de perfil:</label>
-          <input
-            type='file'
-            name='image'
-            value={this.state.image}
-            onChange={e => this.handleChange(e)}
-          />
-
-          <label>Celular:</label>
-          <input
-            type='text'
-            name='cellphone'
-            value={this.state.cellphone}
-            onChange={e => this.handleChange(e)}
-          />
-
-
-          <label>Filme favorito:</label>
-          <input
-            type='text'
-            name='favoriteMovie'
-            value={this.state.favoriteMovie}
-            onChange={e => this.handleChange(e)}
-          />
-
-          <label>Sobre:</label>
-          <input
-            type='text'
-            name='about'
-            value={this.state.about}
-            onChange={e => this.handleChange(e)}
-          />
-
-          <label>Interesses:</label>
-          <input
-            type='text'
-            name='interest'
-            value={this.state.interest}
-            onChange={e => this.handleChange(e)}
-          /> */}
-
-          <input type='submit' value='Signup' />
-        </form>
-
-        <p>
-          Já possui uma conta?
-          <Link to={"/"}> Entrar </Link>
-        </p>
-      </div>
+            </div>
+          </div>
+          </div>
+          <Footer/> 
+        </Fragment>
     );
   }
 }

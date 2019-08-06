@@ -1,6 +1,6 @@
 .item {
   flex: 0 0 19.7%;
-  transition: transform 300ms ease 100ms;
+  transition: transform 500ms ease 100ms;
   margin: 0 2px;
   position: relative;
 
@@ -8,5 +8,7 @@
     height: 100%;
     width: 100%;
     vertical-align: top;
+    box-shadow: 5px 5px 20px -3px rgba(0,0,0,0.75);
+    transition: 0.4s;
   }
 }
