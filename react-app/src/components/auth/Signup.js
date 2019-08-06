@@ -29,7 +29,6 @@ class Signup extends Component {
           name: "",
           email: "",
         });
-        this.props.getUser(response);
       })
       .catch(error => console.log(error));
   };
