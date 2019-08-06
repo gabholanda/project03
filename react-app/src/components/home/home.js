@@ -5,6 +5,7 @@ import axios from "axios";
 import './home.css'
 import '../featuredMovie/featuredMovie'
 import FeaturedMovie from "../featuredMovie/featuredMovie";
+import Footer from '../footer/footer'
 
 class Movies extends Component {
   constructor(props) {
