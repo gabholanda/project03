@@ -39,72 +39,65 @@ class Signup extends Component {
   };
   render() {
     return (
-      <Fragment>
-        <div className='form-container'>
-          <div className='signup-container'>
+        <Fragment>
+          <div className='form-container'>
+            <div className='signup-container'>
             <div className='signup-box'>
               <div className='signup-call'>
-                <img src='../images/logo.svg' alt='cinex logotype' />
-                <h3 className='signup-title'>
-                  Escolha um filme, entre em um grupo e faça amigos de uma
-                  maneira diferente!
-                </h3>
-                <p className='signup-description'>
-                  Conheça uma plataforma diferente de tudo o que você já testou.
-                  Você simplesmente vai amar!
-                </p>
+              <img src='../images/logo.svg' alt='cinex logotype' />
+              <h3 className='signup-title'>Escolha um filme, entre em um grupo e faça amigos de uma maneira diferente!</h3>
+              <p className='signup-description'>Conheça uma plataforma diferente de tudo o que você já testou. Você simplesmente vai amar!</p>
               </div>
-              <form className='signup-form' onSubmit={this.handleFormSubmit}>
-                <Link to='/'>
-                  <img className='back-home' src='./images/close.svg' />
-                </Link>
-                <input
-                  type='text'
-                  placeholder='Seu nome'
-                  name='name'
-                  value={this.state.name}
-                  onChange={e => this.handleChange(e)}
-                />
+            <form className='signup-form' onSubmit={this.handleFormSubmit}>
+            <Link to='/'><img className='back-home' src='./images/close.svg'/></Link>
+            <input
+            type='text'
+            placeholder='Seu nome'
+            name='name'
+            value={this.state.name}
+            onChange={e => this.handleChange(e)}
+            />
 
-                <input
-                  type='text'
-                  name='email'
-                  placeholder='Insira seu email'
-                  value={this.state.email}
-                  onChange={e => this.handleChange(e)}
-                />
+            <input
+            type='text'
+            name='email'
+            placeholder='Insira seu email'
+            value={this.state.email}
+            onChange={e => this.handleChange(e)}
+            />
 
-                <input
-                  type='text'
-                  name='username'
-                  placeholder='Crie o seu usuário'
-                  value={this.state.username}
-                  onChange={e => this.handleChange(e)}
-                />
+            <input
+            type='text'
+            name='username'
+            placeholder='Crie o seu usuário'
+            value={this.state.username}
+            onChange={e => this.handleChange(e)}
+            />
 
-                <input
-                  type='password'
-                  name='password'
-                  placeholder='Crie uma senha'
-                  value={this.state.password}
-                  onChange={e => this.handleChange(e)}
-                />
+            <input
+            type='password'
+            name='password'
+            placeholder='Crie uma senha'
+            value={this.state.password}
+            onChange={e => this.handleChange(e)}
+            />
 
-                <input type='submit' value='Signup' />
-                <hr className='signup-div' />
-                <p className='signup-cta'>Já possui uma conta?</p>
-                <Link className='signup-create' to={"/login"}>
-                  {" "}
-                  Entrar{" "}
-                </Link>
-              </form>
+            <input type='submit' value='Signup' />
+            <hr className='signup-div'/>
+            <p className='signup-cta'>
+            Já possui uma conta?
+            </p>
+            <Link className='signup-create'to={"/login"}> Entrar </Link>
+            </form>
+
             </div>
           </div>
-        </div>
-        <Footer />
-      </Fragment>
+          </div>
+          <Footer/> 
+        </Fragment>
     );
   }
 }
+
 
 export default Signup;
