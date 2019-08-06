@@ -22,7 +22,7 @@ function App() {
         <Route exact path='/filme/:movieId' component={Movie} />
         <Route exact path='/evento/:eventId' component={Event} />
         <Route exact path='/chat' component={Chat} />
-        <Route exact path='/login' component={Login} />
+        <Route exact path='/login' component={Login } />
         <Route exact path='/signup' component={Signup} />
         <Route
           exact

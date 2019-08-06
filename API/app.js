@@ -66,9 +66,6 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-// default value for title local
-app.locals.title = "Express - Generated with IronGenerator";
-
 // CORS Sets
 app.use(cors({
   credentials: true,
