@@ -18,8 +18,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loggedInUser: null,
-      movieId: ""
+      loggedInUser: null
     };
     this.service = new AuthService();
   }
@@ -129,12 +128,11 @@ class App extends Component {
               path='/usuario/:userId/perfil/editar'
               component={EditProfile}
             />
-            {/* It musn't be possible to create an event without being logged */}
-            {/* <Route
+            <Route
               exact
               path='/filme/:movieId/criar_evento'
               component={CreateEvent}
-            /> */}
+            />
           </Switch>
         </div>
       );

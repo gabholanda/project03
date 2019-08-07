@@ -89,11 +89,9 @@ class Movies extends Component {
           <Slider>
             {this.state.moviesHigh.map(movie => (
               <Link
-               to={`filme/${movie.id}`}
-               onClick={() => {
-                 this.props.getMovieId(movie.id)
-               }}
-               >
+                to={`filme/${movie.id}`}
+                onClick={() => this.props.getMovieId(movie.id)}
+              >
                 <Slider.Item movie={movie} key={movie.id}>
                   item1
                 </Slider.Item>
@@ -110,7 +108,7 @@ class Movies extends Component {
             {this.state.movies.map(movie => (
               <Link
                 to={`filme/${movie.id}`}
-                onClick={movie => this.props.getMovieId(movie.id)}
+                onClick={() => this.props.getMovieId(movie.id)}
               >
                 <Slider.Item movie={movie} key={movie.id}>
                   item1
@@ -124,13 +122,13 @@ class Movies extends Component {
         <div className='emBreve'>
           <div className='movie-title-section'>
             <div>
-0this.props.match.params.movieIdthis.props.match.params.movieIdthis.props.match.params.movieIdthis.props.match.params.movieId0              <h2 className='title-emBreve'>Em Breve</h2>
+              <h2 className='title-emBreve'>Em Breve</h2>
               <Slider>
                 {this.state.moviesSoon.map(movie => (
                   <Link
-                   to={`filme/${movie.id}`}
-                   onClick={movie => this.props.getMovieId(movie.id)}
-                   >
+                    to={`filme/${movie.id}`}
+                    onClick={() => this.props.getMovieId(movie.id)}
+                  >
                     <Slider.Item movie={movie} key={movie.id} />
                   </Link>
                 ))}

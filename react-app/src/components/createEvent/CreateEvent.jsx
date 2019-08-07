@@ -6,7 +6,6 @@ import axios from "axios";
 class EventMovie extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       city: 1,
       date: "",
@@ -75,6 +74,7 @@ class EventMovie extends Component {
   }
 
   getPoster() {
+    console.log(this.state.movieId)
     axios
       .get(`http://localhost:5000/api/filme/${this.state.movieId}`)
       .then(responseFromApi => {
@@ -86,6 +86,7 @@ class EventMovie extends Component {
   }
 
   getEvents(city, date) {
+    console.log(this.state.movieId)
     axios
       .get(
         `http://localhost:5000/api/sessions/city/${city}/event/${

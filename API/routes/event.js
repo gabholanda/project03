@@ -56,14 +56,9 @@ router.post("/events", (req, res, next) => {
     thirdInterationDescription,
     host,
     movieId
-<<<<<<< HEAD
-  } = req.body.st;
-console.log(req.body)
-=======
   } = req.body.form;
   console.log(req.body.st);
 
->>>>>>> 556ad5a75b7563efbf14b2583f4e5cc1f03b17cc
   const newEvent = new Event({
     title: eventTitle,
     duration: eventDuration,
@@ -91,15 +86,7 @@ console.log(req.body)
     // res.status(200).json(newEvent);
   });
   // User receives the event as it's host and event list
-<<<<<<< HEAD
   User.findByIdAndUpdate(req.body.user._id, { $push: { events: newEvent, host: newEvent } })
-=======
-  console.log(req.user);
-
-  User.findByIdAndUpdate(req.user._id, {
-    $push: { events: newEvent, host: newEvent }
-  })
->>>>>>> 556ad5a75b7563efbf14b2583f4e5cc1f03b17cc
     .then(user => {
       // The event receives the event host as a member
       Event.findOneAndUpdate({ host: user }, { $push: { members: user } })
