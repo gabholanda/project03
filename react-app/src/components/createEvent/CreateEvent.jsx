@@ -6,6 +6,7 @@ import axios from "axios";
 class EventMovie extends Component {
   constructor(props) {
     super(props);
+    console.log(this.props)
     this.state = {
       city: 1,
       date: "",
@@ -111,6 +112,8 @@ class EventMovie extends Component {
   }
 
   FormSubmit() {
+    console.log(this.props.user)
+    const host = this.props.user;
     const city = this.state.city;
     const date = this.state.date;
     const theaterId = this.state.theaterId;
@@ -128,6 +131,7 @@ class EventMovie extends Component {
     const thirdInterationTitle = this.state.thirdInterationTitle;
     const thirdInterationDescription = this.state.thirdInterationDescription;
     const form = {
+      host,
       city,
       date,
       theaterId,
@@ -197,10 +201,10 @@ class EventMovie extends Component {
                 <h2>Principais informações do evento</h2>
 
                 {/* inputs */}
-                <input
+                {/* <input
                   name='user'
                   type='hidden'
-                  value={this.props.loggedInUser} />
+                  value={this.props.loggedInUser} /> */}
                 <input
                   type='text'
                   name='eventTitle'

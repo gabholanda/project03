@@ -71,7 +71,7 @@ class Movies extends Component {
         {/* <div className='main-movie'>
           <img src={this.state.moviesHigh[0].poster}/>
           <h1>{this.state.moviesHigh[0].title}</h1>
-          <p>{this.state.moviesHigh[0].description}</p>
+          <p>{this.state.moviesHigh[0].description}</p>this.props.getMovieId
           <Link to={`filme/${this.state.moviesHigh[0].id}`}>
             <button>Veja mais</button>
           </Link>         
