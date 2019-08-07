@@ -155,6 +155,7 @@ class EventMovie extends Component {
             <h2>Principais informações do evento</h2>
             
             {/* inputs */}
+            <input name="user" type='hidden' value={this.props.loggedInUser}/>
             <input
               type='text'
               name='eventTitle'

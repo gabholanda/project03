@@ -57,7 +57,7 @@ router.post("/events", (req, res, next) => {
     host,
     movieId
   } = req.body.st;
-
+console.log(req.body)
   const newEvent = new Event({
     title: eventTitle,
     duration: eventDuration,
@@ -85,7 +85,7 @@ router.post("/events", (req, res, next) => {
     // res.status(200).json(newEvent);
   });
   // User receives the event as it's host and event list
-  User.findByIdAndUpdate(req.user._id, { $push: { events: newEvent, host: newEvent } })
+  User.findByIdAndUpdate(req.body.user._id, { $push: { events: newEvent, host: newEvent } })
     .then(user => {
       // The event receives the event host as a member
       Event.findOneAndUpdate({ host: user }, { $push: { members: user } })

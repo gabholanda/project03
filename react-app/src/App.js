@@ -83,7 +83,7 @@ class App extends Component {
             <Route
               exact
               path='/filme/:movieId/criar_evento'
-              component={CreateEvent}
+              render={() => <CreateEvent loggedInUser={this.state.loggedInUser} />}
             />
           </Switch>
         </div>
