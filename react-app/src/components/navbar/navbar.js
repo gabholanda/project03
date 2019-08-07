@@ -41,7 +41,7 @@ class Navbar extends Component {
               <input className='search-input' />
             </div>
             <div className='vertical-line' />
-            <Link to='#'>
+            <Link to='/usuario/perfil'>
               <div className='avatar' />
             </Link>
           <Link to='/'>
