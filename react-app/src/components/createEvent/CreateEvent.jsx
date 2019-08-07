@@ -200,7 +200,6 @@ class EventMovie extends Component {
                 name='eventTitle'
                 id=''
                 placeholder='Titulo do evento'
-                value={this.state.form.eventTitle}
               />
               <input
               className='input'
@@ -208,7 +207,6 @@ class EventMovie extends Component {
                 name='eventDuration'
                 id=''
                 placeholder='Duração do evento'
-                value={this.state.form.eventDuration}
               />
               </div>
 
@@ -218,7 +216,6 @@ class EventMovie extends Component {
                 name='typeOfActivity'
                 id=''
                 placeholder='Tipo de atividade'
-                value={this.state.form.typeOfActivity}
               />
               <input
                 type='text'
