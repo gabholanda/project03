@@ -22,7 +22,7 @@ const FeaturedMovie = props => {
           <h1>{props.title}</h1>
           <p>{props.description}</p>
           <Link to={props.way} className='featured-link'>
-            <img className='search-icon' src='../images/play.svg' />
+            <img className='search-icon' src='../images/play.svg' alt="" />
             Veja mais
           </Link>
         </div>

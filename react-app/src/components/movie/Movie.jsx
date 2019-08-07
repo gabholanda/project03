@@ -111,7 +111,7 @@ class Movie extends Component {
               <p className='title-genre'>{this.state.movie.genre}</p>
               <p className='title-duration'>{this.state.movie.duration} minutos</p>
               <button className='trailer-link'>
-              <img className='play-icon' src='../images/play.svg' />
+              <img className='play-icon' src='../images/play.svg' alt=''/>
                 <a
                   target='_blank'
                   rel='noopener noreferrer'

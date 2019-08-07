@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import "./CreateEvent.css";
 import axios from "axios";
 
@@ -314,7 +314,7 @@ class EventMovie extends Component {
                   seus convidados.
                 </p>
                 <div className='row'>
-                  <img src='http://interfacetreinamentos.com.br/wp-content/uploads/2016/04/img-profile-default.jpg' />
+                  <img src='http://interfacetreinamentos.com.br/wp-content/uploads/2016/04/img-profile-default.jpg' alt='' />
 
                   <input
                     type='text'
@@ -332,7 +332,7 @@ class EventMovie extends Component {
                   />
                 </div>
                 <div className='row'>
-                  <img src='http://interfacetreinamentos.com.br/wp-content/uploads/2016/04/img-profile-default.jpg' />
+                  <img src='http://interfacetreinamentos.com.br/wp-content/uploads/2016/04/img-profile-default.jpg' alt='' />
 
                   <input
                     type='text'
@@ -350,7 +350,7 @@ class EventMovie extends Component {
                   />
                 </div>
                 <div className='row'>
-                  <img src='http://interfacetreinamentos.com.br/wp-content/uploads/2016/04/img-profile-default.jpg' />
+                  <img src='http://interfacetreinamentos.com.br/wp-content/uploads/2016/04/img-profile-default.jpg' alt='' />
                   <input
                     type='text'
                     name='thirdInterationTitle'
