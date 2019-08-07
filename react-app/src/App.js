@@ -46,7 +46,7 @@ class App extends Component {
     });
   };
 
-  render() {    
+  render() {
     this.fetchUser();
     if (this.state.loggedInUser) {
       return (
@@ -72,8 +72,18 @@ class App extends Component {
             />
             <Route
               exact
-              path='/usuario/:userId/perfil/editar'
-              component={EditProfile}
+              path='/edit/profile' 
+              render={(props) => <EditProfile {...props} user={this.state.loggedInUser}/>}
+            />
+            <Route
+              exact
+              path='/usuario/perfil'
+              render={(props) => <Profile {...props} user={this.state.loggedInUser} />}
+            />
+            <Route
+              exact
+              path='/filme/:movieId/criar_evento'
+              component={CreateEvent}
             />
             <Route exact path='/usuario/perfil' render={() => <Profile user={this.state.loggedInUser} />} />
             <Route exact path='filme/:movieId/criar_evento' component={CreateEvent} />
@@ -82,7 +92,7 @@ class App extends Component {
       );
     } else {
       return (
-        <div className='App' >
+        <div className='App'>
           <Navbar />
           <Switch>
             <Route exact path='/' component={Home} />
@@ -98,11 +108,6 @@ class App extends Component {
               exact
               path='/signup'
               render={() => <Signup getUser={this.getTheUser} />}
-            />
-            <Route
-              exact
-              path='/usuario/:userId/perfil/editar'
-              component={EditProfile}
             />
             <Route
               exact

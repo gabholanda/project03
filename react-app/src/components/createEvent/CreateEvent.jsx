@@ -12,17 +12,18 @@ class EventMovie extends Component {
       date: "",
       theaterId: "oi",
       sessionId: "",
+      movieId: this.props.match.params.movieId,
       poster: "",
-      form: {
-        eventTitle: "",
-        eventDuration: "",
-        typeOfActivity: "",
-        language: "",
-        photo1: "",
-        firstInterationTitle: "",
-        firstInterationDescription: "",
-        secondInterationTitle: ""
-      },
+      eventTitle: "",
+      eventDuration: "",
+      typeOfActivity: "",
+      language: "",
+      firstInterationTitle: "",
+      firstInterationDescription: "",
+      secondInterationTitle: "",
+      secondInterationDescription: "",
+      thirdInterationTitle: "",
+      thirdInterationDescription: "",
       sessions: [
         {
           id: "",
@@ -70,6 +71,7 @@ class EventMovie extends Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.FormSubmit = this.FormSubmit.bind(this);
   }
 
   getPoster() {
@@ -107,45 +109,82 @@ class EventMovie extends Component {
     }
   }
 
+  FormSubmit() {
+    const st = this.state;
+    axios
+      .post(`http://localhost:5000/api/events`, { st })
+      .then(responseFromApi => {
+        console.log("deu bom!");
+      })
+      .catch(error => console.log(error));
+  }
+
   componentDidMount() {
     this.getPoster();
   }
 
   render() {
+    console.log(this.state);
+
     return (
       <div className=''>
-        <img src={this.state.poster.posterV} alt='' />
-        <form onSubmit={this.handleFormSubmit}>
-          <button type='submit'>Criar esse evento</button>
-          <div>
+        {/* breadcrumb */}
+        <nav aria-label='breadcrumb'>
+          <ol className='breadcrumb'>
+            <li className='breadcrumb-item'>
+              <Link to='/'>Início</Link>
+            </li>
+            <li className='breadcrumb-item'>
+              <Link to='/'>Filme</Link>
+            </li>
+              <li className='breadcrumb-item active' aria-current='page'>
+            Filme
+            </li> 
+          </ol>
+        </nav>
+
+        <div className='event-container'>
+          <div className='left-container'>
+          <img className='event-poster'src={this.state.poster.posterV} alt='poster film' />
+          </div>
+        <div className='right-container'>
+        <form onSubmit={this.FormSubmit}>
+
+          <div className='create-main-info'>
+
             <h2>Principais informações do evento</h2>
+            
+            {/* inputs */}
             <input
               type='text'
               name='eventTitle'
               id=''
               placeholder='Titulo do evento'
-              value={this.state.form.eventTitle}
+              onChange={event => this.handleChange(event)}
             />
             <input
               type='text'
               name='eventDuration'
               id=''
               placeholder='Duração do evento'
-              value={this.state.form.eventDuration}
+              onChange={event => this.handleChange(event)}
             />
             <input
               type='text'
               name='typeOfActivity'
               id=''
               placeholder='Tipo de atividade'
-              value={this.state.form.typeOfActivity}
+              onChange={event => this.handleChange(event)}
             />
             <input
               type='text'
               name='language'
               id=''
               placeholder='Qual língua será falada?'
+              onChange={event => this.handleChange(event)}
             />
+            {/* inputs ends*/}
+            {/* select*/}
             <select onChange={event => this.handleChange(event)} name='city'>
               <option value='1'>São Paulo</option>
               <option value='2'>Rio de Janeiro</option>
@@ -175,12 +214,17 @@ class EventMovie extends Component {
               <option value='435'>Teresina</option>
               <option value='11'>Vitória</option>
             </select>
+            {/* select ends*/}
+
+            {/* date*/}
             <input
               type='date'
               name='date'
               id=''
               onChange={event => this.handleChange(event)}
             />
+
+            {/* local theater*/}
             <select
               onChange={event => this.handleChange(event)}
               name='theaterId'
@@ -193,6 +237,8 @@ class EventMovie extends Component {
                 );
               })}
             </select>
+            
+            {/* session*/}
             <select
               onChange={event => this.handleChange(event)}
               name='sessionId'
@@ -212,6 +258,7 @@ class EventMovie extends Component {
                 }
               })}
             </select>
+            {/* session*/}
             <h2>Qual será o roteiro?</h2>
             <p>
               Pense que todo evento sempre existe um começo, um meio e um fim.
@@ -219,77 +266,72 @@ class EventMovie extends Component {
               convidados.
             </p>
             <div className='row'>
-              <div className='col-md-4'>
-                <div className='profile-img'>
-                  <img src='http://interfacetreinamentos.com.br/wp-content/uploads/2016/04/img-profile-default.jpg' />
-                  <div className='file btn btn-lg btn-primary'>
-                    Change Photo
-                    <input type='file' name='photo1' />
-                  </div>
-                  <input
-                    type='text'
-                    name='firstInterationTitle'
-                    id=''
-                    placeholder='Primeira Interação'
-                  />
-                  <textarea
-                    type='text'
-                    name='firstInterationDescription'
-                    id=''
-                    placeholder='Descreva em poucas palavras o que será feito.'
-                  />
-                </div>
-              </div>
+              <img src='http://interfacetreinamentos.com.br/wp-content/uploads/2016/04/img-profile-default.jpg' />
+
+              <input
+                type='text'
+                name='firstInterationTitle'
+                id=''
+                placeholder='Primeira Interação'
+                onChange={event => this.handleChange(event)}
+              />
+              <textarea
+                type='text'
+                name='firstInterationDescription'
+                id=''
+                placeholder='Descreva em poucas palavras o que será feito.'
+                onChange={event => this.handleChange(event)}
+              />
             </div>
             <div className='row'>
-              <div className='col-md-4'>
-                <div className='profile-img'>
-                  <img src='http://interfacetreinamentos.com.br/wp-content/uploads/2016/04/img-profile-default.jpg' />
-                  <div className='file btn btn-lg btn-primary'>
-                    Change Photo
-                    <input type='file' name='photo' />
-                  </div>
-                  <input
-                    type='text'
-                    name='SecondInterationTitle'
-                    id=''
-                    placeholder='Segunda Interação'
-                  />
-                  <textarea
-                    type='text'
-                    name='SecondInterationDescription'
-                    id=''
-                    placeholder='Descreva em poucas palavras o que será feito.'
-                  />
-                </div>
-              </div>
+              <img src='http://interfacetreinamentos.com.br/wp-content/uploads/2016/04/img-profile-default.jpg' />
+
+              <input
+                type='text'
+                name='secondInterationTitle'
+                id=''
+                placeholder='Segunda Interação'
+                onChange={event => this.handleChange(event)}
+              />
+              <textarea
+                type='text'
+                name='secondInterationDescription'
+                id=''
+                placeholder='Descreva em poucas palavras o que será feito.'
+                onChange={event => this.handleChange(event)}
+              />
             </div>
             <div className='row'>
-              <div className='col-md-4'>
-                <div className='profile-img'>
-                  <img src='http://interfacetreinamentos.com.br/wp-content/uploads/2016/04/img-profile-default.jpg' />
-                  <div className='file btn btn-lg btn-primary'>
-                    Change Photo
-                    <input type='file' name='photo' />
-                  </div>
-                  <input
-                    type='text'
-                    name='thirdInterationTitle'
-                    id=''
-                    placeholder='Terceira Interação'
-                  />
-                  <textarea
-                    type='text'
-                    name='thirdInterationDescription'
-                    id=''
-                    placeholder='Descreva em poucas palavras o que será feito.'
-                  />
-                </div>
-              </div>
+              <img src='http://interfacetreinamentos.com.br/wp-content/uploads/2016/04/img-profile-default.jpg' />
+              <input
+                type='text'
+                name='thirdInterationTitle'
+                id=''
+                placeholder='Terceira Interação'
+                onChange={event => this.handleChange(event)}
+              />
+              <textarea
+                type='text'
+                name='thirdInterationDescription'
+                id=''
+                placeholder='Descreva em poucas palavras o que será feito.'
+                onChange={event => this.handleChange(event)}
+              />
             </div>
           </div>
           <button type='submit'>Criar esse evento</button>
+          {/* <input
+            type='text'
+            name='movieId'
+            id=''
+            hidden
+            value={this.props.match.params.movieId}
+            onChange={event => this.handleChange(event)}
+          /> */}
         </form>
+          
+        </div>
+      </div>
       </div>
     );
   }

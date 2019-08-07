@@ -4,7 +4,7 @@ const User = require('../models/Users')
 const passport = require('passport');
 const bcrypt = require('bcryptjs');
 const nodemailer = require('nodemailer');
-
+const mongoose = require('mongoose')
 
 // router.get('/signup', (req, res, next) => {
 //   res.render('index');
@@ -97,6 +97,26 @@ router.post('/login', (req, res, next) => {
   })(req, res, next);
 });
 
+
+// PUT route => to update a specific project
+router.put('/editUser/:id', (req, res, next) => {
+  console.log('éntrou no puttttttt')
+  if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+    console.log(req.params._id)
+    res.status(400).json({ message: 'Specified id is not valid' });
+    return;
+  }
+
+  User.findOneAndUpdate({ _id: req.params.id }, req.body)
+    .then(() => {
+      res.status(200).json({ message: `User with ${req.params.id} is updated successfully.` });
+    })
+    .catch(err => {
+      res.json(err);
+    })
+})
+
+//Logout route
 router.get('/logout', (req, res, next) => {
   // req.logout() is defined by passport
   req.logout();
