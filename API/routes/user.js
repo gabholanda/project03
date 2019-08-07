@@ -5,13 +5,6 @@ const passport = require('passport');
 const bcrypt = require('bcryptjs');
 const nodemailer = require('nodemailer');
 
-
-// router.get('/signup', (req, res, next) => {
-//   res.render('index');
-// })
-
-
-
 router.post('/signup', (req, res, next) => {
   const { username, password, name, email } = req.body;
   // if (req.file) {
