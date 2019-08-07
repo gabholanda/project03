@@ -8,47 +8,105 @@ class EventMovie extends Component {
     super(props);
 
     this.state = {
-      movie: 0,
-      event: {
-        description: [
-          { interation: { image: "test", description: "test" }, _id: 0 }
-        ]
-      }
+      city: 1,
+      date: "",
+      theaterId: "oi",
+      sessionId: "",
+      poster: "",
+      sessions: [
+        {
+          id: "",
+          price: 0,
+          type: [""],
+          realDate: {
+            dayOfWeek: "",
+            hour: "",
+            year: ""
+          },
+          siteURL: "",
+          enabled: false,
+          blockMessage: ""
+        }
+      ],
+      event: [
+        {
+          id: "",
+          name: "",
+          address: "",
+          number: "",
+          neighborhood: "",
+          rooms: [
+            {
+              name: "",
+              sessions: [
+                {
+                  id: "",
+                  price: 0,
+                  type: [""],
+                  realDate: {
+                    dayOfWeek: "",
+                    hour: "",
+                    year: ""
+                  },
+                  siteURL: "",
+                  enabled: false,
+                  blockMessage: ""
+                }
+              ]
+            }
+          ]
+        }
+      ]
     };
+
+    this.handleChange = this.handleChange.bind(this);
   }
 
-  getEvents = () => {
+  getPoster() {
     axios
-      .get(`http://localhost:5000/api/event/${this.props.match.params.eventId}`)
+      .get(`http://localhost:5000/api/filme/${this.props.match.params.movieId}`)
+      .then(responseFromApi => {
+        this.setState({
+          poster: responseFromApi.data
+        });
+      })
+      .catch(error => console.log(error));
+  }
+
+  getEvents(city, date) {
+    axios
+      .get(
+        `http://localhost:5000/api/sessions/city/${city}/event/${
+          this.props.match.params.movieId
+        }/date/${date}`
+      )
       .then(responseFromApi => {
         this.setState({
           event: responseFromApi.data
         });
       })
       .catch(error => console.log(error));
-  };
+  }
 
-  // getEvents = () => {
-  //   axios
-  //     .get(`${process.env.REACT_APP_API_URL}/event/${this.props.match.params.eventId}`)
-  //     .then(responseFromApi => {
-  //       this.setState({
-  //         event: responseFromApi.data
-  //       });
-  //     })
-  //     .catch(error => console.log(error));
-  // };
+  handleChange(event) {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+    if (event.target.name === "date") {
+      this.getEvents(this.state.city, event.target.value);
+    }
+  }
 
   componentDidMount() {
-    this.getEvents();
+    this.getPoster();
   }
 
   render() {
     return (
       <div className=''>
-        <button type='submit'>Criar esse evento</button>
+        <img src={this.state.poster.posterV} alt='' />
         <form action='' method='post'>
-          <input type='file' name='' id='' />
+          <button type='submit'>Criar esse evento</button>
           <div>
             <h2>Principais informações do evento</h2>
             <input
@@ -59,18 +117,88 @@ class EventMovie extends Component {
             />
             <input
               type='text'
+              name='eventDuration'
+              id=''
+              placeholder='Duração do evento'
+            />
+            <input
+              type='text'
               name='typeOfActivity'
               id=''
               placeholder='Tipo de atividade'
             />
-            <input type='date' name='' id='' placeholder='Data do evento' />
-            <input type='time' name='' id='' placeholder='Duração do evento' />
             <input
               type='text'
               name=''
               id=''
               placeholder='Qual língua será falada?'
             />
+            <select onChange={event => this.handleChange(event)} name='city'>
+              <option value='1'>São Paulo</option>
+              <option value='2'>Rio de Janeiro</option>
+              <option value='18'>Curitiba</option>
+              <option value='4'>Aracaju</option>
+              <option value='52'>Belém</option>
+              <option value='21'>Belo Horizonte</option>
+              <option value='441'>Boa Vista</option>
+              <option value='12'>Brasília</option>
+              <option value='47'>Campo Grande</option>
+              <option value='28'>Cuiabá</option>
+              <option value='68'>Florianópolis</option>
+              <option value='36'>Fortaleza</option>
+              <option value='15'>Goiânia</option>
+              <option value='32'>João Pessoa</option>
+              <option value='303'>Macapá</option>
+              <option value='53'>Maceió</option>
+              <option value='35'>Manaus</option>
+              <option value='48'>Natal</option>
+              <option value='363'>Palmas</option>
+              <option value='5'>Porto Alegre</option>
+              <option value='347'>Porto Velho</option>
+              <option value='22'>Recife</option>
+              <option value='364'>Rio Branco</option>
+              <option value='3'>Salvador</option>
+              <option value='19'>São Luís</option>
+              <option value='435'>Teresina</option>
+              <option value='11'>Vitória</option>
+            </select>
+            <input
+              type='date'
+              name='date'
+              id=''
+              onChange={event => this.handleChange(event)}
+            />
+            <select
+              onChange={event => this.handleChange(event)}
+              name='theaterId'
+            >
+              {this.state.event.map(event => {
+                return (
+                  <option key={event.id} value={event.id}>
+                    {event.name}
+                  </option>
+                );
+              })}
+            </select>
+            <select
+              onChange={event => this.handleChange(event)}
+              name='sessionId'
+            >
+              {this.state.event.map(event => {
+                if (this.state.theaterId === event.id) {
+                  return event.rooms.map(room => {
+                    return room.sessions.map(session => {
+                      return (
+                        <option key={session.id} value={session.id}>
+                          {session.realDate.dayOfWeek} - {session.realDate.hour}
+                          - {room.name} - R${session.price}
+                        </option>
+                      );
+                    });
+                  });
+                }
+              })}
+            </select>
             <h2>Qual será o roteiro?</h2>
             <p>
               Pense que todo evento sempre existe um começo, um meio e um fim.
@@ -147,13 +275,6 @@ class EventMovie extends Component {
               </div>
             </div>
           </div>
-          <h2>Local do filme</h2>
-          <input
-            type='search'
-            name=''
-            id=''
-            placeholder='Coloque aqui o endereço'
-          />
           <button type='submit'>Criar esse evento</button>
         </form>
       </div>

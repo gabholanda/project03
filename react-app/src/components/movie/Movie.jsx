@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./Movie.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import './Movie.css'
+import "./Movie.css";
 
 class Movie extends Component {
   constructor(props) {
@@ -10,7 +10,7 @@ class Movie extends Component {
 
     this.state = { movie: 0, events: [] };
   }
-  
+
   getMovie = () => {
     axios
       .get(`http://localhost:5000/api/filme/${this.props.match.params.movieId}`)
@@ -78,54 +78,51 @@ class Movie extends Component {
           </ol>
         </nav>
         <div className='movie-information'>
-          <div className="movie-poster">
+          <div className='movie-poster'>
             <img className='' src={this.state.movie.posterV} alt='' />
           </div>
-          <div className="movie-details">
-
-          <h1 className=''>{this.state.movie.title}</h1>
-          <p className=''>{this.state.movie.genre}</p>
-          <p className=''>{this.state.movie.duration} minutos</p>
-          <button className=''>
-            <a
-              target='_blank'
-              rel='noopener noreferrer'
-              href={this.state.movie.trailer}
+          <div className='movie-details'>
+            <h1 className=''>{this.state.movie.title}</h1>
+            <p className=''>{this.state.movie.genre}</p>
+            <p className=''>{this.state.movie.duration} minutos</p>
+            <button className=''>
+              <a
+                target='_blank'
+                rel='noopener noreferrer'
+                href={this.state.movie.trailer}
               >
-              Traler
-            </a>
-          </button>
-        <hr className='' />
-        <div className=''>
-          <h2 className=''>Sinopse</h2>
-          <p className=''>{this.state.movie.sinopse}</p>
-        </div>
-        <hr className='' />
-        <div>
-        </div>
-          <h2 className=''>Eventos</h2>
-          {this.state.events.map(event => {
-            return (
-              <div key={event.id}>
-                <h3 className=''>{event.dateMovie}</h3>
-                <h4 className=''>{event.typeOfActivity}</h4>
-                <h3 className=''>{event.title}</h3>
-                <h5 className=''>{event.place}</h5>
-                <button className=''>
-                  <Link to={`/evento/${event.id}`}>Saiba Mais</Link>
-                </button>
+                Traler
+              </a>
+            </button>
+            <hr className='' />
+            <div className=''>
+              <h2 className=''>Sinopse</h2>
+              <p className=''>{this.state.movie.sinopse}</p>
+            </div>
+            <hr className='' />
+            <div />
+            <h2 className=''>Eventos</h2>
+            {this.state.events.map(event => {
+              return (
+                <div key={event.id}>
+                  <h3 className=''>{event.dateMovie}</h3>
+                  <h4 className=''>{event.typeOfActivity}</h4>
+                  <h3 className=''>{event.title}</h3>
+                  <h5 className=''>{event.place}</h5>
+                  <button className=''>
+                    <Link to={`/evento/${event.id}`}>Saiba Mais</Link>
+                  </button>
                 </div>
-            );
-          })}
-              </div>
-          
+              );
+            })}
+          </div>
         </div>
-        <br/>
-          <button className=''>
-            <Link to={`${this.props.match.params.movieId}/criar_evento`}>
-              + Criar um evento
-            </Link>
-          </button>
+        <br />
+        <button className=''>
+          <Link to={`${this.props.match.params.movieId}/criar_evento`}>
+            + Criar um evento
+          </Link>
+        </button>
       </div>
     );
   }
