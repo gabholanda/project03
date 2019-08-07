@@ -75,14 +75,22 @@ class App extends Component {
               path='/usuario/:userId/perfil/editar'
               component={EditProfile}
             />
-            <Route exact path='/usuario/perfil' render={() => <Profile user={this.state.loggedInUser} />} />
-            <Route exact path='filme/:movieId/criar_evento' component={CreateEvent} />
+            <Route
+              exact
+              path='/usuario/perfil'
+              render={() => <Profile user={this.state.loggedInUser} />}
+            />
+            <Route
+              exact
+              path='/filme/:movieId/criar_evento'
+              component={CreateEvent}
+            />
           </Switch>
         </div>
       );
     } else {
       return (
-        <div className='App' >
+        <div className='App'>
           <Navbar />
           <Switch>
             <Route exact path='/' component={Home} />
