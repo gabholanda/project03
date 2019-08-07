@@ -16,48 +16,60 @@ import AuthService from "./components/auth/auth-service";
 
 class App extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       loggedInUser: null
-    }
+    };
     this.service = new AuthService();
   }
 
   fetchUser() {
     if (this.state.loggedInUser === null) {
-      this.service.loggedin()
+      this.service
+        .loggedin()
         .then(response => {
           this.setState({
             loggedInUser: response
-          })
+          });
         })
         .catch(err => {
           this.setState({
             loggedInUser: false
-          })
-        })
+          });
+        });
     }
   }
 
-  getTheUser = (userObj) => {
+  getTheUser = userObj => {
     this.setState({
       loggedInUser: userObj
-    })
-  }
+    });
+  };
 
   render() {
     this.fetchUser();
     if (this.state.loggedInUser) {
       return (
-        <div className='App' >
-          <Navbar userInSession={this.state.loggedInUser} getUser={this.getTheUser} />
+        <div className='App'>
+          <Navbar
+            userInSession={this.state.loggedInUser}
+            getUser={this.getTheUser}
+          />
           <Switch>
             <Route exact path='/' component={Home} />
             <Route exact path='/filme/:movieId' component={Movie} />
             <Route exact path='/evento/:eventId' component={Event} />
             {/* <Route exact path='/chat' component={Chat} /> */}
-            <Route exact path='/login' render={() => <Login getUser={this.getTheUser} />} />
-            <Route exact path='/signup' render={() => <Signup getUser={this.getTheUser} />} />
+            <Route
+              exact
+              path='/login'
+              render={() => <Login getUser={this.getTheUser} />}
+            />
+            <Route
+              exact
+              path='/signup'
+              render={() => <Signup getUser={this.getTheUser} />}
+            />
             <Route
               exact
               path='/usuario/:userId/perfil/editar'
@@ -70,27 +82,38 @@ class App extends Component {
       );
     } else {
       return (
-        <div className='App' >
+        <div className='App'>
           <Navbar userInSession={this.state.loggedInUser} />
           <Switch>
             <Route exact path='/' component={Home} />
             <Route exact path='/filme/:movieId' component={Movie} />
             <Route exact path='/evento/:eventId' component={Event} />
             {/* <Route exact path='/chat' component={Chat} /> */}
-            <Route exact path='/login' render={() => <Login getUser={this.getTheUser} />} />
-            <Route exact path='/signup' render={() => <Signup getUser={this.getTheUser} />} />
+            <Route
+              exact
+              path='/login'
+              render={() => <Login getUser={this.getTheUser} />}
+            />
+            <Route
+              exact
+              path='/signup'
+              render={() => <Signup getUser={this.getTheUser} />}
+            />
             <Route
               exact
               path='/usuario/:userId/perfil/editar'
               component={EditProfile}
             />
             <Route exact path='/usuario/:userId/perfil' component={Profile} />
-            <Route exact path='/criar_evento' component={CreateEvent} />
+            <Route
+              exact
+              path='/filme/:movieId/criar_evento'
+              component={CreateEvent}
+            />
           </Switch>
         </div>
       );
     }
-
   }
 }
 

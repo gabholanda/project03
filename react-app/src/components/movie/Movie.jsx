@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./Movie.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import './Movie.css'
+import "./Movie.css";
 
 class Movie extends Component {
   constructor(props) {
@@ -10,7 +10,7 @@ class Movie extends Component {
 
     this.state = { movie: 0, events: [] };
   }
-  
+
   getMovie = () => {
     axios
       .get(`http://localhost:5000/api/filme/${this.props.match.params.movieId}`)
@@ -80,6 +80,7 @@ class Movie extends Component {
           </ol>
         </nav>
 
+
         {/* Bg movie */}
         <div className='bg-movie-onmovie'>
           <img className='blur-image'src={this.state.movie.posterH}/>
@@ -109,7 +110,6 @@ class Movie extends Component {
             </div>
   </div>
   <div className='otherInfo'>
-
 
         {/* others info */}
         <div className='sinopse'>
@@ -145,7 +145,6 @@ class Movie extends Component {
             </Link>
           </button>
   </div>
-
       </div>
     );
   }
