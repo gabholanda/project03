@@ -1,0 +1,30 @@
+.create-container{
+  display: flex;
+  justify-content: center;
+}
+
+.poster-side img{
+  width: 65%;
+  padding: 10%;
+}
+
+.create-main-title {
+  text-align: left;
+  color:#ffea2f;
+  font-weight: 800;
+  font-size: 30px;
+}
+
+.create-headers {
+  text-align: left;
+  color:#ffea2f;
+  font-weight: 800;
+  font-size: 20px;
+}
+
+.create-text {
+  text-align: left;
+  color:#ffea2f;
+  font-weight: 400;
+  font-size: 15px;
+}

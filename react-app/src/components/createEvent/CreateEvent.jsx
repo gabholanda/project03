@@ -113,12 +113,25 @@ class EventMovie extends Component {
 
   render() {
     return (
-      <div className=''>
-        <img src={this.state.poster.posterV} alt='' />
+      <div className='create-container'>
+
+        {/* Poster side */}
+        <div className='poster-side'>
+          <img src={this.state.poster.posterV} alt='poster' />
+        </div>
+
+        {/* info side - forms and others */}
+        <div className='info-side'>
+
+
+        </div>
         <form onSubmit={this.handleFormSubmit}>
-          <button type='submit'>Criar esse evento</button>
+          
           <div>
-            <h2>Principais informações do evento</h2>
+            <h2 className='create-main-title'>Criar um evento é muito fácil</h2>
+            <h3 className='create-headers'>1.Informações principais do evento</h3>
+            <p className='create-text'>Pense que todo evento sempre existe um começo, um meio e um fim. Aqui você mostrará qual será o itinerário completo para o seus convidados.</p>
+
             <input
               type='text'
               name='eventTitle'
