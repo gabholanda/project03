@@ -5,7 +5,8 @@
 .signup-container{
   display: flex;
   justify-content: center;
-  align-items: center
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .signup-box{
@@ -30,10 +31,10 @@
   padding-bottom: 15px;
 }
 
-.back-home{
+.back-home-signup{
   position: relative;
   top:-25px;
-  left:850px;
+  left:370px;
 
 }
 
