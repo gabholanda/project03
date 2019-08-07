@@ -65,9 +65,10 @@ class Movie extends Component {
   }
 
   render() {
+    console.log(this.state.events);
+
     return (
       <div className='movie-page'>
-
         {/* breadcrumb */}
         <nav aria-label='breadcrumb'>
           <ol className='breadcrumb'>
@@ -80,46 +81,48 @@ class Movie extends Component {
           </ol>
         </nav>
 
-
         {/* Bg movie */}
         <div className='bg-movie-onmovie'>
-          <img className='blur-image'src={this.state.movie.posterH}/>
-          </div>
+          <img className='blur-image' src={this.state.movie.posterH} />
+        </div>
         {/* movie poster */}
 
-    <div className="movie-details">
-
-
-          <div className="movie-poster">
-            <img className="movie-poster" src={this.state.movie.posterV} alt='' />
+        <div className='movie-details'>
+          <div className='movie-poster'>
+            <img
+              className='movie-poster'
+              src={this.state.movie.posterV}
+              alt=''
+            />
           </div>
-            <div className="movie-info">
-          <h1 className='title-movie'>{this.state.movie.title}</h1>
-          <p className='title-genre'>{this.state.movie.genre}</p>
-          <p className='title-duration'>{this.state.movie.duration} minutos</p>
-          <button className='trailer-link'>
-          <img className='play-icon' src='../images/play.svg' />
-            <a
-              target='_blank'
-              rel='noopener noreferrer'
-              href={this.state.movie.trailer}
+          <div className='movie-info'>
+            <h1 className='title-movie'>{this.state.movie.title}</h1>
+            <p className='title-genre'>{this.state.movie.genre}</p>
+            <p className='title-duration'>
+              {this.state.movie.duration} minutos
+            </p>
+            <button className='trailer-link'>
+              <img className='play-icon' src='../images/play.svg' />
+              <a
+                target='_blank'
+                rel='noopener noreferrer'
+                href={this.state.movie.trailer}
               >
-              Ver Trailer
-            </a>
-          </button>
-            </div>
-  </div>
-  <div className='otherInfo'>
-
-        {/* others info */}
-        <div className='sinopse'>
-          <h2 className=''>Sinopse</h2>
-          <p className=''>{this.state.movie.sinopse}</p>
+                Ver Trailer
+              </a>
+            </button>
+          </div>
         </div>
+        <div className='otherInfo'>
+          {/* others info */}
+          <div className='sinopse'>
+            <h2 className=''>Sinopse</h2>
+            <p className=''>{this.state.movie.sinopse}</p>
+          </div>
 
-        <hr className='movie-div'></hr>
+          <hr className='movie-div' />
 
-        {/* events */}
+          {/* events */}
           <h2 className='eventos'>Eventos</h2>
           {this.state.events.map(event => {
             return (
@@ -133,18 +136,17 @@ class Movie extends Component {
                 <button className=''>
                   <Link to={`/evento/${event.id}`}>Saiba Mais</Link>
                 </button>
-                </div>
+              </div>
             );
           })}
 
-          
-        <br/>
+          <br />
           <button className='create-event'>
             <Link to={`${this.props.match.params.movieId}/criar_evento`}>
               + Criar um evento
             </Link>
           </button>
-  </div>
+        </div>
       </div>
     );
   }
