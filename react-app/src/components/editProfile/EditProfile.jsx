@@ -1,125 +1,62 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import "./EditProfile.css";
-import axios from "axios";
+import React, { Component } from 'react';
+import axios from 'axios';
+import './EditProfile.css';
 
-class Movie extends Component {
+class EditProfile extends Component {
   constructor(props) {
     super(props);
-
-    this.state = { movie: 0, events: [] };
+    this.state = {
+      name: this.props.user.name,
+      email: this.props.image.user.email,
+      image: this.props.user.image,
+      
+    }
   }
-  
-  getMovie = () => {
-    axios
-      .get(`http://localhost:5000/api/filme/${this.props.match.params.movieId}`)
-      .then(responseFromApi => {
-        this.setState({
-          movie: responseFromApi.data
-        });
+
+
+  handleFormSubmit = (event) => {
+    const title = this.state.title;
+    const description = this.state.description;
+
+    event.preventDefault();
+
+    axios.put(`${process.env.REACT_APP_API_URL}/projects/${this.props.theProject._id}`, { title, description })
+      .then(() => {
+        // this.props.getTheProject();
+        // after submitting the form, redirect to '/projects'
+        this.props.history.push('/projects');
       })
-      .catch(error => console.log(error));
-  };
+      .catch(error => console.log(error))
+  }
 
-  // getMovie = () => {
-  //   axios
-  //     .get(`${process.env.REACT_APP_API_URL}/filme/${this.props.match.params.movieId}`)
-  //     .then(responseFromApi => {
-  //       this.setState({
-  //         movie: responseFromApi.data
-  //       });
-  //     })
-  //     .catch(error => console.log(error));
-  // };
+  handleChangeTitle = (event) => {
+    this.setState({
+      title: event.target.value
+    })
+  }
 
-getEvents = () => {
-    axios
-      .get(
-        `http://localhost:5000/api/events/${this.props.match.params.movieId}`
-      )
-      .then(responseFromApi => {
-        this.setState({
-          events: responseFromApi.data
-        });
-      })
-      .catch(error => console.log(error));
-  };
-
-  // getEvents = () => {
-  //   axios
-  //     .get(
-  //       `${process.env.REACT_APP_API_URL}/events/${this.props.match.params.movieId}`
-  //     )
-  //     .then(responseFromApi => {
-  //       this.setState({
-  //         events: responseFromApi.data
-  //       });
-  //     })
-  //     .catch(error => console.log(error));
-  // };
-
-  componentDidMount() {
-    this.getMovie();
-    this.getEvents();
+  handleChangeDesc = (event) => {
+    this.setState({
+      description: event.target.value
+    })
   }
 
   render() {
     return (
-      <div className=''>
-        <nav aria-label='breadcrumb'>
-          <ol class='breadcrumb'>
-            <li class='breadcrumb-item'>
-              <Link to='/home'>Início</Link>
-            </li>
-            <li class='breadcrumb-item active' aria-current='page'>
-              Filme
-            </li>
-          </ol>
-        </nav>
-        <div className=''>
-          <img className='' src={this.state.movie.posterV} alt='' />
-          <h1 className=''>{this.state.movie.title}</h1>
-          <p className=''>{this.state.movie.genre}</p>
-          <p className=''>{this.state.movie.duration} minutos</p>
-          <button className=''>
-            <a
-              target='_blank'
-              rel='noopener noreferrer'
-              href={this.state.movie.trailer}
-            >
-              Traler
-            </a>
-          </button>
-        </div>
-        <hr className='' />
-        <div className=''>
-          <h2 className=''>Sinopse</h2>
-          <p className=''>{this.state.movie.sinopse}</p>
-        </div>
-        <hr className='' />
-        <div>
-          <h2 className=''>Eventos</h2>
-          {this.state.events.map(event => {
-            return (
-              <div key={event.id}>
-                <h3 className=''>{event.dateMovie}</h3>
-                <h4 className=''>{event.typeOfActivity}</h4>
-                <h3 className=''>{event.title}</h3>
-                <h5 className=''>{event.place}</h5>
-                <button className=''>
-                  <Link to={`/evento/${event.id}`}>Saiba Mais</Link>
-                </button>
-              </div>
-            );
-          })}
+      <div>
+        <hr />
+        <h3>Edit form</h3>
+        <form onSubmit={this.handleFormSubmit}>
+          <label>Title:</label>
+          <input type="text" name="title" value={this.state.title} onChange={e => this.handleChangeTitle(e)} />
+          <label>Description:</label>
+          <textarea name="description" value={this.state.description} onChange={e => this.handleChangeDesc(e)} />
 
-          <button className=''>
-            <Link to='/evento/criar'>+ Criar um evento</Link>
-          </button>
-        </div>
+          <input type="submit" value="Submit" />
+        </form>
       </div>
-    );
+    )
   }
 }
 
-export default Movie;
+export default EditProfile;
