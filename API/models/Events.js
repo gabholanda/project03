@@ -9,19 +9,8 @@ const EventSchema = new Schema(
     place: String,
     duration: String,
     language: { type: String, enum: ["Português", "Inglês", "Espanhol"] },
+    description: Array,
     description: [
-      {
-        interation: {
-          image: String,
-          description: String
-        }
-      },
-      {
-        interation: {
-          image: String,
-          description: String
-        }
-      },
       {
         interation: {
           image: String,
@@ -29,7 +18,7 @@ const EventSchema = new Schema(
         }
       }
     ],
-    host: { type: Schema.Types.ObjectId, ref: "Users" },
+    host: String,
     event: {
       movieId: String,
       dateMovie: String,
@@ -37,7 +26,7 @@ const EventSchema = new Schema(
       roomName: String,
       sessionId: String
     },
-    participants: 0
+    participants: { type: Number, default: 0 }
   },
   {
     timestamps: true

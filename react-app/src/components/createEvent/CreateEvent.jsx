@@ -13,6 +13,16 @@ class EventMovie extends Component {
       theaterId: "oi",
       sessionId: "",
       poster: "",
+      form: {
+        eventTitle: "",
+        eventDuration: "",
+        typeOfActivity: "",
+        language: "",
+        photo1: "",
+        firstInterationTitle: "",
+        firstInterationDescription: "",
+        secondInterationTitle: ""
+      },
       sessions: [
         {
           id: "",
@@ -105,7 +115,7 @@ class EventMovie extends Component {
     return (
       <div className=''>
         <img src={this.state.poster.posterV} alt='' />
-        <form action='' method='post'>
+        <form onSubmit={this.handleFormSubmit}>
           <button type='submit'>Criar esse evento</button>
           <div>
             <h2>Principais informações do evento</h2>
@@ -114,22 +124,25 @@ class EventMovie extends Component {
               name='eventTitle'
               id=''
               placeholder='Titulo do evento'
+              value={this.state.form.eventTitle}
             />
             <input
               type='text'
               name='eventDuration'
               id=''
               placeholder='Duração do evento'
+              value={this.state.form.eventDuration}
             />
             <input
               type='text'
               name='typeOfActivity'
               id=''
               placeholder='Tipo de atividade'
+              value={this.state.form.typeOfActivity}
             />
             <input
               type='text'
-              name=''
+              name='language'
               id=''
               placeholder='Qual língua será falada?'
             />
@@ -211,17 +224,17 @@ class EventMovie extends Component {
                   <img src='http://interfacetreinamentos.com.br/wp-content/uploads/2016/04/img-profile-default.jpg' />
                   <div className='file btn btn-lg btn-primary'>
                     Change Photo
-                    <input type='file' name='photo' />
+                    <input type='file' name='photo1' />
                   </div>
                   <input
                     type='text'
-                    name=''
+                    name='firstInterationTitle'
                     id=''
                     placeholder='Primeira Interação'
                   />
                   <textarea
                     type='text'
-                    name=''
+                    name='firstInterationDescription'
                     id=''
                     placeholder='Descreva em poucas palavras o que será feito.'
                   />
@@ -238,13 +251,13 @@ class EventMovie extends Component {
                   </div>
                   <input
                     type='text'
-                    name=''
+                    name='SecondInterationTitle'
                     id=''
-                    placeholder='Primeira Interação'
+                    placeholder='Segunda Interação'
                   />
                   <textarea
                     type='text'
-                    name=''
+                    name='SecondInterationDescription'
                     id=''
                     placeholder='Descreva em poucas palavras o que será feito.'
                   />
@@ -261,13 +274,13 @@ class EventMovie extends Component {
                   </div>
                   <input
                     type='text'
-                    name=''
+                    name='thirdInterationTitle'
                     id=''
-                    placeholder='Primeira Interação'
+                    placeholder='Terceira Interação'
                   />
                   <textarea
                     type='text'
-                    name=''
+                    name='thirdInterationDescription'
                     id=''
                     placeholder='Descreva em poucas palavras o que será feito.'
                   />
