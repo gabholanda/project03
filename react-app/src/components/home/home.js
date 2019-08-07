@@ -116,7 +116,7 @@ class Movies extends Component {
         <div className='emBreve'>
           <div className='movie-title-section'>
             <div>
-              <h2 className='title-emBreve'>Em Breve</h2>
+0this.props.match.params.movieIdthis.props.match.params.movieIdthis.props.match.params.movieIdthis.props.match.params.movieId0              <h2 className='title-emBreve'>Em Breve</h2>
               <Slider>
                 {this.state.moviesSoon.map(movie => (
                   <Link to={`filme/${movie.id}`}>

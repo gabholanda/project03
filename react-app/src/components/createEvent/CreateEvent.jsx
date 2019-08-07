@@ -6,7 +6,6 @@ import axios from "axios";
 class EventMovie extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       city: 1,
       date: "",
@@ -124,8 +123,6 @@ class EventMovie extends Component {
   }
 
   render() {
-    console.log(this.state);
-
     return (
       <div className=''>
         {/* breadcrumb */}

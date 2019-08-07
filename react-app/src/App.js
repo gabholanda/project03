@@ -112,11 +112,12 @@ class App extends Component {
               path='/usuario/:userId/perfil/editar'
               component={EditProfile}
             />
-            <Route
+            {/* It musn't be possible to create an event without being logged */}
+            {/* <Route
               exact
               path='/filme/:movieId/criar_evento'
               component={CreateEvent}
-            />
+            /> */}
           </Switch>
         </div>
       );
