@@ -4,17 +4,16 @@ import "./featuredMovie.css";
 
 
 const FeaturedMovie = props => {
+  const backgroundStyle= 
+      {
+        backgroundImage: `url(${props.image})`,
+        height:"500px",
+        backgroundPosition:"center",
+        backgroundSize:"cover",
+        backgroundRepeat:"no-repeat",
+        objectFit:"cover",
+        }
 
-  const backgroundStyle = {
-    backgroundImage: `url(${props.image})`,
-    height: '500px',
-    backgroundPosition: "center",
-    backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
-    objectFit: "cover",
-
-  }
-  
   return (
     <div>
       <div className='featured-movie-bg' style={backgroundStyle}>

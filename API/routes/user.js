@@ -11,7 +11,6 @@ const mongoose = require('mongoose')
 // })
 
 
-
 router.post('/signup', (req, res, next) => {
   const { username, password, name, email } = req.body;
   // if (req.file) {

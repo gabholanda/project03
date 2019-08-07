@@ -59,7 +59,6 @@ class EventMovie extends Component {
   }
 
   render() {
-    console.log(this.state);
     return (
       <div className=''>
         <nav aria-label='breadcrumb'>

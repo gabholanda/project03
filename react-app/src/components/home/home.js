@@ -2,15 +2,14 @@ import React, { Component } from "react";
 import Slider from "../NetflixSlider";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import './home.css'
-import '../featuredMovie/featuredMovie'
+import "./home.css";
+import "../featuredMovie/featuredMovie";
 import FeaturedMovie from "../featuredMovie/featuredMovie";
-import Footer from "../footer/footer"
+import Footer from "../footer/footer";
 
 class Movies extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       moviesHigh: [
         {
@@ -72,23 +71,27 @@ class Movies extends Component {
         {/* <div className='main-movie'>
           <img src={this.state.moviesHigh[0].poster}/>
           <h1>{this.state.moviesHigh[0].title}</h1>
-          <p>{this.state.moviesHigh[0].description}</p>
+          <p>{this.state.moviesHigh[0].description}</p>this.props.getMovieId
           <Link to={`filme/${this.state.moviesHigh[0].id}`}>
             <button>Veja mais</button>
           </Link>         
         </div> */}
-        <FeaturedMovie title={this.state.moviesHigh[0].title}
+        <FeaturedMovie
+          title={this.state.moviesHigh[0].title}
           // description={this.state.moviesHigh[0].description}
           image={this.state.moviesHigh[0].poster}
           way={`filme/${this.state.moviesHigh[0].id}`}
         />
         <div className='destaques'>
-          <div className="movie-title-section">
+          <div className='movie-title-section'>
             <h2 className='home-destaques'>Destaques</h2>
           </div>
           <Slider>
             {this.state.moviesHigh.map(movie => (
-              <Link to={`filme/${movie.id}`}>
+              <Link
+                to={`filme/${movie.id}`}
+                onClick={() => this.props.getMovieId(movie.id)}
+              >
                 <Slider.Item movie={movie} key={movie.id}>
                   item1
                 </Slider.Item>
@@ -96,14 +99,17 @@ class Movies extends Component {
             ))}
           </Slider>
         </div>
-              <hr className='home-div'/>
+        <hr className='home-div' />
         <div className='emCartaz'>
           <div className='movie-title-section'>
             <h2 className='title-emCartaz'>Em Cartaz</h2>
           </div>
           <Slider>
             {this.state.movies.map(movie => (
-              <Link to={`filme/${movie.id}`}>
+              <Link
+                to={`filme/${movie.id}`}
+                onClick={() => this.props.getMovieId(movie.id)}
+              >
                 <Slider.Item movie={movie} key={movie.id}>
                   item1
                 </Slider.Item>
@@ -111,18 +117,19 @@ class Movies extends Component {
             ))}
           </Slider>
         </div>
-        
-        <hr className='home-div'/>
+
+        <hr className='home-div' />
         <div className='emBreve'>
           <div className='movie-title-section'>
             <div>
               <h2 className='title-emBreve'>Em Breve</h2>
               <Slider>
                 {this.state.moviesSoon.map(movie => (
-                  <Link to={`filme/${movie.id}`}>
-                    <Slider.Item movie={movie} key={movie.id}>
-
-                    </Slider.Item>
+                  <Link
+                    to={`filme/${movie.id}`}
+                    onClick={() => this.props.getMovieId(movie.id)}
+                  >
+                    <Slider.Item movie={movie} key={movie.id} />
                   </Link>
                 ))}
               </Slider>
@@ -131,7 +138,6 @@ class Movies extends Component {
         </div>
         <Footer />
       </div>
-
     );
   }
 }

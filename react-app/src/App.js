@@ -40,13 +40,19 @@ class App extends Component {
     }
   }
 
+  getMovieId = id => {
+    this.setState({
+      movieId: id
+    });
+  };
+
   getTheUser = userObj => {
     this.setState({
       loggedInUser: userObj
     });
   };
 
-  render() {
+  render() {    
     this.fetchUser();
     if (this.state.loggedInUser) {
       return (
@@ -56,7 +62,11 @@ class App extends Component {
             getUser={this.getTheUser}
           />
           <Switch>
-            <Route exact path='/' component={Home} />
+            <Route
+              exact
+              path='/'
+              render={() => <Home getMovieId={this.getMovieId} />}
+            />
             <Route exact path='/filme/:movieId' component={Movie} />
             <Route exact path='/evento/:eventId' component={Event} />
             {/* <Route exact path='/chat' component={Chat} /> */}
@@ -83,7 +93,13 @@ class App extends Component {
             <Route
               exact
               path='/filme/:movieId/criar_evento'
-              component={CreateEvent}
+              // component={CreateEvent}
+              render={() => (
+                <CreateEvent
+                  user={this.state.loggedInUser}
+                  movieId={this.state.movieId}
+                />
+              )}
             />
             <Route exact path='/usuario/perfil' render={() => <Profile user={this.state.loggedInUser} />} />
             <Route exact path='filme/:movieId/criar_evento' component={CreateEvent} />
