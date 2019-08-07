@@ -56,7 +56,7 @@ router.post("/events", (req, res, next) => {
     thirdInterationDescription,
     host,
     movieId
-  } = req.body.st;
+  } = req.body.form;
   console.log(req.body.st);
 
   Event.create({

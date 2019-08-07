@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const EventSchema = new Schema(
   {
-    title: String,
+    eventTitle: String,
     duration: String,
     typeOfActivity: String,
     language: { type: String, enum: ["Português", "Inglês", "Espanhol"] },

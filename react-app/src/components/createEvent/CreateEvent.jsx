@@ -110,9 +110,42 @@ class EventMovie extends Component {
   }
 
   FormSubmit() {
-    const st = this.state;
+    const city = this.state.city;
+    const date = this.state.date;
+    const theaterId = this.state.theaterId;
+    const sessionId = this.state.sessionId;
+    const movieId = this.state.movieId;
+    const poster = this.state.poster;
+    const eventTitle = this.state.eventTitle;
+    const eventDuration = this.state.eventDuration;
+    const typeOfActivity = this.state.typeOfActivity;
+    const language = this.state.language;
+    const firstInterationTitle = this.state.firstInterationTitle;
+    const firstInterationDescription = this.state.firstInterationDescription;
+    const secondInterationTitle = this.state.secondInterationTitle;
+    const secondInterationDescription = this.state.secondInterationDescription;
+    const thirdInterationTitle = this.state.thirdInterationTitle;
+    const thirdInterationDescription = this.state.thirdInterationDescription;
+    const form = {
+      city,
+      date,
+      theaterId,
+      sessionId,
+      movieId,
+      poster,
+      eventTitle,
+      eventDuration,
+      typeOfActivity,
+      language,
+      firstInterationTitle,
+      firstInterationDescription,
+      secondInterationTitle,
+      secondInterationDescription,
+      thirdInterationTitle,
+      thirdInterationDescription
+    };
     axios
-      .post(`http://localhost:5000/api/events`, { st })
+      .post(`http://localhost:5000/api/events`, { form })
       .then(responseFromApi => {
         console.log("deu bom!");
       })
