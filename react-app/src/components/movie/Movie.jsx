@@ -66,7 +66,9 @@ class Movie extends Component {
 
   render() {
     return (
-      <div className=''>
+      <div className='movie-page'>
+
+        {/* breadcrumb */}
         <nav aria-label='breadcrumb'>
           <ol className='breadcrumb'>
             <li className='breadcrumb-item'>
@@ -77,52 +79,72 @@ class Movie extends Component {
             </li>
           </ol>
         </nav>
-        <div className='movie-information'>
-          <div className='movie-poster'>
-            <img className='' src={this.state.movie.posterV} alt='' />
+
+
+        {/* Bg movie */}
+        <div className='bg-movie-onmovie'>
+          <img className='blur-image'src={this.state.movie.posterH}/>
           </div>
-          <div className='movie-details'>
-            <h1 className=''>{this.state.movie.title}</h1>
-            <p className=''>{this.state.movie.genre}</p>
-            <p className=''>{this.state.movie.duration} minutos</p>
-            <button className=''>
-              <a
-                target='_blank'
-                rel='noopener noreferrer'
-                href={this.state.movie.trailer}
+        {/* movie poster */}
+
+    <div className="movie-details">
+
+
+          <div className="movie-poster">
+            <img className="movie-poster" src={this.state.movie.posterV} alt='' />
+          </div>
+            <div className="movie-info">
+          <h1 className='title-movie'>{this.state.movie.title}</h1>
+          <p className='title-genre'>{this.state.movie.genre}</p>
+          <p className='title-duration'>{this.state.movie.duration} minutos</p>
+          <button className='trailer-link'>
+          <img className='play-icon' src='../images/play.svg' />
+            <a
+              target='_blank'
+              rel='noopener noreferrer'
+              href={this.state.movie.trailer}
               >
-                Traler
-              </a>
-            </button>
-            <hr className='' />
-            <div className=''>
-              <h2 className=''>Sinopse</h2>
-              <p className=''>{this.state.movie.sinopse}</p>
+              Ver Trailer
+            </a>
+          </button>
             </div>
-            <hr className='' />
-            <div />
-            <h2 className=''>Eventos</h2>
-            {this.state.events.map(event => {
-              return (
-                <div key={event.id}>
-                  <h3 className=''>{event.dateMovie}</h3>
-                  <h4 className=''>{event.typeOfActivity}</h4>
-                  <h3 className=''>{event.title}</h3>
-                  <h5 className=''>{event.place}</h5>
-                  <button className=''>
-                    <Link to={`/evento/${event.id}`}>Saiba Mais</Link>
-                  </button>
-                </div>
-              );
-            })}
-          </div>
+  </div>
+  <div className='otherInfo'>
+
+        {/* others info */}
+        <div className='sinopse'>
+          <h2 className=''>Sinopse</h2>
+          <p className=''>{this.state.movie.sinopse}</p>
         </div>
-        <br />
-        <button className=''>
-          <Link to={`${this.props.match.params.movieId}/criar_evento`}>
-            + Criar um evento
-          </Link>
-        </button>
+
+        <hr className='movie-div'></hr>
+
+        {/* events */}
+          <h2 className='eventos'>Eventos</h2>
+          {this.state.events.map(event => {
+            return (
+              <div key={event.id}>
+                <h3 className=''>{event.dateMovie}</h3>
+                <h4 className=''>{event.typeOfActivity}</h4>
+                <h3 className=''>{event.title}</h3>
+                <h5 className=''>{event.place}</h5>
+
+                {/* know more about this event */}
+                <button className=''>
+                  <Link to={`/evento/${event.id}`}>Saiba Mais</Link>
+                </button>
+                </div>
+            );
+          })}
+
+          
+        <br/>
+          <button className='create-event'>
+            <Link to={`${this.props.match.params.movieId}/criar_evento`}>
+              + Criar um evento
+            </Link>
+          </button>
+  </div>
       </div>
     );
   }

@@ -28,6 +28,7 @@ p {
   color: #c4c4c4;
   font-size: 15px;
 }
+
 .featured-link {
   display: flex;
   align-items: center;
@@ -42,4 +43,5 @@ p {
 
 .featured-link img{
   margin-right: 10px;
+  box-shadow: none;
 }
