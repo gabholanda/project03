@@ -76,9 +76,9 @@ class Movie extends Component {
       objectFit:"cover",
       }
 
+
     return (
       <div className='movie-page'>
-
         {/* breadcrumb */}
         <nav aria-label='breadcrumb'>
           <ol className='breadcrumb'>
@@ -90,7 +90,6 @@ class Movie extends Component {
             </li>
           </ol>
         </nav>
-
 
         {/* Bg movie */}
         <div className='bg-movie-onmovie' style={backgroundMovie}>
