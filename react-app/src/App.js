@@ -46,7 +46,7 @@ class App extends Component {
     });
   };
 
-  render() {
+  render() {    
     this.fetchUser();
     if (this.state.loggedInUser) {
       return (
