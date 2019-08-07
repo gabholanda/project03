@@ -1,14 +1,30 @@
-.event-container{
+.create-container{
   display: flex;
-  background-color: #191a1b;
+  justify-content: center;
 }
 
-.event-poster{
-  margin-left: 15%;
-  width: 50%;
+.poster-side img{
+  width: 65%;
+  padding: 10%;
 }
 
-.create-main-info{
-  display: flex;
-  flex-direction: column; 
+.create-main-title {
+  text-align: left;
+  color:#ffea2f;
+  font-weight: 800;
+  font-size: 30px;
+}
+
+.create-headers {
+  text-align: left;
+  color:#ffea2f;
+  font-weight: 800;
+  font-size: 20px;
+}
+
+.create-text {
+  text-align: left;
+  color:#ffea2f;
+  font-weight: 400;
+  font-size: 15px;
 }

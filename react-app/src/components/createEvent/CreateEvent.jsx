@@ -113,33 +113,25 @@ class EventMovie extends Component {
 
   render() {
     return (
-      <div className=''>
-        {/* breadcrumb */}
-        <nav aria-label='breadcrumb'>
-          <ol className='breadcrumb'>
-            <li className='breadcrumb-item'>
-              <Link to='/'>Início</Link>
-            </li>
-            <li className='breadcrumb-item'>
-              <Link to='/'>Filme</Link>
-            </li>
-              <li className='breadcrumb-item active' aria-current='page'>
-            Filme
-            </li> 
-          </ol>
-        </nav>
+      <div className='create-container'>
 
-        <div className='event-container'>
-          <div className='left-container'>
-          <img className='event-poster'src={this.state.poster.posterV} alt='poster film' />
-          </div>
-        <div className='right-container'>
+        {/* Poster side */}
+        <div className='poster-side'>
+          <img src={this.state.poster.posterV} alt='poster' />
+        </div>
+
+        {/* info side - forms and others */}
+        <div className='info-side'>
+
+
+        </div>
         <form onSubmit={this.handleFormSubmit}>
+          
+          <div>
+            <h2 className='create-main-title'>Criar um evento é muito fácil</h2>
+            <h3 className='create-headers'>1.Informações principais do evento</h3>
+            <p className='create-text'>Pense que todo evento sempre existe um começo, um meio e um fim. Aqui você mostrará qual será o itinerário completo para o seus convidados.</p>
 
-          <div className='create-main-info'>
-            <h2>Principais informações do evento</h2>
-            
-            {/* inputs */}
             <input
               type='text'
               name='eventTitle'
