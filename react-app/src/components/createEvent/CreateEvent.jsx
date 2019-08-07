@@ -114,11 +114,32 @@ class EventMovie extends Component {
   render() {
     return (
       <div className=''>
-        <img src={this.state.poster.posterV} alt='' />
+        {/* breadcrumb */}
+        <nav aria-label='breadcrumb'>
+          <ol className='breadcrumb'>
+            <li className='breadcrumb-item'>
+              <Link to='/'>Início</Link>
+            </li>
+            <li className='breadcrumb-item'>
+              <Link to='/'>Filme</Link>
+            </li>
+              <li className='breadcrumb-item active' aria-current='page'>
+            Filme
+            </li> 
+          </ol>
+        </nav>
+
+        <div className='event-container'>
+          <div className='left-container'>
+          <img className='event-poster'src={this.state.poster.posterV} alt='poster film' />
+          </div>
+        <div className='right-container'>
         <form onSubmit={this.handleFormSubmit}>
-          <button type='submit'>Criar esse evento</button>
-          <div>
+
+          <div className='create-main-info'>
             <h2>Principais informações do evento</h2>
+            
+            {/* inputs */}
             <input
               type='text'
               name='eventTitle'
@@ -146,6 +167,8 @@ class EventMovie extends Component {
               id=''
               placeholder='Qual língua será falada?'
             />
+            {/* inputs ends*/}
+            {/* select*/}
             <select onChange={event => this.handleChange(event)} name='city'>
               <option value='1'>São Paulo</option>
               <option value='2'>Rio de Janeiro</option>
@@ -175,12 +198,17 @@ class EventMovie extends Component {
               <option value='435'>Teresina</option>
               <option value='11'>Vitória</option>
             </select>
+            {/* select ends*/}
+
+            {/* date*/}
             <input
               type='date'
               name='date'
               id=''
               onChange={event => this.handleChange(event)}
             />
+
+            {/* local theater*/}
             <select
               onChange={event => this.handleChange(event)}
               name='theaterId'
@@ -193,6 +221,8 @@ class EventMovie extends Component {
                 );
               })}
             </select>
+            
+            {/* session*/}
             <select
               onChange={event => this.handleChange(event)}
               name='sessionId'
@@ -212,6 +242,7 @@ class EventMovie extends Component {
                 }
               })}
             </select>
+            {/* session*/}
             <h2>Qual será o roteiro?</h2>
             <p>
               Pense que todo evento sempre existe um começo, um meio e um fim.
@@ -290,6 +321,9 @@ class EventMovie extends Component {
           </div>
           <button type='submit'>Criar esse evento</button>
         </form>
+          
+        </div>
+      </div>
       </div>
     );
   }

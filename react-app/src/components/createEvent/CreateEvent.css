@@ -1,0 +1,14 @@
+.event-container{
+  display: flex;
+  background-color: #191a1b;
+}
+
+.event-poster{
+  margin-left: 15%;
+  width: 50%;
+}
+
+.create-main-info{
+  display: flex;
+  flex-direction: column; 
+}
