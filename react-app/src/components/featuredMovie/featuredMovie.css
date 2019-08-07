@@ -20,7 +20,8 @@
   background: none;
 }
 
-h1 {
+.featured-info h1 {
+  font-weight: 800;
   color: #c4c4c4;
   font-size: 50px;
 }
