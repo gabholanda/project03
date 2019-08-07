@@ -115,7 +115,7 @@ class EventMovie extends Component {
           </div>
           <div>
             <h2>Local do Filme</h2>
-            // GOOGLE MAPS HERE
+            {/* // GOOGLE MAPS HERE */}
           </div>
           <div>
             <img src='' alt='' />

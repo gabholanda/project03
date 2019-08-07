@@ -91,6 +91,7 @@ class Movies extends Component {
               <Link
                 to={`filme/${movie.id}`}
                 onClick={() => this.props.getMovieId(movie.id)}
+                key={movie.id}
               >
                 <Slider.Item movie={movie} key={movie.id}>
                   item1
@@ -109,6 +110,7 @@ class Movies extends Component {
               <Link
                 to={`filme/${movie.id}`}
                 onClick={() => this.props.getMovieId(movie.id)}
+                key={movie.id}
               >
                 <Slider.Item movie={movie} key={movie.id}>
                   item1
@@ -128,6 +130,7 @@ class Movies extends Component {
                   <Link
                     to={`filme/${movie.id}`}
                     onClick={() => this.props.getMovieId(movie.id)}
+                    key={movie.id}
                   >
                     <Slider.Item movie={movie} key={movie.id} />
                   </Link>

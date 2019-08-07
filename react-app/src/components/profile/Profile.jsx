@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import "./Profile.css";
-import axios from "axios";
+// import axios from "axios";
 
 
 class Profile extends Component {
@@ -54,7 +54,7 @@ class Profile extends Component {
       return (
         <div className='myProfile'>
        <div className="image">
-        <img src={this.state.user.image}/>
+        <img src={this.state.user.image} alt =''/>
        </div>
         <div className="about">
 

@@ -8,7 +8,7 @@ import Signup from "./components/auth/Signup";
 import Login from "./components/auth/Login";
 import Movie from "./components/movie/Movie.jsx";
 import Event from "./components/eventMovie/EventMovie.jsx";
-import Chat from "./components/eventChat/EventChat.jsx";
+// import Chat from "./components/eventChat/EventChat.jsx";
 import CreateEvent from "./components/createEvent/CreateEvent.jsx";
 import EditProfile from "./components/editProfile/EditProfile.jsx";
 import Profile from "./components/profile/Profile.jsx";
