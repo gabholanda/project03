@@ -18,7 +18,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loggedInUser: null
+      loggedInUser: null,
+      movieId: ""
     };
     this.service = new AuthService();
   }
@@ -40,6 +41,12 @@ class App extends Component {
     }
   }
 
+  getMovieId = id => {
+    this.setState({
+      movieId: id
+    });
+  };
+
   getTheUser = userObj => {
     this.setState({
       loggedInUser: userObj
@@ -56,7 +63,11 @@ class App extends Component {
             getUser={this.getTheUser}
           />
           <Switch>
-            <Route exact path='/' component={Home} />
+            <Route
+              exact
+              path='/'
+              render={() => <Home getMovieId={this.getMovieId} />}
+            />
             <Route exact path='/filme/:movieId' component={Movie} />
             <Route exact path='/evento/:eventId' component={Event} />
             {/* <Route exact path='/chat' component={Chat} /> */}
@@ -83,7 +94,13 @@ class App extends Component {
             <Route
               exact
               path='/filme/:movieId/criar_evento'
-              render={() => <CreateEvent loggedInUser={this.state.loggedInUser} />}
+              // component={CreateEvent}
+              render={() => (
+                <CreateEvent
+                  user={this.state.loggedInUser}
+                  movieId={this.state.movieId}
+                />
+              )}
             />
           </Switch>
         </div>

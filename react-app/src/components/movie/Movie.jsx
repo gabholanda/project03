@@ -65,8 +65,6 @@ class Movie extends Component {
   }
 
   render() {
-    console.log(this.state.events);
-
     return (
       <div className='movie-page'>
         {/* breadcrumb */}
