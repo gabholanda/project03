@@ -54,8 +54,9 @@ class Profile extends Component {
       return (
         <div className='myProfile'>
           <div className='profile-left'>
-
-          <img src={this.state.user.image}/>
+          <div className='profile-avatar'>
+            <img src={this.state.user.image}/>
+          </div>
 
           </div>
           <div className="profile-right">
