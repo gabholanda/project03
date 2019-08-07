@@ -39,28 +39,39 @@ router.get("/events/:movieId", (req, res, next) => {
 
 // POST route => to create a new event
 router.post("/events", (req, res, next) => {
+  const {
+    title,
+    subtitle,
+    backImg,
+    place,
+    duration,
+    language,
+    description,
+    host,
+    event
+  } = req.body;
   Event.create({
-    title: req.body.title,
-    subtitle: req.body.substitle,
-    backImg: req.body.backimg,
-    place: req.body.place,
-    duration: req.body.duration,
-    language: req.body.language,
+    title: title,
+    subtitle: subtitle,
+    backImg: backImg,
+    place: place,
+    duration: duration,
+    language: language,
     description: [
       {
         interation: {
-          image: String,
-          description: String
+          image: description.image,
+          description: description.description
         }
       }
     ],
-    host: req.body.userId,
+    host: host,
     event: {
-      movieId: req.body.movieId,
-      dateMovie: req.body.dateMovie,
-      theaterId: req.body.theaterId,
-      roomName: req.body.roomName,
-      sessionId: req.body.sessionId
+      movieId: event.movieId,
+      dateMovie: event.dateMovie,
+      theaterId: event.theaterId,
+      roomName: event.roomName,
+      sessionId: event.sessionId
     }
   })
     .then(response => {
