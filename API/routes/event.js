@@ -19,7 +19,7 @@ router.get("/events", (req, res, next) => {
 // GET route => to get all the events by movie
 router.get("/events/:movieId", (req, res, next) => {
   const movieId = req.params.movieId;
-  Event.find({ "event.movieId": { $eq: movieId } })
+  Event.find({ movieId: { $eq: movieId } })
     .then(allTheEvents => {
       const event = allTheEvents.map(event => {
         return {
@@ -40,42 +40,45 @@ router.get("/events/:movieId", (req, res, next) => {
 // POST route => to create a new event
 router.post("/events", (req, res, next) => {
   const {
-    title,
-    subtitle,
-    backImg,
-    place,
-    duration,
+    eventTitle,
+    eventDuration,
+    typeOfActivity,
     language,
-    description,
+    city,
+    date,
+    theaterId,
+    sessionId,
+    firstInterationTitle,
+    firstInterationDescription,
+    secondInterationTitle,
+    secondInterationDescription,
+    thirdInterationTitle,
+    thirdInterationDescription,
     host,
-    event
-  } = req.body;
+    movieId
+  } = req.body.st;
+  console.log(req.body.st);
+
   Event.create({
-    title: title,
-    subtitle: subtitle,
-    backImg: backImg,
-    place: place,
-    duration: duration,
+    title: eventTitle,
+    duration: eventDuration,
+    typeOfActivity: typeOfActivity,
     language: language,
-    description: [
-      {
-        interation: {
-          image: description.image,
-          description: description.description
-        }
-      }
-    ],
+    city: city,
+    date: date,
+    theaterId: theaterId,
+    session: sessionId,
+    firstInterationTitle,
+    firstInterationDescription,
+    secondInterationTitle,
+    secondInterationDescription,
+    thirdInterationTitle,
+    thirdInterationDescription,
     host: host,
-    event: {
-      movieId: event.movieId,
-      dateMovie: event.dateMovie,
-      theaterId: event.theaterId,
-      roomName: event.roomName,
-      sessionId: event.sessionId
-    }
+    movieId: movieId
   })
     .then(response => {
-      res.json(response);
+      console.log(response);
     })
     .catch(err => {
       res.json(err);
