@@ -9,14 +9,29 @@ class EventMovie extends Component {
 
     this.state = {
       movie: 0,
-      event: {
-        description: [
-          { interation: { image: "test", description: "test" }, _id: 0 }
-        ]
-      }
+      event: [
+        {
+          participants: "",
+          _id: "",
+          title: "",
+          duration: "",
+          typeOfActivity: "",
+          language: "",
+          city: "",
+          date: "",
+          theaterId: "",
+          firstInterationTitle: "",
+          firstInterationDescription: "",
+          SecondInterationTitle: "",
+          SecondInterationDescription: "",
+          thirdInterationTitle: "",
+          thirdInterationDescription: "",
+          movieId: ""
+        }
+      ]
     };
   }
-  
+
   getEvents = () => {
     axios
       .get(`http://localhost:5000/api/event/${this.props.match.params.eventId}`)
@@ -44,7 +59,7 @@ class EventMovie extends Component {
   }
 
   render() {
-    console.log("this.state.event.movieId");
+    console.log(this.state);
     return (
       <div className=''>
         <nav aria-label='breadcrumb'>
@@ -83,14 +98,21 @@ class EventMovie extends Component {
           </p>
           <div>
             <h2>O que vamos fazer?</h2>
-            {this.state.event.description.map(interation => {
-              return (
-                <div key={interation._id}>
-                  <img src={interation.interation.image} alt='' />
-                  <h4>{interation.interation.description}</h4>
-                </div>
-              );
-            })}
+            <div>
+              <img src='' alt='' />
+              <h4>{this.state.event.firstInterationTitle}</h4>
+              <p>{this.state.event.firstInterationDescription}</p>
+            </div>
+            <div>
+              <img src='' alt='' />
+              <h4>{this.state.event.secondInterationTitle}</h4>
+              <p>{this.state.event.secondInterationDescription}</p>
+            </div>
+            <div>
+              <img src='' alt='' />
+              <h4>{this.state.event.thirdInterationTitle}</h4>
+              <p>{this.state.event.thirdInterationDescription}</p>
+            </div>
           </div>
           <div>
             <h2>Local do Filme</h2>

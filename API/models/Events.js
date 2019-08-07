@@ -4,29 +4,22 @@ const Schema = mongoose.Schema;
 const EventSchema = new Schema(
   {
     title: String,
-    subtitle: String,
-    backImg: String,
-    place: String,
     duration: String,
+    typeOfActivity: String,
     language: { type: String, enum: ["Português", "Inglês", "Espanhol"] },
-    description: Array,
-    description: [
-      {
-        interation: {
-          image: String,
-          description: String
-        }
-      }
-    ],
+    city: String,
+    date: String,
+    theaterId: String,
+    sessionId: String,
+    firstInterationTitle: String,
+    firstInterationDescription: String,
+    secondInterationTitle: String,
+    secondInterationDescription: String,
+    thirdInterationTitle: String,
+    thirdInterationDescription: String,
     host: String,
-    event: {
-      movieId: String,
-      dateMovie: String,
-      theaterId: String,
-      roomName: String,
-      sessionId: String
-    },
-    participants: { type: Number, default: 0 }
+    participants: { type: Number, default: 0 },
+    movieId: String
   },
   {
     timestamps: true

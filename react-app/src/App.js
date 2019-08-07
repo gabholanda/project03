@@ -46,7 +46,7 @@ class App extends Component {
     });
   };
 
-  render() {    
+  render() {
     this.fetchUser();
     if (this.state.loggedInUser) {
       return (
@@ -90,7 +90,7 @@ class App extends Component {
       );
     } else {
       return (
-        <div className='App' >
+        <div className='App'>
           <Navbar />
           <Switch>
             <Route exact path='/' component={Home} />

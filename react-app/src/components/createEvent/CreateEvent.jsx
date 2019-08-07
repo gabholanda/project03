@@ -12,17 +12,18 @@ class EventMovie extends Component {
       date: "",
       theaterId: "oi",
       sessionId: "",
+      movieId: this.props.match.params.movieId,
       poster: "",
-      form: {
-        eventTitle: "",
-        eventDuration: "",
-        typeOfActivity: "",
-        language: "",
-        photo1: "",
-        firstInterationTitle: "",
-        firstInterationDescription: "",
-        secondInterationTitle: ""
-      },
+      eventTitle: "",
+      eventDuration: "",
+      typeOfActivity: "",
+      language: "",
+      firstInterationTitle: "",
+      firstInterationDescription: "",
+      secondInterationTitle: "",
+      secondInterationDescription: "",
+      thirdInterationTitle: "",
+      thirdInterationDescription: "",
       sessions: [
         {
           id: "",
@@ -70,6 +71,7 @@ class EventMovie extends Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.FormSubmit = this.FormSubmit.bind(this);
   }
 
   getPoster() {
@@ -107,11 +109,23 @@ class EventMovie extends Component {
     }
   }
 
+  FormSubmit() {
+    const st = this.state;
+    axios
+      .post(`http://localhost:5000/api/events`, { st })
+      .then(responseFromApi => {
+        console.log("deu bom!");
+      })
+      .catch(error => console.log(error));
+  }
+
   componentDidMount() {
     this.getPoster();
   }
 
   render() {
+    console.log(this.state);
+
     return (
       <div className=''>
         {/* breadcrumb */}
@@ -134,9 +148,10 @@ class EventMovie extends Component {
           <img className='event-poster'src={this.state.poster.posterV} alt='poster film' />
           </div>
         <div className='right-container'>
-        <form onSubmit={this.handleFormSubmit}>
+        <form onSubmit={this.FormSubmit}>
 
           <div className='create-main-info'>
+
             <h2>Principais informações do evento</h2>
             
             {/* inputs */}
@@ -145,27 +160,28 @@ class EventMovie extends Component {
               name='eventTitle'
               id=''
               placeholder='Titulo do evento'
-              value={this.state.form.eventTitle}
+              onChange={event => this.handleChange(event)}
             />
             <input
               type='text'
               name='eventDuration'
               id=''
               placeholder='Duração do evento'
-              value={this.state.form.eventDuration}
+              onChange={event => this.handleChange(event)}
             />
             <input
               type='text'
               name='typeOfActivity'
               id=''
               placeholder='Tipo de atividade'
-              value={this.state.form.typeOfActivity}
+              onChange={event => this.handleChange(event)}
             />
             <input
               type='text'
               name='language'
               id=''
               placeholder='Qual língua será falada?'
+              onChange={event => this.handleChange(event)}
             />
             {/* inputs ends*/}
             {/* select*/}
@@ -250,76 +266,68 @@ class EventMovie extends Component {
               convidados.
             </p>
             <div className='row'>
-              <div className='col-md-4'>
-                <div className='profile-img'>
-                  <img src='http://interfacetreinamentos.com.br/wp-content/uploads/2016/04/img-profile-default.jpg' />
-                  <div className='file btn btn-lg btn-primary'>
-                    Change Photo
-                    <input type='file' name='photo1' />
-                  </div>
-                  <input
-                    type='text'
-                    name='firstInterationTitle'
-                    id=''
-                    placeholder='Primeira Interação'
-                  />
-                  <textarea
-                    type='text'
-                    name='firstInterationDescription'
-                    id=''
-                    placeholder='Descreva em poucas palavras o que será feito.'
-                  />
-                </div>
-              </div>
+              <img src='http://interfacetreinamentos.com.br/wp-content/uploads/2016/04/img-profile-default.jpg' />
+
+              <input
+                type='text'
+                name='firstInterationTitle'
+                id=''
+                placeholder='Primeira Interação'
+                onChange={event => this.handleChange(event)}
+              />
+              <textarea
+                type='text'
+                name='firstInterationDescription'
+                id=''
+                placeholder='Descreva em poucas palavras o que será feito.'
+                onChange={event => this.handleChange(event)}
+              />
             </div>
             <div className='row'>
-              <div className='col-md-4'>
-                <div className='profile-img'>
-                  <img src='http://interfacetreinamentos.com.br/wp-content/uploads/2016/04/img-profile-default.jpg' />
-                  <div className='file btn btn-lg btn-primary'>
-                    Change Photo
-                    <input type='file' name='photo' />
-                  </div>
-                  <input
-                    type='text'
-                    name='SecondInterationTitle'
-                    id=''
-                    placeholder='Segunda Interação'
-                  />
-                  <textarea
-                    type='text'
-                    name='SecondInterationDescription'
-                    id=''
-                    placeholder='Descreva em poucas palavras o que será feito.'
-                  />
-                </div>
-              </div>
+              <img src='http://interfacetreinamentos.com.br/wp-content/uploads/2016/04/img-profile-default.jpg' />
+
+              <input
+                type='text'
+                name='secondInterationTitle'
+                id=''
+                placeholder='Segunda Interação'
+                onChange={event => this.handleChange(event)}
+              />
+              <textarea
+                type='text'
+                name='secondInterationDescription'
+                id=''
+                placeholder='Descreva em poucas palavras o que será feito.'
+                onChange={event => this.handleChange(event)}
+              />
             </div>
             <div className='row'>
-              <div className='col-md-4'>
-                <div className='profile-img'>
-                  <img src='http://interfacetreinamentos.com.br/wp-content/uploads/2016/04/img-profile-default.jpg' />
-                  <div className='file btn btn-lg btn-primary'>
-                    Change Photo
-                    <input type='file' name='photo' />
-                  </div>
-                  <input
-                    type='text'
-                    name='thirdInterationTitle'
-                    id=''
-                    placeholder='Terceira Interação'
-                  />
-                  <textarea
-                    type='text'
-                    name='thirdInterationDescription'
-                    id=''
-                    placeholder='Descreva em poucas palavras o que será feito.'
-                  />
-                </div>
-              </div>
+              <img src='http://interfacetreinamentos.com.br/wp-content/uploads/2016/04/img-profile-default.jpg' />
+              <input
+                type='text'
+                name='thirdInterationTitle'
+                id=''
+                placeholder='Terceira Interação'
+                onChange={event => this.handleChange(event)}
+              />
+              <textarea
+                type='text'
+                name='thirdInterationDescription'
+                id=''
+                placeholder='Descreva em poucas palavras o que será feito.'
+                onChange={event => this.handleChange(event)}
+              />
             </div>
           </div>
           <button type='submit'>Criar esse evento</button>
+          {/* <input
+            type='text'
+            name='movieId'
+            id=''
+            hidden
+            value={this.props.match.params.movieId}
+            onChange={event => this.handleChange(event)}
+          /> */}
         </form>
           
         </div>
