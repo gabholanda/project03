@@ -8,77 +8,85 @@ class Navbar extends Component {
   constructor(props) {
     super(props);
     this.service = new AuthService();
-    this.state = { loggedInUser: null }
-
+    this.state = { loggedInUser: null };
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({ ...this.state, loggedInUser: nextProps["userInSession"] })
+    this.setState({ ...this.state, loggedInUser: nextProps["userInSession"] });
   }
 
   logoutUser = () => {
-    this.service.logout()
-      .then(() => {
-        this.setState({ loggedInUser: null });
-        this.props.getUser(null);
-      })
-  }
+    this.service.logout().then(() => {
+      this.setState({ loggedInUser: null });
+      this.props.getUser(null);
+    });
+  };
 
   render() {
-   if(this.state.loggedInUser) {
-    return (
-      <>
-        <div className='mobile-show'>
-          <HamburgerMenu />
-        </div>
-        <div className='main-navbar'>
-          <Link to='/' className='navbar-brand '>
-            <img src='../images/logo.svg' alt='cinex logotype' />
-          </Link>
-          <div className='right-nav pc-show'>
-            <div className='search-bar'>
-              <img className='search-icon' src='../images/search_icon.svg' alt="search-icon" />
-              <input className='search-input' />
-            </div>
-            <div className='vertical-line' />
-            <Link to='/usuario/perfil'>
-              <div className='avatar' />
-            </Link>
-          <Link to='/'>
-              <button onClick={() => this.logoutUser()}>Logout</button>
-            </Link>
+    if (this.state.loggedInUser) {
+      return (
+        <>
+          <div className='mobile-show'>
+            <HamburgerMenu />
           </div>
-        </div>
-      </>
-    );
-   } else {
-    return (
-      <>
-        <div className='mobile-show'>
-          <HamburgerMenu />
-        </div>
-        <div className='main-navbar'>
-          <Link to='/' className='navbar-brand '>
-            <img src='../images/logo.svg' alt='cinex logotype' />
-          </Link>
-          <div className='right-nav pc-show'>
-            <div className='search-bar'>
-              <img className='search-icon' src='../images/search_icon.svg' alt="search-icon" />
-              <input className='search-input' />
+          <div className='main-navbar'>
+            <Link to='/' className='navbar-brand '>
+              <img src='../images/logo.svg' alt='cinex logotype' />
+            </Link>
+            <div className='right-nav pc-show'>
+              <div className='search-bar'>
+                <img
+                  className='search-icon'
+                  src='../images/search_icon.svg'
+                  alt='search-icon'
+                />
+                <input className='search-input' />
+              </div>
+              <div className='vertical-line' />
+              <Link to='/usuario/perfil'>
+                <div className='avatar' />
+              </Link>
+              <Link to='/'>
+                <button onClick={() => this.logoutUser()}>Logout</button>
+              </Link>
             </div>
-            <div className='vertical-line' />
-            <Link to='#'>
-              <div className='avatar' />
-            </Link>
-            <Link to='/login' className='login'>Login</Link>
-            <Link to='/signup' className='signup'>
-              Signup
-            </Link>
           </div>
-        </div>
-      </>
-    );
-   }
+        </>
+      );
+    } else {
+      return (
+        <>
+          <div className='mobile-show'>
+            <HamburgerMenu />
+          </div>
+          <div className='main-navbar'>
+            <Link to='/' className='navbar-brand '>
+              <img src='../images/logo.svg' alt='cinex logotype' />
+            </Link>
+            <div className='right-nav pc-show'>
+              <div className='search-bar'>
+                <img
+                  className='search-icon'
+                  src='../images/search_icon.svg'
+                  alt='search-icon'
+                />
+                <input className='search-input' />
+              </div>
+              <div className='vertical-line' />
+              <Link to='#'>
+                <div className='avatar' />
+              </Link>
+              <Link to='/login' className='login'>
+                Login
+              </Link>
+              <Link to='/signup' className='signup'>
+                Signup
+              </Link>
+            </div>
+          </div>
+        </>
+      );
+    }
   }
 }
 export default Navbar;
