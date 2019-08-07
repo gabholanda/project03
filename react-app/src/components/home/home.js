@@ -71,7 +71,7 @@ class Movies extends Component {
         {/* <div className='main-movie'>
           <img src={this.state.moviesHigh[0].poster}/>
           <h1>{this.state.moviesHigh[0].title}</h1>
-          <p>{this.state.moviesHigh[0].description}</p>
+          <p>{this.state.moviesHigh[0].description}</p>this.props.getMovieId
           <Link to={`filme/${this.state.moviesHigh[0].id}`}>
             <button>Veja mais</button>
           </Link>         
@@ -89,11 +89,9 @@ class Movies extends Component {
           <Slider>
             {this.state.moviesHigh.map(movie => (
               <Link
-               to={`filme/${movie.id}`}
-               onClick={() => {
-                 this.props.getMovieId(movie.id)
-               }}
-               >
+                to={`filme/${movie.id}`}
+                onClick={() => this.props.getMovieId(movie.id)}
+              >
                 <Slider.Item movie={movie} key={movie.id}>
                   item1
                 </Slider.Item>
@@ -110,7 +108,7 @@ class Movies extends Component {
             {this.state.movies.map(movie => (
               <Link
                 to={`filme/${movie.id}`}
-                onClick={movie => this.props.getMovieId(movie.id)}
+                onClick={() => this.props.getMovieId(movie.id)}
               >
                 <Slider.Item movie={movie} key={movie.id}>
                   item1
@@ -128,9 +126,9 @@ class Movies extends Component {
               <Slider>
                 {this.state.moviesSoon.map(movie => (
                   <Link
-                   to={`filme/${movie.id}`}
-                   onClick={movie => this.props.getMovieId(movie.id)}
-                   >
+                    to={`filme/${movie.id}`}
+                    onClick={() => this.props.getMovieId(movie.id)}
+                  >
                     <Slider.Item movie={movie} key={movie.id} />
                   </Link>
                 ))}
