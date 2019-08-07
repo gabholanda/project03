@@ -17,7 +17,9 @@ const userSchema = new Schema({
   favoriteMovie: String,
   about: String,
   interest: Array,
-  role: { type: String, default: 'user' }
+  role: { type: String, default: 'user' },
+  hobbies: String,
+  favoritePlace: String,
 
 }, {
     timestamps: true
