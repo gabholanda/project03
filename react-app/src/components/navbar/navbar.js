@@ -47,7 +47,7 @@ class Navbar extends Component {
                 <div className='avatar' />
               </Link>
               <Link to='/'>
-                <button onClick={() => this.logoutUser()}>Logout</button>
+                <button className='logout'onClick={() => this.logoutUser()}>Logout</button>
               </Link>
             </div>
           </div>
