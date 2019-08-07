@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const Event = require("../models/Events");
-
+const User = require("../models/Users");
 const router = express.Router();
 
 // GET route => to get all the events
@@ -59,7 +59,7 @@ router.post("/events", (req, res, next) => {
   } = req.body.form;
   console.log(req.body.st);
 
-  Event.create({
+  const newEvent = new Event({
     title: eventTitle,
     duration: eventDuration,
     typeOfActivity: typeOfActivity,
@@ -76,13 +76,55 @@ router.post("/events", (req, res, next) => {
     thirdInterationDescription,
     host: host,
     movieId: movieId
+  });
+
+  newEvent.save(err => {
+    if (err) {
+      res.status(400).json({ message: "Error upon saving event on DB." });
+      return;
+    }
+    // res.status(200).json(newEvent);
+  });
+  // User receives the event as it's host and event list
+  console.log(req.user);
+
+  User.findByIdAndUpdate(req.user._id, {
+    $push: { events: newEvent, host: newEvent }
   })
-    .then(response => {
-      console.log(response);
+    .then(user => {
+      // The event receives the event host as a member
+      Event.findOneAndUpdate({ host: user }, { $push: { members: user } })
+        .then(() =>
+          res.status(200).json({ message: "Event created successfuly" })
+        )
+        .catch(err => res.json(err));
     })
-    .catch(err => {
-      res.json(err);
-    });
+    .catch(err => res.status(400).json(err));
+
+  // Event.create({
+  //   title: eventTitle,
+  //   duration: eventDuration,
+  //   typeOfActivity: typeOfActivity,
+  //   language: language,
+  //   city: city,
+  //   date: date,
+  //   theaterId: theaterId,
+  //   session: sessionId,
+  //   firstInterationTitle,
+  //   firstInterationDescription,
+  //   secondInterationTitle,
+  //   secondInterationDescription,
+  //   thirdInterationTitle,
+  //   thirdInterationDescription,
+  //   host: host,
+  //   movieId: movieId
+  // })
+  //   .then(response => {
+  //     console.log(response);
+  //   })
+  //   .catch(err => {
+  //     res.json(err);
+  //   });
 });
 
 // GET route => to get a specific event/detailed view
