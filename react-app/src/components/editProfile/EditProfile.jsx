@@ -8,26 +8,25 @@ class EditProfile extends Component {
     this.state = {
       name: this.props.user.name,
       image: this.props.user.image,
-      city: "",
-      favoriteMovie: "",
-      about: "", 
-      hobbies: "",
-      favoritePlace: "",
+      city: this.props.user.city,
+      favoriteMovie: this.props.user.favoriteMovie,
+      about: this.props.user.about, 
+      hobbies: this.props.user.hobbies,
+      favoritePlace: this.props.user.favorite, 
       
     }
   }
 
 
   handleFormSubmit = (event) => {
-    const {name, description} = this.state;
-
     event.preventDefault();
+    
+    const {name, image, city, favoriteMovie, about, hobbies, favoritePlace} = this.state;
+    console.log("...............", process.env.REACT_APP_API_URL)
 
-    axios.put(`${process.env.REACT_APP_API_URL}/projects/${this.props.theProject._id}`, { name, description })
+    axios.put(`${process.env.REACT_APP_API_URL}/editUser/${this.props.user._id}`, { name, image, city, favoriteMovie, about, hobbies, favoritePlace })
       .then(() => {
-        // this.props.getTheProject();
-        // after submitting the form, redirect to '/projects'
-        this.props.history.push('/projects');
+        this.props.history.push('/');
       })
       .catch(error => console.log(error))
   }
@@ -55,9 +54,9 @@ class EditProfile extends Component {
           <label>Sobre Mim</label>
           <textarea name="about" value={this.state.about} onChange={e => this.handleChange(e)} />
           <label>Filme favorito</label>
-          <textarea name="favoriteMovie" value={this.state.about} onChange={e => this.handleChange(e)} />
+          <textarea name="favoriteMovie" value={this.state.favoriteMovie} onChange={e => this.handleChange(e)} />
           <label>Hobbies</label>
-          <input type="text" name="hobbies" value={this.state.hobbies} onChange={e => this.handleChange(e)} />
+          <textarea name="hobbies" value={this.state.hobbies} onChange={e => this.handleChange(e)} />
           <label>Lugar favorito</label>
           <input type="text" name="favoritePlace" value={this.state.favoritePlace} onChange={e => this.handleChange(e)} />
 

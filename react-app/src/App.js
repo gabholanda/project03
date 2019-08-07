@@ -73,12 +73,12 @@ class App extends Component {
             <Route
               exact
               path='/edit/profile' 
-              render={() => <EditProfile user={this.state.loggedInUser}/>}
+              render={(props) => <EditProfile {...props} user={this.state.loggedInUser}/>}
             />
             <Route
               exact
               path='/usuario/perfil'
-              render={() => <Profile user={this.state.loggedInUser} />}
+              render={(props) => <Profile {...props} user={this.state.loggedInUser} />}
             />
             <Route
               exact

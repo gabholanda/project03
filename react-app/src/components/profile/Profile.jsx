@@ -64,17 +64,20 @@ class Profile extends Component {
           <h1>My name is {this.state.user.name} </h1>
           <h3>Email</h3>
           <p>{this.state.user.email}</p>
+
+          <h3>Cidade</h3>
+          <p>{this.state.user.city}</p>
           <h3>Sobre mim</h3>
 
-          <p>dnenudnu</p>
+          <p>{this.state.user.about}}</p>
 
           <div className="about-info">
             <h3>Meu filme favorito é</h3>
-
+          {<p>{this.state.user.favoriteMovie}</p> && this.state.user.favoriteMovie} 
             <h3>Hobbies</h3>
-
+         {<p>{this.state.user.hobbies}</p> && this.state.user.hobbies}
             <h3>Lugar favorito</h3>
-
+          {<p>{this.state.user.favoritePlace}</p> && this.state.user.favoritePlace}
 
           </div>
 
