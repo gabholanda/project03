@@ -125,41 +125,53 @@ class EventMovie extends Component {
 
 
         </div>
-        <form onSubmit={this.handleFormSubmit}>
+        <form className='create-form'onSubmit={this.handleFormSubmit}>
           
           <div>
             <h2 className='create-main-title'>Criar um evento é muito fácil</h2>
             <h3 className='create-headers'>1.Informações principais do evento</h3>
             <p className='create-text'>Pense que todo evento sempre existe um começo, um meio e um fim. Aqui você mostrará qual será o itinerário completo para o seus convidados.</p>
+          
+          <div className='create-first'>
 
-            <input
-              type='text'
-              name='eventTitle'
-              id=''
-              placeholder='Titulo do evento'
-              value={this.state.form.eventTitle}
-            />
-            <input
-              type='text'
-              name='eventDuration'
-              id=''
-              placeholder='Duração do evento'
-              value={this.state.form.eventDuration}
-            />
-            <input
-              type='text'
-              name='typeOfActivity'
-              id=''
-              placeholder='Tipo de atividade'
-              value={this.state.form.typeOfActivity}
-            />
-            <input
-              type='text'
-              name='language'
-              id=''
-              placeholder='Qual língua será falada?'
-            />
+            <div className='create-inputs'>
+
+              <input
+                type='text'
+                name='eventTitle'
+                id=''
+                placeholder='Titulo do evento'
+                value={this.state.form.eventTitle}
+              />
+              <input
+              className='input'
+                type='text'
+                name='eventDuration'
+                id=''
+                placeholder='Duração do evento'
+                value={this.state.form.eventDuration}
+              />
+              </div>
+
+              <div className='create-inputs2'>
+              <input
+                type='text'
+                name='typeOfActivity'
+                id=''
+                placeholder='Tipo de atividade'
+                value={this.state.form.typeOfActivity}
+              />
+              <input
+                type='text'
+                name='language'
+                id=''
+                placeholder='Qual língua será falada?'
+              />
+              </div>
+            </div>
+
             {/* inputs ends*/}
+
             {/* select*/}
             <select onChange={event => this.handleChange(event)} name='city'>
               <option value='1'>São Paulo</option>
@@ -315,8 +327,7 @@ class EventMovie extends Component {
         </form>
           
         </div>
-      </div>
-      </div>
+
     );
   }
 }

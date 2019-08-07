@@ -1,11 +1,23 @@
 .create-container{
   display: flex;
   justify-content: center;
+  background-color: #212121;
 }
 
 .poster-side img{
   width: 65%;
   padding: 10%;
+}
+
+/* Right side */
+
+.create-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 40px;
+  border-radius: 3px;
+  background-color: #212121;
 }
 
 .create-main-title {
@@ -27,4 +39,34 @@
   color:#ffea2f;
   font-weight: 400;
   font-size: 15px;
+}
+
+.create-first{
+  display: flex;
+  
+}
+
+
+.create-inputs{
+  padding-right: 30%;
+  display: flex;
+  flex-direction: column;
+}
+
+.create-inputs2{
+  display: flex;
+  flex-direction: column;
+}
+
+.create-form input{
+  background-color: #191a1b;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #c4c4c4;
+  padding-left: 10px;
+  font-size: 15px;
+  height: 40px;
+  width: 400px;
+  border:none;
+  border-radius: 3px;
 }
