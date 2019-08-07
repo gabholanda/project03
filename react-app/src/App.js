@@ -92,7 +92,7 @@ class App extends Component {
             />
             <Route
               exact
-              path='/filme/:movieId/criar_evento'
+              path='/filme/criar_evento'
               // component={CreateEvent}
               render={() => (
                 <CreateEvent
