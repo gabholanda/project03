@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import "./App.css";
 import Navbar from "./components/navbar/navbar";
 import { Switch, Route } from "react-router-dom";
@@ -12,34 +12,109 @@ import Chat from "./components/eventChat/EventChat.jsx";
 import CreateEvent from "./components/createEvent/CreateEvent.jsx";
 import EditProfile from "./components/editProfile/EditProfile.jsx";
 import Profile from "./components/profile/Profile.jsx";
+import AuthService from "./components/auth/auth-service";
 
-// import Movies from "./components/home.js/index.js";
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loggedInUser: null
+    };
+    this.service = new AuthService();
+  }
 
-function App() {
-  return (
-    <div className='App'>
-      <Navbar />
-      <Switch>
-        <Route exact path='/' component={Home} />
-        <Route exact path='/filme/:movieId' component={Movie} />
-        <Route exact path='/evento/:eventId' component={Event} />
-        <Route exact path='/chat' component={Chat} />
-        <Route exact path='/login' component={Login} />
-        <Route exact path='/signup' component={Signup} />
-        <Route
-          exact
-          path='/usuario/:userId/perfil/editar'
-          component={EditProfile}
-        />
-        <Route exact path='/usuario/:userId/perfil' component={Profile} />
-        <Route
-          exact
-          path='/filme/:movieId/criar_evento'
-          component={CreateEvent}
-        />
-      </Switch>
-    </div>
-  );
+  fetchUser() {
+    if (this.state.loggedInUser === null) {
+      this.service
+        .loggedin()
+        .then(response => {
+          this.setState({
+            loggedInUser: response
+          });
+        })
+        .catch(err => {
+          this.setState({
+            loggedInUser: false
+          });
+        });
+    }
+  }
+
+  getTheUser = userObj => {
+    this.setState({
+      loggedInUser: userObj
+    });
+  };
+
+  render() {
+    this.fetchUser();
+    if (this.state.loggedInUser) {
+      return (
+        <div className='App'>
+          <Navbar
+            userInSession={this.state.loggedInUser}
+            getUser={this.getTheUser}
+          />
+          <Switch>
+            <Route exact path='/' component={Home} />
+            <Route exact path='/filme/:movieId' component={Movie} />
+            <Route exact path='/evento/:eventId' component={Event} />
+            {/* <Route exact path='/chat' component={Chat} /> */}
+            <Route
+              exact
+              path='/login'
+              render={() => <Login getUser={this.getTheUser} />}
+            />
+            <Route
+              exact
+              path='/signup'
+              render={() => <Signup getUser={this.getTheUser} />}
+            />
+            <Route
+              exact
+              path='/usuario/:userId/perfil/editar'
+              component={EditProfile}
+            />
+            <Route exact path='/usuario/:userId/perfil' component={Profile} />
+            <Route exact path='/criar_evento' component={CreateEvent} />
+          </Switch>
+        </div>
+      );
+    } else {
+      return (
+        <div className='App'>
+          <Navbar userInSession={this.state.loggedInUser} />
+          <Switch>
+            <Route exact path='/' component={Home} />
+            <Route exact path='/filme/:movieId' component={Movie} />
+            <Route exact path='/evento/:eventId' component={Event} />
+            {/* <Route exact path='/chat' component={Chat} /> */}
+            <Route
+              exact
+              path='/login'
+              render={() => <Login getUser={this.getTheUser} />}
+            />
+            <Route
+              exact
+              path='/signup'
+              render={() => <Signup getUser={this.getTheUser} />}
+            />
+            <Route
+              exact
+              path='/usuario/:userId/perfil/editar'
+              component={EditProfile}
+            />
+            <Route exact path='/usuario/:userId/perfil' component={Profile} />
+            <Route
+              exact
+              path='/filme/:movieId/criar_evento'
+              component={CreateEvent}
+            />
+          </Switch>
+        </div>
+      );
+    }
+  }
 }
 
 export default App;

@@ -8,7 +8,7 @@ const userSchema = new Schema({
   email: { type: String, required: true },
   age: Number,
   occupation: String,
-  image: String,
+  image: {type: String, default: "http://interfacetreinamentos.com.br/wp-content/uploads/2016/04/img-profile-default.jpg"},
   cellphone: Number,
   confirmationCode: { type: String, required: true },
   status: { type: String, enum: ['active', 'pendent'], default: 'pendent' },

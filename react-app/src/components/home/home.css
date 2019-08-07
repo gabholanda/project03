@@ -1,3 +1,8 @@
+* {
+  /* background-color: #191A1B; */
+  /* background-color: black; */
+}
 .movie-title-section {
   text-align: center;
+  color: yellow;
 }
