@@ -6,7 +6,7 @@ const EventSchema = new Schema(
     eventTitle: String,
     duration: String,
     typeOfActivity: String,
-    language: { type: String, enum: ["Português", "Inglês", "Espanhol"] },
+    language: { type: String },
     city: String,
     date: String,
     theaterId: String,
