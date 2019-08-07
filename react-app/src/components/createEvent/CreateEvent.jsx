@@ -6,13 +6,14 @@ import axios from "axios";
 class EventMovie extends Component {
   constructor(props) {
     super(props);
+    console.log(props);
 
     this.state = {
       city: 1,
       date: "",
       theaterId: "oi",
       sessionId: "",
-      movieId: this.props.match.params.movieId,
+      movieId: this.props.movieId,
       poster: "",
       eventTitle: "",
       eventDuration: "",
@@ -76,7 +77,7 @@ class EventMovie extends Component {
 
   getPoster() {
     axios
-      .get(`http://localhost:5000/api/filme/${this.props.match.params.movieId}`)
+      .get(`http://localhost:5000/api/filme/${this.state.movieId}`)
       .then(responseFromApi => {
         this.setState({
           poster: responseFromApi.data
@@ -89,7 +90,7 @@ class EventMovie extends Component {
     axios
       .get(
         `http://localhost:5000/api/sessions/city/${city}/event/${
-          this.props.match.params.movieId
+          this.state.movieId
         }/date/${date}`
       )
       .then(responseFromApi => {
@@ -153,11 +154,20 @@ class EventMovie extends Component {
   }
 
   componentDidMount() {
+    this.setState({
+      movieId: this.props.movieId
+    })
     this.getPoster();
   }
 
+  // componentWillReceiveProps() {
+  //   this.setState({
+  //     movieId: this.props.match.params.movieId
+  //   });
+  // }
+
   render() {
-    console.log(this.state);
+    console.log(this.props);
 
     return (
       <div className=''>
