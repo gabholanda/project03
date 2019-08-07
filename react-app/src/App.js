@@ -46,7 +46,7 @@ class App extends Component {
     });
   };
 
-  render() {
+  render() {    
     this.fetchUser();
     if (this.state.loggedInUser) {
       return (
@@ -90,8 +90,8 @@ class App extends Component {
       );
     } else {
       return (
-        <div className='App'>
-          <Navbar userInSession={this.state.loggedInUser} />
+        <div className='App' >
+          <Navbar />
           <Switch>
             <Route exact path='/' component={Home} />
             <Route exact path='/filme/:movieId' component={Movie} />
@@ -112,7 +112,6 @@ class App extends Component {
               path='/usuario/:userId/perfil/editar'
               component={EditProfile}
             />
-            <Route exact path='/usuario/:userId/perfil' component={Profile} />
             <Route
               exact
               path='/filme/:movieId/criar_evento'
