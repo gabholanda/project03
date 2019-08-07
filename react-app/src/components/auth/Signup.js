@@ -49,7 +49,7 @@ class Signup extends Component {
               </div>
               <form className='signup-form' onSubmit={this.handleFormSubmit}>
                 <Link to='/'>
-                  <img className='back-home' src='./images/close.svg' alt="home" />
+                  <img className='back-home-signup' src='./images/close.svg' alt="home" />
                 </Link>
                 <input
                   type='text'

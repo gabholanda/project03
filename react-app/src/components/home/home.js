@@ -68,7 +68,7 @@ class Movies extends Component {
 
   render() {
     return (
-      <div className=''>
+      <div>
         {/* <div className='main-movie'>
           <img src={this.state.moviesHigh[0].poster}/>
           <h1>{this.state.moviesHigh[0].title}</h1>
@@ -82,9 +82,9 @@ class Movies extends Component {
           image={this.state.moviesHigh[0].poster}
           way={`filme/${this.state.moviesHigh[0].id}`}
         />
-        <div>
+        <div className='destaques'>
           <div className="movie-title-section">
-            <h2>Destaques</h2>
+            <h2 className='home-destaques'>Destaques</h2>
           </div>
           <Slider>
             {this.state.moviesHigh.map(movie => (
@@ -96,9 +96,10 @@ class Movies extends Component {
             ))}
           </Slider>
         </div>
-        <div>
+              <hr className='home-div'/>
+        <div className='emCartaz'>
           <div className='movie-title-section'>
-            <h2>Em Cartaz</h2>
+            <h2 className='title-emCartaz'>Em Cartaz</h2>
           </div>
           <Slider>
             {this.state.movies.map(movie => (
@@ -110,18 +111,22 @@ class Movies extends Component {
             ))}
           </Slider>
         </div>
-        <div className='movie-title-section'>
-          <div>
-            <h2>Em Breve</h2>
-            <Slider>
-              {this.state.moviesSoon.map(movie => (
-                <Link to={`filme/${movie.id}`}>
-                  <Slider.Item movie={movie} key={movie.id}>
+        
+        <hr className='home-div'/>
+        <div className='emBreve'>
+          <div className='movie-title-section'>
+            <div>
+              <h2 className='title-emBreve'>Em Breve</h2>
+              <Slider>
+                {this.state.moviesSoon.map(movie => (
+                  <Link to={`filme/${movie.id}`}>
+                    <Slider.Item movie={movie} key={movie.id}>
 
-                  </Slider.Item>
-                </Link>
-              ))}
-            </Slider>
+                    </Slider.Item>
+                  </Link>
+                ))}
+              </Slider>
+            </div>
           </div>
         </div>
         <Footer />
