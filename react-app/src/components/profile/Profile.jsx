@@ -55,6 +55,9 @@ class Profile extends Component {
         <div className='myProfile'>
        <div className="image">
         <img src={this.state.user.image}/>
+        <Link to='/edit/profile'>
+          <button>editar perfil</button>
+        </Link>
        </div>
         <div className="about">
 
@@ -71,6 +74,7 @@ class Profile extends Component {
             <h3>Hobbies</h3>
 
             <h3>Lugar favorito</h3>
+
 
           </div>
 

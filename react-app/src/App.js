@@ -72,8 +72,8 @@ class App extends Component {
             />
             <Route
               exact
-              path='/usuario/:userId/perfil/editar'
-              component={EditProfile}
+              path='/edit/profile' 
+              render={() => <EditProfile user={this.state.loggedInUser}/>}
             />
             <Route
               exact
@@ -106,11 +106,6 @@ class App extends Component {
               exact
               path='/signup'
               render={() => <Signup getUser={this.getTheUser} />}
-            />
-            <Route
-              exact
-              path='/usuario/:userId/perfil/editar'
-              component={EditProfile}
             />
             <Route
               exact

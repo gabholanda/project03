@@ -7,20 +7,23 @@ class EditProfile extends Component {
     super(props);
     this.state = {
       name: this.props.user.name,
-      email: this.props.image.user.email,
       image: this.props.user.image,
+      city: "",
+      favoriteMovie: "",
+      about: "", 
+      hobbies: "",
+      favoritePlace: "",
       
     }
   }
 
 
   handleFormSubmit = (event) => {
-    const title = this.state.title;
-    const description = this.state.description;
+    const {name, description} = this.state;
 
     event.preventDefault();
 
-    axios.put(`${process.env.REACT_APP_API_URL}/projects/${this.props.theProject._id}`, { title, description })
+    axios.put(`${process.env.REACT_APP_API_URL}/projects/${this.props.theProject._id}`, { name, description })
       .then(() => {
         // this.props.getTheProject();
         // after submitting the form, redirect to '/projects'
@@ -29,28 +32,34 @@ class EditProfile extends Component {
       .catch(error => console.log(error))
   }
 
-  handleChangeTitle = (event) => {
+  handleChange= (event) => {
     this.setState({
-      title: event.target.value
+      [event.target.name]: event.target.value,
     })
   }
 
-  handleChangeDesc = (event) => {
-    this.setState({
-      description: event.target.value
-    })
-  }
 
   render() {
     return (
       <div>
+      <img src={this.state.image} />
         <hr />
-        <h3>Edit form</h3>
-        <form onSubmit={this.handleFormSubmit}>
-          <label>Title:</label>
-          <input type="text" name="title" value={this.state.title} onChange={e => this.handleChangeTitle(e)} />
-          <label>Description:</label>
-          <textarea name="description" value={this.state.description} onChange={e => this.handleChangeDesc(e)} />
+        <h3>Edit seu perfil</h3>
+        <form onSubmit={this.handleFormSubmit} encType="multipart/form-data">
+          <label>image:</label>
+          <input type="file" name="image" onChange={e => this.handleChange(e)} />
+          <label>name:</label>
+          <input type="text" name="name" value={this.state.name} onChange={e => this.handleChange(e)} />
+          <label>city:</label>
+          <input type="text" name="city" value={this.state.city} onChange={e => this.handleChange(e)} />
+          <label>Sobre Mim</label>
+          <textarea name="about" value={this.state.about} onChange={e => this.handleChange(e)} />
+          <label>Filme favorito</label>
+          <textarea name="favoriteMovie" value={this.state.about} onChange={e => this.handleChange(e)} />
+          <label>Hobbies</label>
+          <input type="text" name="hobbies" value={this.state.hobbies} onChange={e => this.handleChange(e)} />
+          <label>Lugar favorito</label>
+          <input type="text" name="favoritePlace" value={this.state.favoritePlace} onChange={e => this.handleChange(e)} />
 
           <input type="submit" value="Submit" />
         </form>
