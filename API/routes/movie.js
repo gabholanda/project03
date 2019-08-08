@@ -139,4 +139,19 @@ router.get(
   }
 );
 //---------------------------------------------------------------------------------
+// GET route => coming soon movies
+router.get("/cinema/:theaterId", (req, res, next) => {
+  const { theaterId } = req.params;
+  axios
+    .get(`${process.env.INGRESSOS_CINEMA}/${theaterId}?partnership=ironhackapp`)
+    .then(theater => {
+      const theaterName = {
+        name: theater.data.name,
+        address: theater.data.address
+      };
+      res.json(theaterName);
+    })
+    .catch(err => console.log(err));
+});
+//--------------------------------------------------------------------------------------
 module.exports = router;
