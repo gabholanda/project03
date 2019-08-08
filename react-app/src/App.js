@@ -50,11 +50,12 @@ class App extends Component {
   };
 
   getTheUser = userObj => {
+    console.log('-------> user atualizado', this.state.loggedInUser);
     this.setState({
       loggedInUser: userObj
     });
   };
-
+  
   render() {
     this.fetchUser();
     if (this.state.loggedInUser) {
@@ -86,15 +87,16 @@ class App extends Component {
               render={() => <Signup getUser={this.getTheUser} />}
             />
             <ProtectedRoute
+              user={this.state.loggedInUser}
               exact
               path='/edit/profile'
-              render={(props) => <EditProfile {...props} user={this.state.loggedInUser} />}
+              render={(props) => <EditProfile {...props} user={this.state.loggedInUser} getUser={this.getTheUser}/>}
             />
             <ProtectedRoute
               user={this.state.loggedInUser}
               exact
               path='/usuario/perfil'
-              render={(props) => <Profile {...props} user={this.state.loggedInUser} />}
+              render={(props) => <Profile {...props} user={this.state.loggedInUser} getUser={this.getTheUser}/>}
             />
             <ProtectedRoute
               user={this.state.loggedInUser}

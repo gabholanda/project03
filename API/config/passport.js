@@ -38,4 +38,4 @@ passport.use(new LocalStrategy((username, password, next) => {
   });
 }));
 
-export module passport
+module.exports = passport;

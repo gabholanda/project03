@@ -113,7 +113,11 @@ class Movies extends Component {
             {this.state.movies.map(movie => (
               <Link
                 to={`filme/${movie.id}`}
-                onClick={() => this.props.getMovieId(movie.id)}
+                onClick={() => {
+                  if(this.props.getMovieId) {
+                    this.props.getMovieId(movie.id)
+                  }
+                }}
                 key={movie.id}
               >
                 <Slider.Item movie={movie} key={movie.id}>
@@ -133,8 +137,11 @@ class Movies extends Component {
                 {this.state.moviesSoon.map(movie => (
                   <Link
                     to={`filme/${movie.id}`}
-                    onClick={() => this.props.getMovieId(movie.id)}
-                    key={movie.id}
+                    onClick={() => {
+                      if(this.props.getMovieId) {
+                        this.props.getMovieId(movie.id)
+                      }
+                    }}                    key={movie.id}
                   >
                     <Slider.Item movie={movie} key={movie.id} />
                   </Link>
