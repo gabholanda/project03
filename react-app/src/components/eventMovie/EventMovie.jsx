@@ -64,6 +64,7 @@ class EventMovie extends Component {
   render() {
       return (
         <div className=''>
+          {/* breadcrumb */}
           <nav aria-label='breadcrumb'>
             <ol className='breadcrumb'>
               <li className='breadcrumb-item'>
@@ -77,7 +78,9 @@ class EventMovie extends Component {
               </li>
             </ol>
           </nav>
-          <img className='' src={this.state.movie.posterV} alt='' />
+          {/* breadcrumb end */}
+
+          <img className='' src={this.state.movie.posterV} alt='poster-movie' />
           <div>
             <button className=''>
               <Link to='www.google.com.br'>Sair do grupo</Link>
