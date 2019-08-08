@@ -3,6 +3,9 @@ import "./App.css";
 import Navbar from "./components/navbar/navbar";
 import { Switch, Route } from "react-router-dom";
 
+import ProtectedRoute from "./components/auth/protected-routes"
+import ProtectedAuthRoute from './components/auth/protected-auth-routes'
+
 import Home from "./components/home/home";
 import Signup from "./components/auth/Signup";
 import Login from "./components/auth/Login";
@@ -52,7 +55,7 @@ class App extends Component {
     });
   };
 
-  render() {    
+  render() {
     this.fetchUser();
     if (this.state.loggedInUser) {
       return (
@@ -70,27 +73,31 @@ class App extends Component {
             <Route exact path='/filme/:movieId' component={Movie} />
             <Route exact path='/evento/:eventId' component={Event} />
             {/* <Route exact path='/chat' component={Chat} /> */}
-            <Route
+            <ProtectedAuthRoute
+              user={this.state.loggedInUser}
               exact
               path='/login'
               render={() => <Login getUser={this.getTheUser} />}
             />
-            <Route
+            <ProtectedAuthRoute
+              user={this.state.loggedInUser}
               exact
               path='/signup'
               render={() => <Signup getUser={this.getTheUser} />}
             />
-            <Route
+            <ProtectedRoute
               exact
-              path='/edit/profile' 
-              render={(props) => <EditProfile {...props} user={this.state.loggedInUser}/>}
+              path='/edit/profile'
+              render={(props) => <EditProfile {...props} user={this.state.loggedInUser} />}
             />
-            <Route
+            <ProtectedRoute
+              user={this.state.loggedInUser}
               exact
               path='/usuario/perfil'
               render={(props) => <Profile {...props} user={this.state.loggedInUser} />}
             />
-            <Route
+            <ProtectedRoute
+              user={this.state.loggedInUser}
               exact
               path='/filme/:movieId/criar_evento'
               // component={CreateEvent}
@@ -101,8 +108,10 @@ class App extends Component {
                 />
               )}
             />
-            <Route exact path='/usuario/perfil' render={() => <Profile user={this.state.loggedInUser} />} />
-            {/* <Route exact path='filme/:movieId/criar_evento' component={CreateEvent} /> */}
+            <ProtectedRoute
+              user={this.state.loggedInUser}
+              exact path='/usuario/perfil'
+              render={() => <Profile user={this.state.loggedInUser} />} />
           </Switch>
         </div>
       );
@@ -115,21 +124,48 @@ class App extends Component {
             <Route exact path='/filme/:movieId' component={Movie} />
             <Route exact path='/evento/:eventId' component={Event} />
             {/* <Route exact path='/chat' component={Chat} /> */}
-            <Route
+            <ProtectedAuthRoute
               exact
               path='/login'
               render={() => <Login getUser={this.getTheUser} />}
             />
-            <Route
+            <ProtectedAuthRoute
               exact
               path='/signup'
               render={() => <Signup getUser={this.getTheUser} />}
             />
-            <Route
+            <ProtectedRoute
+              exact
+              path='/edit/profile'
+              render={(props) => <EditProfile {...props} user={this.state.loggedInUser} />}
+            />
+            <ProtectedRoute
+              user={this.state.loggedInUser}
+              exact
+              path='/usuario/perfil'
+              render={(props) => <Profile {...props} user={this.state.loggedInUser} />}
+            />
+            <ProtectedRoute
+              user={this.state.loggedInUser}
+              exact
+              path='/filme/:movieId/criar_evento'
+              // component={CreateEvent}
+              render={() => (
+                <CreateEvent
+                  // user={this.state.loggedInUser}
+                  movieId={this.state.movieId}
+                />
+              )}
+            />
+            <ProtectedRoute
+              user={this.state.loggedInUser}
+              exact path='/usuario/perfil'
+              render={() => <Profile user={this.state.loggedInUser} />} />
+            {/* <Route
               exact
               path='/filme/:movieId/criar_evento'
               component={CreateEvent}
-            />
+            /> */}
           </Switch>
         </div>
       );

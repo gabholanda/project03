@@ -90,7 +90,11 @@ class Movies extends Component {
             {this.state.moviesHigh.map(movie => (
               <Link
                 to={`filme/${movie.id}`}
-                onClick={() => this.props.getMovieId(movie.id)}
+                onClick={() => {
+                  if(this.props.getMovieId) {
+                    this.props.getMovieId(movie.id)
+                  }
+                }}
                 key={movie.id}
               >
                 <Slider.Item movie={movie} key={movie.id}>
