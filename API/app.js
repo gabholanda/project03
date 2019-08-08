@@ -11,9 +11,9 @@ const path = require("path");
 const bcrypt = require("bcrypt");
 const cors = require("cors");
 const session = require("express-session");
-const passport = require("passport");
+const passport = require("./config/passport");
 
-require('./config/passport');
+
 
 mongoose
   .connect(process.env.MONGODB_URI, { useNewUrlParser: true })

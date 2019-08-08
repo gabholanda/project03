@@ -82,13 +82,14 @@ class Movie extends Component {
   render() {
     console.log(this.state.events);
     const backgroundMovie = {
-      backgroundImage: `url(${this.state.movie.posterH})`,
+      backgroundImage: `linear-gradient(0deg, rgba(0,0,0,0.8827906162464986) 0%, rgba(255,255,255,0) 90%),
+      url(${this.state.movie.posterH})`,
       height: "500px",
       backgroundPosition: "center",
       backgroundSize: "cover",
       backgroundRepeat: "no-repeat",
       objectFit: "cover",
-      filter: "blur(5px)"
+      // filter: "blur(5px)"
     };
 
     return (
