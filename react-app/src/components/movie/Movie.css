@@ -168,6 +168,12 @@
   font-size: 25px;
 }
 
+.active-aligned{
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+}
+
 .active-saiba-mais{
   margin-top: 20px;
   margin-right: 200px;

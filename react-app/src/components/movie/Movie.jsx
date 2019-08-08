@@ -137,26 +137,32 @@ class Movie extends Component {
 
               {/* events */}
               <h2 className='eventos'>Eventos</h2>
+              
+
               {this.state.events.map(event => {
                 this.getTheater(event.theaterId);
                 return (
-                  <div key={event.id}>
-                    <h3 className=''>{event.movieDate}</h3>
-                    <h4 className=''>{event.typeOfActivity}</h4>
-                    <h3 className=''>{event.title}</h3>
-                    <h5 className=''>
+                  <div className='movie-events'>
+                  <div className='' className={event.id}>
+                    <div className='active-aligned'>
+                    <h3 className='movie-type'>{event.movieDate}</h3>
+                    <h4 className='movie-type'>{event.typeOfActivity}</h4>
+                    </div>
+                    <h3 className='movie-title'>{event.title}</h3>
+                    <h5 className='movie-type'>
                       {this.state.theaterName.name}
                       {" - "}
                       {this.state.theaterName.address}
                     </h5>
-
                     {/* know more about this event */}
-                    <button className=''>
+                    <button className='active-saiba-mais'>
                       <Link to={`/evento/${event.id}`}>Saiba Mais</Link>
                     </button>
                   </div>
+                  </div>
                 );
               })}
+                
 
               <br />
               <button className='create-event'>
