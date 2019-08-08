@@ -37,3 +37,5 @@ passport.use(new LocalStrategy((username, password, next) => {
     next(null, foundUser);
   });
 }));
+
+module.exports = passport;

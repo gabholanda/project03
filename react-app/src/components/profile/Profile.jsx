@@ -13,52 +13,32 @@ class Profile extends Component {
     this.status = true;
   }
 
-  // getUser = () => {
-  //   axios
-  //     .get(`http://localhost:5000/api/filme/${this.props.match.params.movieId}`)
-  //     .then(responseFromApi => {
-  //       this.setState({
-  //         user: responseFromApi.data
-  //       });
-  //     })
-  //     .catch(error => console.log(error));
-  // };
 
-  // getEvents = () => {
-  //   axios
-  //     .get(
-  //       `http://localhost:5000/api/events/${this.props.match.params.movieId}`
-  //     )
-  //     .then(responseFromApi => {
-  //       this.setState({
-  //         events: responseFromApi.data
-  //       });
-  //     })
-  //     .catch(error => console.log(error));
-  // };
 
   componentDidMount() {
-   console.log(this.state.user)
-   this.setState({
-     status: true
-   })
+    this.setState({
+      status: true,
+      user: this.props.user
+    })
+    console.log('------------>',this.props.user)
   }
 
   render() {
     if(!this.status){
-      console.log('STATUS FALSE')
       return (
         <div></div>
       )
     } else {
-      console.log('STATUS TRUE')
       return (
         <div>
         <div className='myProfile'>
 
           <div className='profile-left'>
           <div className='profile-avatar'>
-            <img src={this.state.user.image}/>
+            <img src={this.state.user.image} alt="my-image-profile"/>
+            <Link to ="/edit/profile">
+            <button>editar perfil</button>
+            </Link>
           </div>
 
           <Link to ="/edit/profile">

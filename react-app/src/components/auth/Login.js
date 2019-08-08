@@ -36,7 +36,7 @@
           <form className='login-form'onSubmit={this.handleFormSubmit}>
           <Link to='/'><img className='back-home' src='./images/close.svg' alt ="home-logo"/></Link>
         
-          <h3 className='login-title'>Entre agora na melhor de rede de eventos de cinema do Brasil</h3>
+          <h3 className='login-title'>Entre agora na melhor rede de eventos de cinema do Brasil</h3>
   
             <input
               type='text'

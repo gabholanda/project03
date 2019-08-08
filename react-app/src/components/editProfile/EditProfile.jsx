@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './EditProfile.css';
+import service from '../../api/service'
+import { Redirect } from 'react-router-dom'
 import Footer from "../footer/footer";
 
 class EditProfile extends Component {
@@ -14,7 +16,7 @@ class EditProfile extends Component {
       about: this.props.user.about, 
       hobbies: this.props.user.hobbies,
       favoritePlace: this.props.user.favorite, 
-      
+      flag: false,
     }
   }
 
@@ -26,8 +28,13 @@ class EditProfile extends Component {
     console.log("...............", process.env.REACT_APP_API_URL)
 
     axios.put(`${process.env.REACT_APP_API_URL}/editUser/${this.props.user._id}`, { name, image, city, favoriteMovie, about, hobbies, favoritePlace })
-      .then(() => {
-        this.props.history.push('/');
+    .then((user) => {
+        this.props.getUser(null);
+        this.setState({       
+          flag: true
+        })
+      
+        // console.log('updated>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>', user)
       })
       .catch(error => console.log(error))
   }
@@ -38,6 +45,26 @@ class EditProfile extends Component {
     })
   }
 
+  handleFileUpload = e => {
+    console.log("The file to be uploaded is: ", e.target.files[0]);
+
+    const uploadData = new FormData();
+    // imageUrl => this name has to be the same as in the model since we pass
+    // req.body to .create() method when creating a new thing in '/api/things/create' POST route
+    uploadData.append("image", e.target.files[0]);
+    
+    service.handleUpload(uploadData)
+    .then(response => {
+        // console.log('response is: ', response);
+        // after the console.log we can see that response carries 'secure_url' which we can use to update the state 
+        this.setState({ 
+          image: response.secure_url });
+      })
+      .catch(err => {
+        console.log("Error while uploading the file: ", err);
+      });
+}
+
 
   render() {
     return (
@@ -47,8 +74,8 @@ class EditProfile extends Component {
 
         
         <div className='profile-edit-left'>
-           <img className='profile-avatar' src={this.state.image} />
-          <input className='button-send-file'type="file" name="image" onChange={e => this.handleChange(e)} />
+           <img className='profile-avatar' src={this.state.image} alt="my-image-profile"/>
+          <input className='button-send-file'type="file" name="image" onChange={e => this.handleFileUpload(e)} />
             <label>image:</label>
 
         </div>
@@ -81,5 +108,6 @@ class EditProfile extends Component {
     )
   }
 }
+
 
 export default EditProfile;

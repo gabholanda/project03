@@ -5,11 +5,24 @@ const passport = require('passport');
 const bcrypt = require('bcryptjs');
 const nodemailer = require('nodemailer');
 const mongoose = require('mongoose')
+const uploader = require('../config/cloudinary');
 
 // router.get('/signup', (req, res, next) => {
 //   res.render('index');
 // })
 
+
+router.post('/upload', uploader.single("image"), (req, res, next) => {
+    // console.log('file is: ', req.file)
+
+    if (!req.file) {
+      next(new Error('No file uploaded!'));
+      return;
+    }
+    // get secure_url from the file object and save it in the 
+    // variable 'secure_url', but this can be any name, just make sure you remember to use the same in frontend
+    res.json({ secure_url: req.file.secure_url });
+})
 
 router.post('/signup', (req, res, next) => {
   const { username, password, name, email } = req.body;
@@ -98,8 +111,7 @@ router.post('/login', (req, res, next) => {
 
 
 // PUT route => to update a specific project
-router.put('/editUser/:id', (req, res, next) => {
-  console.log('éntrou no puttttttt')
+router.put('/editUser/:id', uploader.single("image"), (req, res, next) => {
   if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
     console.log(req.params._id)
     res.status(400).json({ message: 'Specified id is not valid' });
