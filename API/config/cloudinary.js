@@ -8,16 +8,16 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_SECRET
 });
 
-var storage = cloudinaryStorage({
-  cloudinary: cloudinary,
-  folder: "events-interation",
-  allowedFormats: ["jpg", "png"],
-  filename: function(req, file, cb) {
-    cb(null, file.filename);
-  }
-});
+// var storage = cloudinaryStorage({
+//   cloudinary: cloudinary,
+//   folder: "events-interation",
+//   allowedFormats: ["jpg", "png"],
+//   filename: function(req, file, cb) {
+//     cb(null, file.filename);
+//   }
+// });
 
-const uploadCloudCompany = multer({ storage: storage });
+// const uploadCloudCompany = multer({ storage: storage });
 
 var userStorage = cloudinaryStorage({
   cloudinary: cloudinary,
@@ -30,4 +30,4 @@ var userStorage = cloudinaryStorage({
 
 const uploadCloudUser = multer({ storage: userStorage });
 
-module.exports = { uploadCloudCompany, uploadCloudUser };
+module.exports =  uploadCloudUser;

@@ -31,7 +31,7 @@ router.get("/destaques", (req, res, next) => {
           title: movie.event.title,
           image: movie.event.images[0].url,
           poster: movie.event.images[1].url,
-          trailer: movie.event.trailers[0] || 'none',
+          trailer: movie.event.trailers[0] || "none",
           description: movie.event.synopsis
         };
       });
@@ -139,4 +139,19 @@ router.get(
   }
 );
 //---------------------------------------------------------------------------------
+// GET route => coming soon movies
+router.get("/cinema/:theaterId", (req, res, next) => {
+  const { theaterId } = req.params;
+  axios
+    .get(`${process.env.INGRESSOS_CINEMA}/${theaterId}?partnership=ironhackapp`)
+    .then(theater => {
+      const theaterName = {
+        name: theater.data.name,
+        address: theater.data.address
+      };
+      res.json(theaterName);
+    })
+    .catch(err => console.log(err));
+});
+//--------------------------------------------------------------------------------------
 module.exports = router;

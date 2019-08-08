@@ -24,10 +24,11 @@ router.get("/events/:movieId", (req, res, next) => {
       const event = allTheEvents.map(event => {
         return {
           id: event._id,
-          title: event.title,
+          title: event.eventTitle,
           place: event.place,
-          movieDate: event.movieDate,
-          typeOfActivity: event.typeOfActivity
+          movieDate: event.date,
+          typeOfActivity: event.typeOfActivity,
+          theaterId: event.theaterId
         };
       });
       res.json(event);
@@ -55,11 +56,11 @@ router.post("/events", (req, res, next) => {
     thirdInterationTitle,
     thirdInterationDescription,
     host,
-    movieId,
+    movieId
   } = req.body.form;
 
   const newEvent = new Event({
-    title: eventTitle,
+    eventTitle: eventTitle,
     duration: eventDuration,
     typeOfActivity: typeOfActivity,
     language: language,
@@ -90,7 +91,7 @@ router.post("/events", (req, res, next) => {
         })
         .catch(err => res.status(400).json(err));
     })
-    .catch(e => res.status(200).json(e))
+    .catch(e => res.status(200).json(e));
 
   // User receives the event as it's host and event list
 

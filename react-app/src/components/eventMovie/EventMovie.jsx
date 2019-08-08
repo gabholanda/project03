@@ -79,37 +79,40 @@ class EventMovie extends Component {
   }
 
   render() {
-    return (
-      <div className=''>
-        <nav aria-label='breadcrumb'>
-          <ol className='breadcrumb'>
-            <li className='breadcrumb-item'>
-              <Link to='/'>Início</Link>
-            </li>
-            <li className='breadcrumb-item'>
-              <Link to={`/filme/${this.state.event.movieId}`}>Filme</Link>
-            </li>
-            <li className='breadcrumb-item active' aria-current='page'>
-              Evento
-              </li>
-          </ol>
-        </nav>
-        <img className='' src={this.state.movie.posterV} alt='' />
-        <div>
-          <button className=''>
-            <Link to='www.google.com.br'>Sair do grupo</Link>
-          </button>
-          <button className=''>
-            <Link to='www.google.com.br'>Editar evento</Link>
-          </button>
-        </div>
+      return (
         <div className=''>
-          <h3 className=''>{this.state.event.typeOfActivity}</h3>
-          <h1 className=''>{this.state.event.title}</h1>
-          <p className=''>{this.state.event.dateMovie}</p>
-          <hr />
-          <p className=''>
-            O evento tem duração de {this.state.event.duration} minutos
+          {/* breadcrumb */}
+          <nav aria-label='breadcrumb'>
+            <ol className='breadcrumb'>
+              <li className='breadcrumb-item'>
+                <Link to='/'>Início</Link>
+              </li>
+              <li className='breadcrumb-item'>
+                <Link to={`/filme/${this.state.event.movieId}`}>Filme</Link>
+              </li>
+              <li className='breadcrumb-item active' aria-current='page'>
+                Evento
+              </li>
+            </ol>
+          </nav>
+          {/* breadcrumb end */}
+
+          <img className='' src={this.state.movie.posterV} alt='poster-movie' />
+          <div>
+            <button className=''>
+              <Link to='www.google.com.br'>Sair do grupo</Link>
+            </button>
+            <button className=''>
+              <Link to='www.google.com.br'>Editar evento</Link>
+            </button>
+          </div>
+          <div className=''>
+            <h3 className=''>{this.state.event.typeOfActivity}</h3>
+            <h1 className=''>{this.state.event.title}</h1>
+            <p className=''>{this.state.event.dateMovie}</p>
+            <hr />
+            <p className=''>
+              O evento tem duração de {this.state.event.duration} minutos
             </p>
           <p className=''>As pessoas falam {this.state.event.language}</p>
           <p className=''>

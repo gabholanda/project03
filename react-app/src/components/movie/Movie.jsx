@@ -8,7 +8,7 @@ class Movie extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { movie: 0, events: [] };
+    this.state = { movie: 0, events: [], theaterName: "" };
   }
 
   getMovie = () => {
@@ -31,6 +31,17 @@ class Movie extends Component {
         })
         .catch(error => console.log(error));
     }
+  };
+
+  getTheater = theaterId => {
+    axios
+      .get(`http://localhost:5000/api/cinema/${theaterId}`)
+      .then(responseFromApi => {
+        this.setState({
+          theaterName: responseFromApi.data
+        });
+      })
+      .catch(error => console.log(error));
   };
 
   // getMovie = () => {
@@ -90,17 +101,18 @@ class Movie extends Component {
   }
 
   render() {
-
-    const backgroundMovie =
-    {
-      backgroundImage: `url(${this.state.movie.posterH})`,
+    console.log(this.state.events);
+    const backgroundMovie = {
+      backgroundImage: `linear-gradient(0deg, rgba(0,0,0,0.8827906162464986) 0%, rgba(255,255,255,0) 90%),
+      url(${this.state.movie.posterH})`,
       height: "500px",
       backgroundPosition: "center",
       backgroundSize: "cover",
       backgroundRepeat: "no-repeat",
       objectFit: "cover",
-      filter: "blur(5px)",
-    }
+      // filter: "blur(5px)"
+    };
+
     return (
       <div className='movie-page'>
         {/* breadcrumb */}
@@ -116,24 +128,21 @@ class Movie extends Component {
         </nav>
 
         {/* Bg movie */}
-        <div className='bg-movie-onmovie' style={backgroundMovie}>
-
-        </div>
+        <div className='bg-movie-onmovie' style={backgroundMovie} />
         {/* movie poster */}
 
-        <div className="movie-details">
-
+        <div className='movie-details'>
           <div className='otherInfo'>
-
-            <figure className="movie-poster">
+            <figure className='movie-poster'>
               <img src={this.state.movie.posterV} alt='' />
             </figure>
 
-            <div className="movie-info">
-
+            <div className='movie-info'>
               <h1 className='title-movie'>{this.state.movie.title}</h1>
               <p className='title-genre'>{this.state.movie.genre}</p>
-              <p className='title-duration'>{this.state.movie.duration} minutos</p>
+              <p className='title-duration'>
+                {this.state.movie.duration} minutos
+              </p>
               <button className='trailer-link'>
                 <img className='play-icon' src='../images/play.svg' alt='' />
                 <a
@@ -151,38 +160,42 @@ class Movie extends Component {
                 <p className=''>{this.state.movie.sinopse}</p>
               </div>
 
-              <hr className='movie-div'></hr>
+              <hr className='movie-div' />
 
               {/* events */}
               <h2 className='eventos'>Eventos</h2>
-              {this.state.events.map(event => {
-                return (
-                  <div key={event.id}>
-                    <h3 className=''>{event.dateMovie}</h3>
-                    <h4 className=''>{event.typeOfActivity}</h4>
-                    <h3 className=''>{event.title}</h3>
-                    <h5 className=''>{event.place}</h5>
+              
 
+              {this.state.events.map(event => {
+                // this.getTheater(event.theaterId);
+                return (
+                  <div className='movie-events'>
+                  <div className='' key={event.id}>
+                    <div className='active-aligned'>
+                    <h3 className='movie-type'>{event.movieDate}</h3>
+                    <h4 className='movie-type'>{event.typeOfActivity}</h4>
+                    </div>
+                    <h3 className='movie-title'>{event.title}</h3>
+                    <h5 className='movie-type'>
+                      {this.state.theaterName.name}
+                      {" - "}
+                      {this.state.theaterName.address}
+                    </h5>
                     {/* know more about this event */}
-                    <button className=''>
-                      <Link to={`/evento/${event.id}`}
-                        onClick={() => {
-                          if (this.props.getEventId) {
-                            this.props.getEventId(event.id)
-                          }
-                        }}
-                      >Saiba Mais</Link>
+                    <button className='active-saiba-mais'>
+                      <Link to={`/evento/${event.id}`}>Saiba Mais</Link>
                     </button>
+                  </div>
                   </div>
                 );
               })}
-
+                
 
               <br />
               <button className='create-event'>
-                <Link to={`${this.props.movieId}/criar_evento`}>
+                <Link to={`${this.props.match.params.movieId}/criar_evento`}>
                   + Quero criar um evento
-                      </Link>
+                </Link>
               </button>
             </div>
           </div>
