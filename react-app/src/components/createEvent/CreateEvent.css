@@ -66,15 +66,12 @@
   box-shadow:0px 21px 31px -18px rgba(0,0,0,0.75);
 }
 
-
-
 .create-first{
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
   
 }
-
 
 .create-inputs{
   display: flex;
