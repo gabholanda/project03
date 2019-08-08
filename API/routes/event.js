@@ -172,4 +172,7 @@ router.delete("/events/:id", (req, res, next) => {
     });
 });
 
+// Join in a user to the event
+// router.put("/events/add_user/:id")
+
 module.exports = router;

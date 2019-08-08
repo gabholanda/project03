@@ -29,7 +29,6 @@ class EventMovie extends Component {
           movieId: "",
           host: {
             name: '',
-            // Inserir aqui informações extras do host para descrever o evento
           }
         }
     };
@@ -39,9 +38,11 @@ class EventMovie extends Component {
     axios
       .get(`http://localhost:5000/api/event/${this.props.match.params.eventId}`)
       .then(responseFromApi => {
+        console.log(responseFromApi)
         this.setState({
           event: responseFromApi.data
         });
+        console.log()
       })
       .catch(error => console.log(error));
   };
@@ -62,6 +63,8 @@ class EventMovie extends Component {
   }
   
   render() {
+    console.log(this.state)
+    console.log(this.state.event.host.name)
       return (
         <div className=''>
           <nav aria-label='breadcrumb'>
