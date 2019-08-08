@@ -77,7 +77,7 @@ class EventMovie extends Component {
 
   getPoster() {
     axios
-      .get(`http://localhost:5000/api/filme/${this.state.movieId}`)
+      .get(`${process.env.REACT_APP_API_URL}/filme/${this.state.movieId}`)
       .then(responseFromApi => {
         this.setState({
           poster: responseFromApi.data
@@ -89,7 +89,7 @@ class EventMovie extends Component {
   getEvents(city, date) {
     axios
       .get(
-        `http://localhost:5000/api/sessions/city/${city}/event/${
+        `${process.env.REACT_APP_API_URL}/sessions/city/${city}/event/${
           this.state.movieId
         }/date/${date}`
       )
@@ -149,7 +149,7 @@ class EventMovie extends Component {
       thirdInterationDescription
     };
     axios
-      .post(`http://localhost:5000/api/events`, { form })
+      .post(`${process.env.REACT_APP_API_URL}/events`, { form })
       .then(responseFromApi => {
         //console.log(responseFromApi) // Descomentar isso se quiser ver se criou mesmo
         this.setState({

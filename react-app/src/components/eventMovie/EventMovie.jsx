@@ -37,20 +37,32 @@ class EventMovie extends Component {
   }
 
   getEvents = () => {
-    axios
-      .get(`http://localhost:5000/api/event/${this.props.match.params.eventId}`)
-      .then(responseFromApi => {
-        this.setState({
-          event: responseFromApi.data
-        });
-        this.getMovie(responseFromApi.data.movieId);
-      })
-      .catch(error => console.log(error));
+    if (this.props.eventId) {
+      axios
+        .get(`${process.env.REACT_APP_API_URL}/event/${this.props.eventId}`)
+        .then(responseFromApi => {
+          this.setState({
+            event: responseFromApi.data
+          });
+          this.getMovie(responseFromApi.data.movieId);
+        })
+        .catch(error => console.log(error));
+    } else {
+      axios
+        .get(`${process.env.REACT_APP_API_URL}/event/${this.props.match.params.eventId}`)
+        .then(responseFromApi => {
+          this.setState({
+            event: responseFromApi.data
+          });
+          this.getMovie(responseFromApi.data.movieId);
+        })
+        .catch(error => console.log(error));
+    }
   };
 
   getMovie = movieId => {
     axios
-      .get(`http://localhost:5000/api/filme/${movieId}`)
+      .get(`${process.env.REACT_APP_API_URL}/filme/${movieId}`)
       .then(responseFromApi => {
         this.setState({
           posterV: responseFromApi.data.posterV
@@ -68,7 +80,14 @@ class EventMovie extends Component {
   //     })
   //     .catch(error => console.log(error));
   // };
-
+  enterEvent() {
+    axios
+      .put(`http://localhost:5000/api/join-event/${this.props.eventId}/user/${this.props.user._id}`)
+      .then(responseFromApi => {
+        console.log(responseFromApi)
+      })
+      .catch(error => console.log(error));
+  }
   componentDidMount() {
     this.getEvents();
   }
@@ -76,7 +95,6 @@ class EventMovie extends Component {
   render() {
     return (
       <>
-      {/* breadcrumb */}
         <nav aria-label='breadcrumb'>
           <ol className='breadcrumb'>
             <li className='breadcrumb-item'>
@@ -90,9 +108,7 @@ class EventMovie extends Component {
             </li>
           </ol>
         </nav>
-        {/* breadcrumb end*/}
         <div className='eventPage'>
-
           <div className='eventPage-left'>
             {/* image */}
             <img className='event-poster' src={this.state.posterV} alt='' />
@@ -196,25 +212,10 @@ class EventMovie extends Component {
             <h2 className=''>Sinopse</h2>
             <p className=''>{this.state.movie.sinopse}</p>
           </div>
-          <hr className='' />
-          <div>
-            <h2 className=''>Eventos</h2>
-            {this.state.events.map(event => {
-              return (
-                <div>
-                  <h3 className=''>{event.dateMovie}</h3>
-                  <h4 className=''>{event.typeOfActivity}</h4>
-                  <h3 className=''>{event.title}</h3>
-                  <h5 className=''>{event.place}</h5>
-                  <button className=''>
-                    <Link to='www.google.com.br'>Saiba Mais</Link>
-                  </button>
-                </div>
-              );
-            })}
-  
-            <button className=''>
-              <Link to='www.google.com.br'>+ Criar um evento</Link>
-            </button> */}
-
+        </div>
+        <Footer />
+      </>
+    );
+  }
+}
 export default EventMovie;

@@ -38,6 +38,29 @@ router.get("/events/:movieId", (req, res, next) => {
     });
 });
 
+// GET route => to get all the events by user
+router.get("/events-by-user/:userId", (req, res, next) => {
+  const userId = req.params.userId;
+
+  Event.find({ host: { $eq: userId } })
+    .then(allTheEvents => {
+      const event = allTheEvents.map(event => {
+        return {
+          id: event._id,
+          title: event.eventTitle,
+          place: event.place,
+          movieDate: event.date,
+          typeOfActivity: event.typeOfActivity,
+          theaterId: event.theaterId
+        };
+      });
+      res.json(event);
+    })
+    .catch(err => {
+      res.json(err);
+    });
+});
+
 // POST route => to create a new event
 router.post("/events", (req, res, next) => {
   const {
@@ -75,20 +98,14 @@ router.post("/events", (req, res, next) => {
     thirdInterationTitle,
     thirdInterationDescription,
     host: host,
-    movieId: movieId
+    movieId: movieId,
+    members: [host]
   });
   Event.create(newEvent)
     .then(response => {
-      User.findByIdAndUpdate(host._id, {
-        $push: { events: newEvent, host: newEvent }
-      })
+      User.findByIdAndUpdate(host._id, { $push: { events: newEvent, host: newEvent } })
         .then(user => {
-          // The event receives the event host as a member
-          Event.findOneAndUpdate({ host: user }, { $push: { members: user } })
-            .then(() =>
-              res.status(200).json({ message: "Event created successfuly" })
-            )
-            .catch(err => res.json(err));
+          res.status(200).json({ message: "Event created successfuly" })
         })
         .catch(err => res.status(400).json(err));
     })
@@ -130,7 +147,7 @@ router.get("/event/:id", (req, res, next) => {
   }
 
   Event.findById(req.params.id)
-  .populate('host')
+    .populate("host")
     .then(response => {
       res.status(200).json(response);
     })
@@ -174,5 +191,25 @@ router.delete("/events/:id", (req, res, next) => {
       res.json(err);
     });
 });
+
+// Join in a user to the event
+router.put("/join-event/:eventId/user/:userId", (req, res, next) => {
+  const userId = req.params.userId;
+  const eventId = req.params.eventId;
+  User.findByIdAndUpdate(userId, { $push: { events: eventId } })
+    .then(user => {
+      Event.findByIdAndUpdate(eventId, { $push: { members: userId } })
+        .then(() =>
+          res.json({
+            message: `You have joined the event successfully!`
+          }))
+        .catch(err => {
+          res.json(err);
+        })
+    })
+    .catch(err => {
+      res.json(err);
+    })
+})
 
 module.exports = router;
