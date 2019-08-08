@@ -188,7 +188,7 @@ class EventMovie extends Component {
             </div>
 
             <button className='event-button-exit2'>
-              <Link to='www.google.com.br'>Sair do grupo</Link>
+              <Link to='www.google.com.br' onClick={() => this.enterEvent()}>Participar</Link>
             </button>
         </div>
         </div>
@@ -198,25 +198,5 @@ class EventMovie extends Component {
           );
         }
       }
-          {/* <button className=''>
-              <a
-                target='_blank'
-                rel='noopener noreferrer'
-                href={this.state.movie.trailer}
-              >
-                Traler
-              </a>
-            </button>
-          </div>
-          <hr className='' />
-          <div className=''>
-            <h2 className=''>Sinopse</h2>
-            <p className=''>{this.state.movie.sinopse}</p>
-          </div>
-        </div>
-        <Footer />
-      </>
-    );
-  }
-}
-export default EventMovie;
+      export default EventMovie;
+
