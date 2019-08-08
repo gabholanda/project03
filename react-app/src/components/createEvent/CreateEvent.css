@@ -1,12 +1,28 @@
+
 .create-container{
   display: flex;
   justify-content: center;
   background-color: #212121;
+  flex-wrap: wrap;
 }
 
-.poster-side img{
-  width: 65%;
-  padding: 10%;
+.poster-side{
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+  height: 400px;
+  width: 400px;
+  padding: 40px;
+}
+
+.poster-movie{
+  width: 100%;
+  box-shadow:0px 21px 31px -18px rgba(0,0,0,0.75);
+}
+
+.poster-submit{
+  padding: 3%;
 }
 
 /* Right side */
@@ -14,14 +30,14 @@
 .create-form{
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  padding: 40px;
+  flex-wrap: wrap;
   border-radius: 3px;
   background-color: #212121;
 }
 
 .create-main-title {
-  text-align: left;
+  margin-top: 40px;
+  text-align: left ;
   color:#ffea2f;
   font-weight: 800;
   font-size: 30px;
@@ -30,7 +46,7 @@
 .create-headers {
   text-align: left;
   color:#ffea2f;
-  font-weight: 800;
+  font-weight: 400;
   font-size: 20px;
 }
 
@@ -38,25 +54,30 @@
   text-align: left;
   color:#ffea2f;
   font-weight: 400;
+  width: 700px;
   font-size: 15px;
+}
+
+.create-div{
+  margin-top:20px;
+  width: 450px;
+  margin-bottom:20px;
+  border:0.5px solid #c4c4c4;
+  box-shadow:0px 21px 31px -18px rgba(0,0,0,0.75);
 }
 
 .create-first{
   display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
   
 }
 
-
 .create-inputs{
-  padding-right: 30%;
   display: flex;
   flex-direction: column;
 }
 
-.create-inputs2{
-  display: flex;
-  flex-direction: column;
-}
 
 .create-form input{
   background-color: #191a1b;
@@ -68,5 +89,81 @@
   height: 40px;
   width: 400px;
   border:none;
+  border-radius: 3px;
+}
+
+.create-form select{
+  background-color: #191a1b;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #c4c4c4;
+  padding-left: 10px;
+  font-size: 15px;
+  height: 40px;
+  width: 400px;
+  border:none;
+  border-radius: 3px;
+}
+
+
+.all-interations{
+  padding: 5%;
+}
+
+
+.interation{
+  display: flex;
+  align-items: flex-start;
+  padding-top: 30px;
+}
+
+[type="date"]::-webkit-inner-spin-button {
+  display: none;
+}
+[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0;
+}
+[type="date"] {
+  background:rgb(168, 40, 40) url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png)  97% 50% no-repeat ;
+}
+
+.interation-description{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.interation img{
+  width: 10%;
+  padding-right: 30px;
+}
+
+.div-interations{
+  margin-top:40px;
+  width: 450px;
+  margin-bottom:20px;
+  border:0.5px solid #c4c4c4;
+  box-shadow:0px 21px 31px -18px rgba(0,0,0,0.75);
+}
+
+textarea {
+  resize: none;
+  height: 50px; 
+  width: 400px; 
+  border:3px;
+  padding: 10px;
+  background-color: #191a1b;
+  color: #c4c4c4;
+}
+
+.create-button-event{
+  margin-top: 40px;
+  margin-right: 200px;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color:#ffea2f;
+  border: none;
   border-radius: 3px;
 }

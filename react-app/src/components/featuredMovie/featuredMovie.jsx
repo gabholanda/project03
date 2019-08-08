@@ -12,10 +12,11 @@ const FeaturedMovie = props => {
         backgroundSize:"cover",
         backgroundRepeat:"no-repeat",
         objectFit:"cover",
-        }
-
-  return (
-    <div>
+        
+      }
+      
+      return (
+        <div>
       <div className='featured-movie-bg' style={backgroundStyle}>
 
         <div className='featured-info'>

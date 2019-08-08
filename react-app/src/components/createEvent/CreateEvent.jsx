@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Redirect } from 'react-router-dom';
-// import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./CreateEvent.css";
 import axios from "axios";
 
@@ -89,7 +89,9 @@ class EventMovie extends Component {
   getEvents(city, date) {
     axios
       .get(
-        `http://localhost:5000/api/sessions/city/${city}/event/${this.state.movieId}/date/${date}`
+        `http://localhost:5000/api/sessions/city/${city}/event/${
+          this.state.movieId
+        }/date/${date}`
       )
       .then(responseFromApi => {
         this.setState({
@@ -212,7 +214,7 @@ class EventMovie extends Component {
               ]
             }
           ]
-        })
+        });
       })
       .catch(error => console.log(error));
   }
@@ -220,7 +222,7 @@ class EventMovie extends Component {
   componentDidMount() {
     this.setState({
       movieId: this.props.movieId
-    })
+    });
     this.getPoster();
   }
 
@@ -231,204 +233,239 @@ class EventMovie extends Component {
   // }
 
   render() {
+    console.log(this.state);
     if (this.state.redirect) {
-      return <Redirect to="/" />
+      return <Redirect to='/' />;
     } else {
       return (
         <div className='create-container'>
-
           {/* Poster side */}
           <div className='poster-side'>
-            <img src={this.state.poster.posterV} alt='poster' />
+            <img
+              className='poster-movie'
+              src={this.state.poster.posterV}
+              alt='poster'
+            />
           </div>
 
           {/* info side - forms and others */}
+
           <div className='info-side'>
+            <h2 className='create-main-title'>Criar um evento é muito fácil</h2>
+            <h3 className='create-headers'>
+              1.Informações principais do evento
+            </h3>
+            <p className='create-text'>
+              Pense que todo evento sempre existe um começo, um meio e um fim.
+              <br /> Aqui você mostrará qual será o itinerário completo para o
+              seus convidados.
+            </p>
 
-
-          </div>
-          <form className='create-form' onSubmit={this.FormSubmit}>
-
-            <div>
-              <h2 className='create-main-title'>Criar um evento é muito fácil</h2>
-              <h3 className='create-headers'>1.Informações principais do evento</h3>
-              <p className='create-text'>Pense que todo evento sempre existe um começo, um meio e um fim. Aqui você mostrará qual será o itinerário completo para o seus convidados.</p>
-
+            <form className='create-form' onSubmit={this.FormSubmit}>
               <div className='create-first'>
-
                 <div className='create-inputs'>
-
                   <input
                     type='text'
                     name='eventTitle'
                     id=''
                     placeholder='Titulo do evento'
+                    onChange={event => this.handleChange(event)}
                   />
                   <input
-                    className='input'
                     type='text'
                     name='eventDuration'
                     id=''
                     placeholder='Duração do evento'
+                    onChange={event => this.handleChange(event)}
                   />
-                </div>
-
-                <div className='create-inputs2'>
                   <input
                     type='text'
                     name='typeOfActivity'
                     id=''
                     placeholder='Tipo de atividade'
+                    onChange={event => this.handleChange(event)}
                   />
                   <input
                     type='text'
                     name='language'
                     id=''
                     placeholder='Qual língua será falada?'
+                    onChange={event => this.handleChange(event)}
                   />
-                </div>
-              </div>
+                  <hr className='create-div' />
+                  <p className='create-headers'>2.Sobre o evento</p>
 
-              {/* inputs ends*/}
+                  {/* select*/}
+                  <select
+                    onChange={event => this.handleChange(event)}
+                    name='city'
+                  >
+                    <option value='1'>São Paulo</option>
+                    <option value='2'>Rio de Janeiro</option>
+                    <option value='18'>Curitiba</option>
+                    <option value='4'>Aracaju</option>
+                    <option value='52'>Belém</option>
+                    <option value='21'>Belo Horizonte</option>
+                    <option value='441'>Boa Vista</option>
+                    <option value='12'>Brasília</option>
+                    <option value='47'>Campo Grande</option>
+                    <option value='28'>Cuiabá</option>
+                    <option value='68'>Florianópolis</option>
+                    <option value='36'>Fortaleza</option>
+                    <option value='15'>Goiânia</option>
+                    <option value='32'>João Pessoa</option>
+                    <option value='303'>Macapá</option>
+                    <option value='53'>Maceió</option>
+                    <option value='35'>Manaus</option>
+                    <option value='48'>Natal</option>
+                    <option value='363'>Palmas</option>
+                    <option value='5'>Porto Alegre</option>
+                    <option value='347'>Porto Velho</option>
+                    <option value='22'>Recife</option>
+                    <option value='364'>Rio Branco</option>
+                    <option value='3'>Salvador</option>
+                    <option value='19'>São Luís</option>
+                    <option value='435'>Teresina</option>
+                    <option value='11'>Vitória</option>
+                  </select>
+                  {/* select ends*/}
 
-              {/* select*/}
-              <select onChange={event => this.handleChange(event)} name='city'>
-                <option value='1'>São Paulo</option>
-                <option value='2'>Rio de Janeiro</option>
-                <option value='18'>Curitiba</option>
-                <option value='4'>Aracaju</option>
-                <option value='52'>Belém</option>
-                <option value='21'>Belo Horizonte</option>
-                <option value='441'>Boa Vista</option>
-                <option value='12'>Brasília</option>
-                <option value='47'>Campo Grande</option>
-                <option value='28'>Cuiabá</option>
-                <option value='68'>Florianópolis</option>
-                <option value='36'>Fortaleza</option>
-                <option value='15'>Goiânia</option>
-                <option value='32'>João Pessoa</option>
-                <option value='303'>Macapá</option>
-                <option value='53'>Maceió</option>
-                <option value='35'>Manaus</option>
-                <option value='48'>Natal</option>
-                <option value='363'>Palmas</option>
-                <option value='5'>Porto Alegre</option>
-                <option value='347'>Porto Velho</option>
-                <option value='22'>Recife</option>
-                <option value='364'>Rio Branco</option>
-                <option value='3'>Salvador</option>
-                <option value='19'>São Luís</option>
-                <option value='435'>Teresina</option>
-                <option value='11'>Vitória</option>
-              </select>
-              {/* select ends*/}
+                  {/* date*/}
+                  <input
+                    type='date'
+                    name='date'
+                    id=''
+                    onChange={event => this.handleChange(event)}
+                  />
 
-              {/* date*/}
-              <input
-                type='date'
-                name='date'
-                id=''
-                onChange={event => this.handleChange(event)}
-              />
+                  {/* local theater*/}
+                  <select
+                    onChange={event => this.handleChange(event)}
+                    name='theaterId'
+                  >
+                    {this.state.event.map(event => {
+                      return (
+                        <option key={event.id} value={event.id}>
+                          {event.name}
+                        </option>
+                      );
+                    })}
+                  </select>
 
-              {/* local theater*/}
-              <select
-                onChange={event => this.handleChange(event)}
-                name='theaterId'
-              >
-                {this.state.event.map(event => {
-                  return (
-                    <option key={event.id} value={event.id}>
-                      {event.name}
-                    </option>
-                  );
-                })}
-              </select>
-
-              {/* session*/}
-              <select
-                onChange={event => this.handleChange(event)}
-                name='sessionId'
-              >
-                {this.state.event.map(event => {
-                  if (this.state.theaterId === event.id) {
-                    return event.rooms.map(room => {
-                      return room.sessions.map(session => {
-                        return (
-                          <option key={session.id} value={session.id}>
-                            {session.realDate.dayOfWeek} -{" "}
-                            {session.realDate.hour}- {room.name} - R$
+                  {/* session*/}
+                  <select
+                    onChange={event => this.handleChange(event)}
+                    name='sessionId'
+                  >
+                    {this.state.event.map(event => {
+                      if (this.state.theaterId === event.id) {
+                        return event.rooms.map(room => {
+                          return room.sessions.map(session => {
+                            return (
+                              <option key={session.id} value={session.id}>
+                                {session.realDate.dayOfWeek} -{" "}
+                                {session.realDate.hour}- {room.name} - R$
                                 {session.price}
-                          </option>
-                        );
-                      });
-                    });
-                  }
-                })}
-              </select>
-              {/* session*/}
-              <h2>Qual será o roteiro?</h2>
-              <p>
-                Pense que todo evento sempre existe um começo, um meio e um
-                fim. Aqui você mostrará qual será o itinerário completo para o
-                seus convidados.
+                              </option>
+                            );
+                          });
+                        });
+                      }
+                    })}
+                  </select>
+                  <hr className='create-div' />
+                  {/* session*/}
+
+                  <h2 className='create-headers'>3.Qual será o roteiro?</h2>
+                  <p className='create-text'>
+                    Pense que todo evento sempre existe um começo, um meio e um
+                    fim. <br />
+                    Aqui você mostrará qual será o itinerário completo para o
+                    seus convidados.
                   </p>
-              <div className='row'>
-                <img src='http://interfacetreinamentos.com.br/wp-content/uploads/2016/04/img-profile-default.jpg' alt='' />
 
-                <input
-                  type='text'
-                  name='firstInterationTitle'
-                  id=''
-                  placeholder='Primeira Interação'
-                  onChange={event => this.handleChange(event)}
-                />
-                <textarea
-                  type='text'
-                  name='firstInterationDescription'
-                  id=''
-                  placeholder='Descreva em poucas palavras o que será feito.'
-                  onChange={event => this.handleChange(event)}
-                />
-              </div>
-              <div className='row'>
-                <img src='http://interfacetreinamentos.com.br/wp-content/uploads/2016/04/img-profile-default.jpg' alt='' />
+                  <div className='interation'>
+                    <img
+                      src='http://interfacetreinamentos.com.br/wp-content/uploads/2016/04/img-profile-default.jpg'
+                      alt=''
+                    />
 
-                <input
-                  type='text'
-                  name='secondInterationTitle'
-                  id=''
-                  placeholder='Segunda Interação'
-                  onChange={event => this.handleChange(event)}
-                />
-                <textarea
-                  type='text'
-                  name='secondInterationDescription'
-                  id=''
-                  placeholder='Descreva em poucas palavras o que será feito.'
-                  onChange={event => this.handleChange(event)}
-                />
+                    <div className='interation-description'>
+                      <input
+                        className='interation-description'
+                        type='text'
+                        name='firstInterationTitle'
+                        id=''
+                        placeholder='Primeira Interação'
+                        onChange={event => this.handleChange(event)}
+                      />
+                      <textarea
+                        type='text'
+                        name='firstInterationDescription'
+                        id=''
+                        placeholder='Descreva em poucas palavras o que será feito.'
+                        onChange={event => this.handleChange(event)}
+                      />
+                    </div>
+                  </div>
+                  <hr className='div-interations' />
+
+                  <div className='interation'>
+                    <img
+                      className='image-interation'
+                      src='http://interfacetreinamentos.com.br/wp-content/uploads/2016/04/img-profile-default.jpg'
+                      alt=''
+                    />
+
+                    <div className='interation-description'>
+                      <input
+                        type='text'
+                        name='secondInterationTitle'
+                        id=''
+                        placeholder='Segunda Interação'
+                        onChange={event => this.handleChange(event)}
+                      />
+                      <textarea
+                        type='text'
+                        name='secondInterationDescription'
+                        id=''
+                        placeholder='Descreva em poucas palavras o que será feito.'
+                        onChange={event => this.handleChange(event)}
+                      />
+                    </div>
+                  </div>
+                  <hr className='div-interations' />
+                  <div className='interation'>
+                    <img
+                      src='http://interfacetreinamentos.com.br/wp-content/uploads/2016/04/img-profile-default.jpg'
+                      alt=''
+                    />
+
+                    <div className='interation-description'>
+                      <input
+                        type='text'
+                        name='thirdInterationTitle'
+                        id=''
+                        placeholder='Terceira Interação'
+                        onChange={event => this.handleChange(event)}
+                      />
+                      <textarea
+                        type='text'
+                        name='thirdInterationDescription'
+                        id=''
+                        placeholder='Descreva em poucas palavras o que será feito.'
+                        onChange={event => this.handleChange(event)}
+                      />
+                    </div>
+                  </div>
+                  <button className='create-button-event' type='submit'>
+                    Criar esse evento
+                  </button>
+                </div>
+                {/* end */}
               </div>
-              <div className='row'>
-                <img src='http://interfacetreinamentos.com.br/wp-content/uploads/2016/04/img-profile-default.jpg' alt='' />
-                <input
-                  type='text'
-                  name='thirdInterationTitle'
-                  id=''
-                  placeholder='Terceira Interação'
-                  onChange={event => this.handleChange(event)}
-                />
-                <textarea
-                  type='text'
-                  name='thirdInterationDescription'
-                  id=''
-                  placeholder='Descreva em poucas palavras o que será feito.'
-                  onChange={event => this.handleChange(event)}
-                />
-              </div>
-            </div>
-            <button type='submit'>Criar esse evento</button>
-            {/* <input
+
+              {/* <input
               type='text'
               name='movieId'
               id=''
@@ -436,7 +473,8 @@ class EventMovie extends Component {
               value={this.props.match.params.movieId}
               onChange={event => this.handleChange(event)}
             /> */}
-          </form>
+            </form>
+          </div>
         </div>
       );
     }

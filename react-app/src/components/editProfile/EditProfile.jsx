@@ -3,6 +3,7 @@ import axios from 'axios';
 import './EditProfile.css';
 import service from '../../api/service'
 import { Redirect } from 'react-router-dom'
+import Footer from "../footer/footer";
 
 class EditProfile extends Component {
   constructor(props) {
@@ -66,39 +67,47 @@ class EditProfile extends Component {
 
 
   render() {
-    if(this.state.flag) {
-      return(
-        <Redirect to="/usuario/perfil" />
-      )
-    } else {
+    return (
+      <div className='profile-edit'>
 
-      return (
-        <div>
-      <img src={this.state.image} />
-        <hr />
-        <h3>Edit seu perfil</h3>
-        <form onSubmit={this.handleFormSubmit} encType="multipart/form-data">
-          <label>image:</label>
-          <input type="file" name="image" onChange={e => this.handleFileUpload(e)} />
-          <label>name:</label>
-          <input type="text" name="name" value={this.state.name} onChange={e => this.handleChange(e)} />
-          <label>city:</label>
-          <input type="text" name="city" value={this.state.city} onChange={e => this.handleChange(e)} />
-          <label>Sobre Mim</label>
-          <textarea name="about" value={this.state.about} onChange={e => this.handleChange(e)} />
-          <label>Filme favorito</label>
-          <textarea name="favoriteMovie" value={this.state.favoriteMovie} onChange={e => this.handleChange(e)} />
-          <label>Hobbies</label>
-          <textarea name="hobbies" value={this.state.hobbies} onChange={e => this.handleChange(e)} />
-          <label>Lugar favorito</label>
-          <input type="text" name="favoritePlace" value={this.state.favoritePlace} onChange={e => this.handleChange(e)} />
+        <div className='profile-edit-container'>
 
-          <input type="submit" value="Submit" />
-        </form>
+        
+        <div className='profile-edit-left'>
+           <img className='profile-avatar' src={this.state.image} />
+          <input className='button-send-file'type="file" name="image" onChange={e => this.handleFileUpload(e)} />
+            <label>image:</label>
+
+        </div>
+
+        <div className='profile-edit-right'>
+
+          <form className='edit-form' onSubmit={this.handleFormSubmit} encType="multipart/form-data">
+          
+          <h3 className='profile-edit-dados'>Edit seu perfil</h3>
+            <label>name:</label>
+            <input type="text" name="name" value={this.state.name} onChange={e => this.handleChange(e)} />
+            <label>city:</label>
+            <input type="text" name="city" value={this.state.city} onChange={e => this.handleChange(e)} />
+            <label>Sobre Mim</label>
+            <textarea name="about" value={this.state.about} onChange={e => this.handleChange(e)} />
+            <hr className='edit-div'/>
+            <label>Filme favorito</label>
+            <textarea name="favoriteMovie" value={this.state.favoriteMovie} onChange={e => this.handleChange(e)} />
+            <label>Hobbies</label>
+            <textarea name="hobbies" value={this.state.hobbies} onChange={e => this.handleChange(e)} />
+            <label>Lugar favorito</label>
+            <input type="text" name="favoritePlace" value={this.state.favoritePlace} onChange={e => this.handleChange(e)} />
+
+            <input className='profile-edit-submit'type="submit" value="Submit" />
+          </form>
+          </div>
+        </div>
+        <Footer/>
       </div>
     )
   }
 }
-}
+
 
 export default EditProfile;

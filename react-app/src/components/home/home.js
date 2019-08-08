@@ -91,8 +91,8 @@ class Movies extends Component {
               <Link
                 to={`filme/${movie.id}`}
                 onClick={() => {
-                  if(this.props.getMovieId) {
-                    this.props.getMovieId(movie.id)
+                  if (this.props.getMovieId) {
+                    this.props.getMovieId(movie.id);
                   }
                 }}
                 key={movie.id}
@@ -138,10 +138,11 @@ class Movies extends Component {
                   <Link
                     to={`filme/${movie.id}`}
                     onClick={() => {
-                      if(this.props.getMovieId) {
-                        this.props.getMovieId(movie.id)
+                      if (this.props.getMovieId) {
+                        this.props.getMovieId(movie.id);
                       }
-                    }}                    key={movie.id}
+                    }}
+                    key={movie.id}
                   >
                     <Slider.Item movie={movie} key={movie.id} />
                   </Link>
