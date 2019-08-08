@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Redirect } from 'react-router-dom';
-// import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./CreateEvent.css";
 import axios from "axios";
 
@@ -89,7 +89,9 @@ class EventMovie extends Component {
   getEvents(city, date) {
     axios
       .get(
-        `http://localhost:5000/api/sessions/city/${city}/event/${this.state.movieId}/date/${date}`
+        `http://localhost:5000/api/sessions/city/${city}/event/${
+          this.state.movieId
+        }/date/${date}`
       )
       .then(responseFromApi => {
         this.setState({
@@ -212,7 +214,7 @@ class EventMovie extends Component {
               ]
             }
           ]
-        })
+        });
       })
       .catch(error => console.log(error));
   }
@@ -220,7 +222,7 @@ class EventMovie extends Component {
   componentDidMount() {
     this.setState({
       movieId: this.props.movieId
-    })
+    });
     this.getPoster();
   }
 
@@ -233,13 +235,12 @@ class EventMovie extends Component {
 
   render() {
     if (this.state.redirect) {
-      return <Redirect to="/" />
+      return <Redirect to='/' />;
     } else {
 
       return (
 
         <div className='create-container'>
-
           {/* Poster side */}
           <div className='poster-side'>
             <img className='poster-movie'src={this.state.poster.posterV} alt='poster' />
@@ -256,9 +257,7 @@ class EventMovie extends Component {
           <form className='create-form' onSubmit={this.FormSubmit}>
 
               <div className='create-first'>
-
                 <div className='create-inputs'>
-
                   <input
                     type='text'
                     name='eventTitle'
@@ -353,7 +352,7 @@ class EventMovie extends Component {
                           <option key={session.id} value={session.id}>
                             {session.realDate.dayOfWeek} -{" "}
                             {session.realDate.hour}- {room.name} - R$
-                                {session.price}
+                            {session.price}
                           </option>
                         );
                       });
@@ -363,6 +362,7 @@ class EventMovie extends Component {
               </select>
               <hr className='create-div'/>
               {/* session*/}
+
               <h2 className='create-headers'>3.Qual será o roteiro?</h2>
                 <p className='create-text'>
                 Pense que todo evento sempre existe um começo, um meio e um
@@ -390,11 +390,13 @@ class EventMovie extends Component {
                   onChange={event => this.handleChange(event)}
                 />
               </div>
+
               </div>
               <hr className='div-interations'/>
               
               <div className='interation'>
                 <img className='image-interation'src='http://interfacetreinamentos.com.br/wp-content/uploads/2016/04/img-profile-default.jpg' alt='' />
+
 
                 <div className='interation-description'>
                 <input
@@ -412,12 +414,14 @@ class EventMovie extends Component {
                   onChange={event => this.handleChange(event)}
                 />
               </div>
+
               </div>
               <hr className='div-interations'/>
               <div className='interation'>
                 <img src='http://interfacetreinamentos.com.br/wp-content/uploads/2016/04/img-profile-default.jpg' alt='' />
                 
                 <div className='interation-description'>
+
                 <input
                   type='text'
                   name='thirdInterationTitle'
