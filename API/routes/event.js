@@ -56,9 +56,7 @@ router.post("/events", (req, res, next) => {
     thirdInterationDescription,
     host,
     movieId,
-    user
   } = req.body.form;
-  console.log('REQ BODY AQUI => ',req.body);
 
   const newEvent = new Event({
     title: eventTitle,
@@ -78,25 +76,22 @@ router.post("/events", (req, res, next) => {
     host: host,
     movieId: movieId
   });
-
-  newEvent.save(err => {
-    if (err) {
-      res.status(400).json({ message: "Error upon saving event on DB." });
-      return;
-    }
-    // res.status(200).json(newEvent);
-  });
-  // User receives the event as it's host and event list
-  User.findByIdAndUpdate(host._id, { $push: { events: newEvent, host: newEvent } })
-    .then(user => {
-      // The event receives the event host as a member
-      Event.findOneAndUpdate({ host: user }, { $push: { members: user } })
-        .then(() =>
-          res.status(200).json({ message: "Event created successfuly" })
-        )
-        .catch(err => res.json(err));
+  Event.create(newEvent)
+    .then(response => {
+      User.findByIdAndUpdate(host._id, { $push: { events: newEvent, host: newEvent } })
+      .then(user => {
+        // The event receives the event host as a member
+        Event.findOneAndUpdate({ host: user }, { $push: { members: user } })
+          .then(() =>
+            res.status(200).json({ message: "Event created successfuly" })
+          )
+          .catch(err => res.json(err));
+      })
+      .catch(err => res.status(400).json(err));
     })
-    .catch(err => res.status(400).json(err));
+    .catch(e => res.status(200).json(e))
+
+  // User receives the event as it's host and event list
 
   // Event.create({
   //   title: eventTitle,
