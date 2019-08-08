@@ -237,7 +237,6 @@ class EventMovie extends Component {
     if (this.state.redirect) {
       return <Redirect to='/' />;
     } else {
-
       return (
 
         <div className='create-container'>

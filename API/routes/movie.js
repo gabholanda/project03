@@ -31,7 +31,7 @@ router.get("/destaques", (req, res, next) => {
           title: movie.event.title,
           image: movie.event.images[0].url,
           poster: movie.event.images[1].url,
-          trailer: movie.event.trailers[0].url,
+          trailer: movie.event.trailers[0] || 'none',
           description: movie.event.synopsis
         };
       });

@@ -12,14 +12,25 @@ class Movie extends Component {
   }
 
   getMovie = () => {
-    axios
-      .get(`http://localhost:5000/api/filme/${this.props.match.params.movieId}`)
-      .then(responseFromApi => {
-        this.setState({
-          movie: responseFromApi.data
-        });
-      })
-      .catch(error => console.log(error));
+    if (this.props.movieId) {
+      axios
+        .get(`http://localhost:5000/api/filme/${this.props.movieId}`)
+        .then(responseFromApi => {
+          this.setState({
+            movie: responseFromApi.data
+          });
+        })
+        .catch(error => console.log(error));
+    } else {
+      axios
+        .get(`http://localhost:5000/api/filme/${this.props.match.params.movieId}`)
+        .then(responseFromApi => {
+          this.setState({
+            movie: responseFromApi.data
+          });
+        })
+        .catch(error => console.log(error));
+    }
   };
 
   // getMovie = () => {
@@ -34,16 +45,30 @@ class Movie extends Component {
   // };
 
   getEvents = () => {
-    axios
-      .get(
-        `http://localhost:5000/api/events/${this.props.match.params.movieId}`
-      )
-      .then(responseFromApi => {
-        this.setState({
-          events: responseFromApi.data
-        });
-      })
-      .catch(error => console.log(error));
+    if (this.props.movieId) {
+      axios
+        .get(
+          `http://localhost:5000/api/events/${this.props.movieId}`
+        )
+        .then(responseFromApi => {
+          this.setState({
+            events: responseFromApi.data
+          });
+        })
+        .catch(error => console.log(error));
+    }
+    else {
+      axios
+        .get(
+          `http://localhost:5000/api/events/${this.props.match.params.movieId}`
+        )
+        .then(responseFromApi => {
+          this.setState({
+            events: responseFromApi.data
+          });
+        })
+        .catch(error => console.log(error));
+    }
   };
 
   // getEvents = () => {
@@ -66,18 +91,16 @@ class Movie extends Component {
 
   render() {
 
-    const backgroundMovie= 
+    const backgroundMovie =
     {
       backgroundImage: `url(${this.state.movie.posterH})`,
-      height:"500px",
-      backgroundPosition:"center",
-      backgroundSize:"cover",
-      backgroundRepeat:"no-repeat",
-      objectFit:"cover",
+      height: "500px",
+      backgroundPosition: "center",
+      backgroundSize: "cover",
+      backgroundRepeat: "no-repeat",
+      objectFit: "cover",
       filter: "blur(5px)",
-      }
-
-
+    }
     return (
       <div className='movie-page'>
         {/* breadcrumb */}
@@ -94,67 +117,73 @@ class Movie extends Component {
 
         {/* Bg movie */}
         <div className='bg-movie-onmovie' style={backgroundMovie}>
-        
+
         </div>
         {/* movie poster */}
 
-      <div className="movie-details">
-          
-            <div className='otherInfo'>
+        <div className="movie-details">
 
-          <figure className="movie-poster">
-            <img src={this.state.movie.posterV} alt='' />
-          </figure>
+          <div className='otherInfo'>
 
-          <div className="movie-info">
-              
+            <figure className="movie-poster">
+              <img src={this.state.movie.posterV} alt='' />
+            </figure>
+
+            <div className="movie-info">
+
               <h1 className='title-movie'>{this.state.movie.title}</h1>
               <p className='title-genre'>{this.state.movie.genre}</p>
               <p className='title-duration'>{this.state.movie.duration} minutos</p>
               <button className='trailer-link'>
-              <img className='play-icon' src='../images/play.svg' alt=''/>
+                <img className='play-icon' src='../images/play.svg' alt='' />
                 <a
                   target='_blank'
                   rel='noopener noreferrer'
                   href={this.state.movie.trailer}
-                  >
+                >
                   Ver Trailer
                 </a>
               </button>
 
-                  {/* others info */}
-                  <div className='sinopse'>
-                    <h2 className=''>Sinopse</h2>
-                    <p className=''>{this.state.movie.sinopse}</p>
-                  </div>
+              {/* others info */}
+              <div className='sinopse'>
+                <h2 className=''>Sinopse</h2>
+                <p className=''>{this.state.movie.sinopse}</p>
+              </div>
 
-                  <hr className='movie-div'></hr>
+              <hr className='movie-div'></hr>
 
-                  {/* events */}
-                    <h2 className='eventos'>Eventos</h2>
-                    {this.state.events.map(event => {
-                      return (
-                        <div key={event.id}>
-                          <h3 className=''>{event.dateMovie}</h3>
-                          <h4 className=''>{event.typeOfActivity}</h4>
-                          <h3 className=''>{event.title}</h3>
-                          <h5 className=''>{event.place}</h5>
+              {/* events */}
+              <h2 className='eventos'>Eventos</h2>
+              {this.state.events.map(event => {
+                return (
+                  <div key={event.id}>
+                    <h3 className=''>{event.dateMovie}</h3>
+                    <h4 className=''>{event.typeOfActivity}</h4>
+                    <h3 className=''>{event.title}</h3>
+                    <h5 className=''>{event.place}</h5>
 
-                          {/* know more about this event */}
-                          <button className=''>
-                            <Link to={`/evento/${event.id}`}>Saiba Mais</Link>
-                          </button>
-                          </div>
-                      );
-                    })}
-
-                    
-                  <br/>
-                    <button className='create-event'>
-                      <Link to={`${this.props.match.params.movieId}/criar_evento`}>
-                        + Quero criar um evento
-                      </Link>
+                    {/* know more about this event */}
+                    <button className=''>
+                      <Link to={`/evento/${event.id}`}
+                        onClick={() => {
+                          if (this.props.getEventId) {
+                            this.props.getEventId(event.id)
+                          }
+                        }}
+                      >Saiba Mais</Link>
                     </button>
+                  </div>
+                );
+              })}
+
+
+              <br />
+              <button className='create-event'>
+                <Link to={`${this.props.movieId}/criar_evento`}>
+                  + Quero criar um evento
+                      </Link>
+              </button>
             </div>
           </div>
         </div>
