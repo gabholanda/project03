@@ -38,6 +38,29 @@ router.get("/events/:movieId", (req, res, next) => {
     });
 });
 
+// GET route => to get all the events by user
+router.get("/events-by-user/:userId", (req, res, next) => {
+  const userId = req.params.userId;
+
+  Event.find({ host: { $eq: userId } })
+    .then(allTheEvents => {
+      const event = allTheEvents.map(event => {
+        return {
+          id: event._id,
+          title: event.eventTitle,
+          place: event.place,
+          movieDate: event.date,
+          typeOfActivity: event.typeOfActivity,
+          theaterId: event.theaterId
+        };
+      });
+      res.json(event);
+    })
+    .catch(err => {
+      res.json(err);
+    });
+});
+
 // POST route => to create a new event
 router.post("/events", (req, res, next) => {
   const {
@@ -124,7 +147,7 @@ router.get("/event/:id", (req, res, next) => {
   }
 
   Event.findById(req.params.id)
-    .populate('host')
+    .populate("host")
     .then(response => {
       res.status(200).json(response);
     })

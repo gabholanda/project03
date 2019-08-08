@@ -3,6 +3,7 @@ import "./Movie.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "./Movie.css";
+import Footer from "../footer/footer";
 
 class Movie extends Component {
   constructor(props) {
@@ -14,28 +15,36 @@ class Movie extends Component {
   getMovie = () => {
     if (this.props.movieId) {
       axios
-        .get(`http://localhost:5000/api/filme/${this.props.movieId}`)
-        .then(responseFromApi => {
-          this.setState({
-            movie: responseFromApi.data
-          });
-        })
-        .catch(error => console.log(error));
+      .get(
+        `${process.env.REACT_APP_API_URL}/filme/${
+          this.props.movieId
+        }`
+      )
+      .then(responseFromApi => {
+        this.setState({
+          movie: responseFromApi.data
+        });
+      })
+      .catch(error => console.log(error));
     } else {
       axios
-        .get(`http://localhost:5000/api/filme/${this.props.match.params.movieId}`)
-        .then(responseFromApi => {
-          this.setState({
-            movie: responseFromApi.data
-          });
-        })
-        .catch(error => console.log(error));
+      .get(
+        `${process.env.REACT_APP_API_URL}/filme/${
+          this.props.match.params.movieId
+        }`
+      )
+      .then(responseFromApi => {
+        this.setState({
+          movie: responseFromApi.data
+        });
+      })
+      .catch(error => console.log(error));
     }
-  };
+  }
 
   getTheater = theaterId => {
     axios
-      .get(`http://localhost:5000/api/cinema/${theaterId}`)
+      .get(`${process.env.REACT_APP_API_URL}/cinema/${theaterId}`)
       .then(responseFromApi => {
         this.setState({
           theaterName: responseFromApi.data
@@ -58,28 +67,41 @@ class Movie extends Component {
   getEvents = () => {
     if (this.props.movieId) {
       axios
-        .get(
-          `http://localhost:5000/api/events/${this.props.movieId}`
-        )
-        .then(responseFromApi => {
-          this.setState({
-            events: responseFromApi.data
-          });
-        })
-        .catch(error => console.log(error));
+      .get(
+        `${process.env.REACT_APP_API_URL}/events/${
+          this.props.movieId
+        }`
+      )
+      .then(responseFromApi => {
+        this.setState({
+          events: responseFromApi.data
+        });
+
+        this.state.events.map(event => {
+          this.getTheater(event.theaterId);
+        });
+      })
+      .catch(error => console.log(error));
     }
     else {
       axios
-        .get(
-          `http://localhost:5000/api/events/${this.props.match.params.movieId}`
-        )
-        .then(responseFromApi => {
-          this.setState({
-            events: responseFromApi.data
-          });
-        })
-        .catch(error => console.log(error));
+      .get(
+        `${process.env.REACT_APP_API_URL}/events/${
+          this.props.match.params.movieId
+        }`
+      )
+      .then(responseFromApi => {
+        this.setState({
+          events: responseFromApi.data
+        });
+
+        this.state.events.map(event => {
+          this.getTheater(event.theaterId);
+        });
+      })
+      .catch(error => console.log(error));
     }
+    
   };
 
   // getEvents = () => {
@@ -108,7 +130,7 @@ class Movie extends Component {
       backgroundPosition: "center",
       backgroundSize: "cover",
       backgroundRepeat: "no-repeat",
-      objectFit: "cover",
+      objectFit: "cover"
       // filter: "blur(5px)"
     };
 
@@ -163,32 +185,30 @@ class Movie extends Component {
 
               {/* events */}
               <h2 className='eventos'>Eventos</h2>
-              
 
               {this.state.events.map(event => {
                 // this.getTheater(event.theaterId);
                 return (
                   <div className='movie-events'>
-                  <div className='' key={event.id}>
-                    <div className='active-aligned'>
-                    <h3 className='movie-type'>{event.movieDate}</h3>
-                    <h4 className='movie-type'>{event.typeOfActivity}</h4>
-                    </div>
-                    <h3 className='movie-title'>{event.title}</h3>
-                    <h5 className='movie-type'>
-                      {this.state.theaterName.name}
-                      {" - "}
-                      {this.state.theaterName.address}
-                    </h5>
-                    {/* know more about this event */}
-                    <button className='active-saiba-mais'>
+                    <div className='' className={event.id}>
+                      <div className='active-aligned'>
+                        <h3 className='movie-type'>{event.movieDate}</h3>
+                        <h4 className='movie-type'>{event.typeOfActivity}</h4>
+                      </div>
+                      <h3 className='movie-title'>{event.title}</h3>
+                      <h5 className='movie-type'>
+                        {this.state.theaterName.name}
+                        {" - "}
+                        {this.state.theaterName.address}
+                      </h5>
+                      {/* know more about this event */}
+                      <button className='active-saiba-mais'>
                       <Link to={`/evento/${event.id}`} onClick={() =>  this.props.getEventId(event.id)}>Saiba Mais</Link>
-                    </button>
-                  </div>
+                      </button>
+                    </div>
                   </div>
                 );
               })}
-                
 
               <br />
               <button className='create-event'>
@@ -199,6 +219,7 @@ class Movie extends Component {
             </div>
           </div>
         </div>
+        <Footer />
       </div>
     );
   }

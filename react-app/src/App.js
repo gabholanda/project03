@@ -50,7 +50,6 @@ class App extends Component {
   };
 
   getEventId = id => {
-    console.log(id)
     this.setState({
       eventId: id
     });

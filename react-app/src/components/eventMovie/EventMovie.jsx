@@ -2,15 +2,16 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./EventMovie.css";
 import axios from "axios";
+import Footer from "../footer/footer";
 
 class EventMovie extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      posterV: "",
       movie: 0,
-      event:
-      {
+      event: {
         participants: "",
         _id: "",
         title: "",
@@ -28,7 +29,8 @@ class EventMovie extends Component {
         thirdInterationDescription: "",
         movieId: "",
         host: {
-          name: '',
+          name: ""
+          // Inserir aqui informações extras do host para descrever o evento
         }
       }
     };
@@ -37,25 +39,37 @@ class EventMovie extends Component {
   getEvents = () => {
     if (this.props.eventId) {
       axios
-        .get(`http://localhost:5000/api/event/${this.props.eventId}`)
+        .get(`${process.env.REACT_APP_API_URL}/event/${this.props.eventId}`)
         .then(responseFromApi => {
           this.setState({
             event: responseFromApi.data
           });
+          this.getMovie(responseFromApi.data.movieId);
         })
         .catch(error => console.log(error));
     } else {
       axios
-        .get(`http://localhost:5000/api/event/${this.props.match.params.eventId}`)
+        .get(`${process.env.REACT_APP_API_URL}/event/${this.props.match.params.eventId}`)
         .then(responseFromApi => {
           this.setState({
             event: responseFromApi.data
           });
+          this.getMovie(responseFromApi.data.movieId);
         })
         .catch(error => console.log(error));
     }
   };
 
+  getMovie = movieId => {
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/filme/${movieId}`)
+      .then(responseFromApi => {
+        this.setState({
+          posterV: responseFromApi.data.posterV
+        });
+      })
+      .catch(error => console.log(error));
+  };
   // getEvents = () => {
   //   axios
   //     .get(`${process.env.REACT_APP_API_URL}/event/${this.props.match.params.eventId}`)
@@ -79,79 +93,82 @@ class EventMovie extends Component {
   }
 
   render() {
-      return (
-        <div className=''>
-          {/* breadcrumb */}
-          <nav aria-label='breadcrumb'>
-            <ol className='breadcrumb'>
-              <li className='breadcrumb-item'>
-                <Link to='/'>Início</Link>
-              </li>
-              <li className='breadcrumb-item'>
-                <Link to={`/filme/${this.state.event.movieId}`}>Filme</Link>
-              </li>
-              <li className='breadcrumb-item active' aria-current='page'>
-                Evento
-              </li>
-            </ol>
-          </nav>
-          {/* breadcrumb end */}
-
-          <img className='' src={this.state.movie.posterV} alt='poster-movie' />
-          <div>
-            <button className=''>
-              <Link to='www.google.com.br'>Sair do grupo</Link>
-            </button>
-            <button className=''>
-              <Link to='www.google.com.br'>Editar evento</Link>
-            </button>
+    return (
+      <>
+        <nav aria-label='breadcrumb'>
+          <ol className='breadcrumb'>
+            <li className='breadcrumb-item'>
+              <Link to='/'>Início</Link>
+            </li>
+            <li className='breadcrumb-item'>
+              <Link to={`/filme/${this.state.event.movieId}`}>Filme</Link>
+            </li>
+            <li className='breadcrumb-item active' aria-current='page'>
+              Evento
+            </li>
+          </ol>
+        </nav>
+        <div className='eventPage'>
+          <div className='eventPage-left'>
+            {/* image */}
+            <img className='' src={this.state.posterV} alt='' />
+            {/* buttons */}
+            <div>
+              <button className=''>
+                <Link to='www.google.com.br'>Sair do grupo</Link>
+              </button>
+              <button className=''>
+                <Link to='www.google.com.br'>Editar evento</Link>
+              </button>
+            </div>
           </div>
-          <div className=''>
-            <h3 className=''>{this.state.event.typeOfActivity}</h3>
-            <h1 className=''>{this.state.event.title}</h1>
-            <p className=''>{this.state.event.dateMovie}</p>
+          <div className='eventPage-right'>
+            <h3 className=''>dgdfgf{this.state.event.typeOfActivity}</h3>
+            <h1 className=''>dfdsfd{this.state.event.title}</h1>
+            <p className=''>ddfgdfg{this.state.event.dateMovie}</p>
             <hr />
             <p className=''>
               O evento tem duração de {this.state.event.duration} minutos
             </p>
-          <p className=''>As pessoas falam {this.state.event.language}</p>
-          <p className=''>
-            {this.state.event.participants} pessoas irão a esse evento
+            <p className=''>As pessoas falam {this.state.event.language}</p>
+            <p className=''>
+              {this.state.event.participants} pessoas irão a esse evento
             </p>
-          <div>
-            <h2>O que vamos fazer?</h2>
             <div>
-              <img src='' alt='' />
-              <h4>{this.state.event.firstInterationTitle}</h4>
-              <p>{this.state.event.firstInterationDescription}</p>
+              <h2>O que vamos fazer?</h2>
+              <div>
+                <img src='' alt='' />
+                <h4>{this.state.event.firstInterationTitle}</h4>
+                <p>{this.state.event.firstInterationDescription}</p>
+              </div>
+              <div>
+                <img src='' alt='' />
+                <h4>{this.state.event.secondInterationTitle}</h4>
+                <p>{this.state.event.secondInterationDescription}</p>
+              </div>
+              <div>
+                <img src='' alt='' />
+                <h4>{this.state.event.thirdInterationTitle}</h4>
+                <p>{this.state.event.thirdInterationDescription}</p>
+              </div>
+            </div>
+            <div>
+              <h2>Local do Filme</h2>
+              {/* // GOOGLE MAPS HERE */}
             </div>
             <div>
               <img src='' alt='' />
-              <h4>{this.state.event.secondInterationTitle}</h4>
-              <p>{this.state.event.secondInterationDescription}</p>
+              <h4>{this.state.event.host.name}</h4>
+              <p>{this.state.event.host.name}</p>
             </div>
-            <div>
-              <img src='' alt='' />
-              <h4>{this.state.event.thirdInterationTitle}</h4>
-              <p>{this.state.event.thirdInterationDescription}</p>
-            </div>
-          </div>
-          <div>
-            <h2>Local do Filme</h2>
-            {/* // GOOGLE MAPS HERE */}
-          </div>
-          <div>
-            <img src='' alt='' />
-            <h4>{this.state.event.host.name}</h4>
-            <p>{this.state.event.host.name}</p>
-          </div>
-          <button className='' onClick={() => this.enterEvent()}>
-            Participar!
+            <button className='' onClick={() => this.enterEvent()}>
+              Participar!
           </button>
+          </div>
         </div>
-      </div>
+        <Footer />
+      </>
     );
   }
 }
-
 export default EventMovie;

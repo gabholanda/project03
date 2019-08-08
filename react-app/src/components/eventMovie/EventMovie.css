@@ -1,0 +1,25 @@
+.eventPage {
+  display:flex;
+  align-self: center;
+  flex-wrap: wrap;
+  background-color: #191a1b;
+  justify-content: center;
+  padding: 80px;
+}
+
+.eventPage-left{
+  display: flex;
+  flex-direction: column; 
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-right:10px; 
+}
+
+.eventPage-right{
+  flex-wrap: wrap;
+  padding-left:10px; 
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 400px;
+}
