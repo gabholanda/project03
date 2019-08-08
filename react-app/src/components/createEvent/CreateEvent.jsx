@@ -230,29 +230,30 @@ class EventMovie extends Component {
   //   });
   // }
 
+
   render() {
     if (this.state.redirect) {
       return <Redirect to="/" />
     } else {
+
       return (
+
         <div className='create-container'>
 
           {/* Poster side */}
           <div className='poster-side'>
-            <img src={this.state.poster.posterV} alt='poster' />
+            <img className='poster-movie'src={this.state.poster.posterV} alt='poster' />
           </div>
 
           {/* info side - forms and others */}
+
           <div className='info-side'>
-
-
-          </div>
-          <form className='create-form' onSubmit={this.FormSubmit}>
-
-            <div>
               <h2 className='create-main-title'>Criar um evento é muito fácil</h2>
               <h3 className='create-headers'>1.Informações principais do evento</h3>
-              <p className='create-text'>Pense que todo evento sempre existe um começo, um meio e um fim. Aqui você mostrará qual será o itinerário completo para o seus convidados.</p>
+              <p className='create-text'>Pense que todo evento sempre existe um começo, um meio e um fim.<br/> Aqui você mostrará qual será o itinerário completo para o seus convidados.</p>
+
+
+          <form className='create-form' onSubmit={this.FormSubmit}>
 
               <div className='create-first'>
 
@@ -265,15 +266,11 @@ class EventMovie extends Component {
                     placeholder='Titulo do evento'
                   />
                   <input
-                    className='input'
                     type='text'
                     name='eventDuration'
                     id=''
                     placeholder='Duração do evento'
                   />
-                </div>
-
-                <div className='create-inputs2'>
                   <input
                     type='text'
                     name='typeOfActivity'
@@ -286,10 +283,8 @@ class EventMovie extends Component {
                     id=''
                     placeholder='Qual língua será falada?'
                   />
-                </div>
-              </div>
-
-              {/* inputs ends*/}
+                <hr className='create-div'/>
+              <p className='create-headers'>2.Sobre o evento</p>
 
               {/* select*/}
               <select onChange={event => this.handleChange(event)} name='city'>
@@ -320,7 +315,7 @@ class EventMovie extends Component {
                 <option value='19'>São Luís</option>
                 <option value='435'>Teresina</option>
                 <option value='11'>Vitória</option>
-              </select>
+              </select> 
               {/* select ends*/}
 
               {/* date*/}
@@ -366,17 +361,21 @@ class EventMovie extends Component {
                   }
                 })}
               </select>
+              <hr className='create-div'/>
               {/* session*/}
-              <h2>Qual será o roteiro?</h2>
-              <p>
+              <h2 className='create-headers'>3.Qual será o roteiro?</h2>
+                <p className='create-text'>
                 Pense que todo evento sempre existe um começo, um meio e um
-                fim. Aqui você mostrará qual será o itinerário completo para o
+                fim. <br/>Aqui você mostrará qual será o itinerário completo para o
                 seus convidados.
-                  </p>
-              <div className='row'>
-                <img src='http://interfacetreinamentos.com.br/wp-content/uploads/2016/04/img-profile-default.jpg' alt='' />
+                </p>
 
+              <div className='interation'>
+                <img src='http://interfacetreinamentos.com.br/wp-content/uploads/2016/04/img-profile-default.jpg' alt='' />
+              
+              <div className='interation-description'>
                 <input
+                className='interation-description'
                   type='text'
                   name='firstInterationTitle'
                   id=''
@@ -391,9 +390,13 @@ class EventMovie extends Component {
                   onChange={event => this.handleChange(event)}
                 />
               </div>
-              <div className='row'>
-                <img src='http://interfacetreinamentos.com.br/wp-content/uploads/2016/04/img-profile-default.jpg' alt='' />
+              </div>
+              <hr className='div-interations'/>
+              
+              <div className='interation'>
+                <img className='image-interation'src='http://interfacetreinamentos.com.br/wp-content/uploads/2016/04/img-profile-default.jpg' alt='' />
 
+                <div className='interation-description'>
                 <input
                   type='text'
                   name='secondInterationTitle'
@@ -409,8 +412,12 @@ class EventMovie extends Component {
                   onChange={event => this.handleChange(event)}
                 />
               </div>
-              <div className='row'>
+              </div>
+              <hr className='div-interations'/>
+              <div className='interation'>
                 <img src='http://interfacetreinamentos.com.br/wp-content/uploads/2016/04/img-profile-default.jpg' alt='' />
+                
+                <div className='interation-description'>
                 <input
                   type='text'
                   name='thirdInterationTitle'
@@ -425,9 +432,16 @@ class EventMovie extends Component {
                   placeholder='Descreva em poucas palavras o que será feito.'
                   onChange={event => this.handleChange(event)}
                 />
+                </div>
               </div>
-            </div>
-            <button type='submit'>Criar esse evento</button>
+            <button className='create-button-event'type='submit'>Criar esse evento</button>
+                </div>
+                {/* end */}
+              </div>
+
+
+
+
             {/* <input
               type='text'
               name='movieId'
@@ -438,6 +452,7 @@ class EventMovie extends Component {
             /> */}
           </form>
         </div>
+      </div>
       );
     }
   }
