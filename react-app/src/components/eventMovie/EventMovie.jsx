@@ -75,7 +75,8 @@ class EventMovie extends Component {
 
   render() {
     return (
-      <div className=''>
+      <>
+      {/* breadcrumb */}
         <nav aria-label='breadcrumb'>
           <ol className='breadcrumb'>
             <li className='breadcrumb-item'>
@@ -89,57 +90,74 @@ class EventMovie extends Component {
             </li>
           </ol>
         </nav>
-        <img className='' src={this.state.posterV} alt='' />
-        <div>
-          <button className=''>
-            <Link to='www.google.com.br'>Sair do grupo</Link>
-          </button>
-          <button className=''>
-            <Link to='www.google.com.br'>Editar evento</Link>
-          </button>
+        {/* breadcrumb end*/}
+        <div className='eventPage'>
+
+          <div className='eventPage-left'>
+            {/* image */}
+            <img className='' src={this.state.posterV} alt='' />
+            {/* buttons */}
+            <div>
+              <button className=''>
+                <Link to='www.google.com.br'>Sair do grupo</Link>
+              </button>
+              <button className=''>
+                <Link to='www.google.com.br'>Editar evento</Link>
+              </button>
+            </div>
+          </div>
+
+        <div className='eventPage-right'>
+
+            <h3 className=''>dgdfgf{this.state.event.typeOfActivity}</h3>
+            <h1 className=''>dfdsfd{this.state.event.title}</h1>
+            <p className=''>ddfgdfg{this.state.event.dateMovie}</p>
+            <hr />
+            <p className=''>
+              O evento tem duração de {this.state.event.duration} minutos
+            </p>
+            <p className=''>As pessoas falam {this.state.event.language}</p>
+            <p className=''>
+              {this.state.event.participants} pessoas irão a esse evento
+            </p>
+            <div>
+              <h2>O que vamos fazer?</h2>
+              <div>
+                <img src='' alt='' />
+                <h4>{this.state.event.firstInterationTitle}</h4>
+                <p>{this.state.event.firstInterationDescription}</p>
+              </div>
+              <div>
+                <img src='' alt='' />
+                <h4>{this.state.event.secondInterationTitle}</h4>
+                <p>{this.state.event.secondInterationDescription}</p>
+              </div>
+              <div>
+                <img src='' alt='' />
+                <h4>{this.state.event.thirdInterationTitle}</h4>
+                <p>{this.state.event.thirdInterationDescription}</p>
+              </div>
+            </div>
+            <div>
+              <h2>Local do Filme</h2>
+              {/* // GOOGLE MAPS HERE */}
+            </div>
+            <div>
+              <img src='' alt='' />
+              <h4>{this.state.event.host.name}</h4>
+              <p>{this.state.event.host.name}</p>
+            </div>
+            <button className=''>
+              <Link to='www.google.com.br'>Sair do grupo</Link>
+            </button>
         </div>
-        <div className=''>
-          <h3 className=''>{this.state.event.typeOfActivity}</h3>
-          <h1 className=''>{this.state.event.title}</h1>
-          <p className=''>{this.state.event.dateMovie}</p>
-          <hr />
-          <p className=''>
-            O evento tem duração de {this.state.event.duration} minutos
-          </p>
-          <p className=''>As pessoas falam {this.state.event.language}</p>
-          <p className=''>
-            {this.state.event.participants} pessoas irão a esse evento
-          </p>
-          <div>
-            <h2>O que vamos fazer?</h2>
-            <div>
-              <img src='' alt='' />
-              <h4>{this.state.event.firstInterationTitle}</h4>
-              <p>{this.state.event.firstInterationDescription}</p>
-            </div>
-            <div>
-              <img src='' alt='' />
-              <h4>{this.state.event.secondInterationTitle}</h4>
-              <p>{this.state.event.secondInterationDescription}</p>
-            </div>
-            <div>
-              <img src='' alt='' />
-              <h4>{this.state.event.thirdInterationTitle}</h4>
-              <p>{this.state.event.thirdInterationDescription}</p>
-            </div>
-          </div>
-          <div>
-            <h2>Local do Filme</h2>
-            {/* // GOOGLE MAPS HERE */}
-          </div>
-          <div>
-            <img src='' alt='' />
-            <h4>{this.state.event.host.name}</h4>
-            <p>{this.state.event.host.name}</p>
-          </div>
-          <button className=''>
-            <Link to='www.google.com.br'>Sair do grupo</Link>
-          </button>
+        </div>
+
+          <Footer />
+        </>
+          );
+        }
+      }
           {/* <button className=''>
               <a
                 target='_blank'
@@ -175,11 +193,5 @@ class EventMovie extends Component {
             <button className=''>
               <Link to='www.google.com.br'>+ Criar um evento</Link>
             </button> */}
-          </div>
-          <Footer />
-        </div>
-    );
-  }
-}
 
 export default EventMovie;
