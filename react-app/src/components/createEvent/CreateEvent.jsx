@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import "./CreateEvent.css";
 import axios from "axios";
 
@@ -188,18 +188,59 @@ class EventMovie extends Component {
           </ol>
         </nav>
 
-        <div className='event-container'>
-          <div className='left-container'>
-            <img
-              className='event-poster'
-              src={this.state.poster.posterV}
-              alt='poster film'
-            />
-          </div>
-          <div className='right-container'>
-            <form onSubmit={this.FormSubmit}>
-              <div className='create-main-info'>
-                <h2>Principais informações do evento</h2>
+        {/* Poster side */}
+        <div className='poster-side'>
+          <img src={this.state.poster.posterV} alt='poster' />
+        </div>
+
+        {/* info side - forms and others */}
+        <div className='info-side'>
+
+
+        </div>
+        <form className='create-form'onSubmit={this.handleFormSubmit}>
+          
+          <div>
+            <h2 className='create-main-title'>Criar um evento é muito fácil</h2>
+            <h3 className='create-headers'>1.Informações principais do evento</h3>
+            <p className='create-text'>Pense que todo evento sempre existe um começo, um meio e um fim. Aqui você mostrará qual será o itinerário completo para o seus convidados.</p>
+          
+          <div className='create-first'>
+
+            <div className='create-inputs'>
+
+              <input
+                type='text'
+                name='eventTitle'
+                id=''
+                placeholder='Titulo do evento'
+              />
+              <input
+              className='input'
+                type='text'
+                name='eventDuration'
+                id=''
+                placeholder='Duração do evento'
+              />
+              </div>
+
+              <div className='create-inputs2'>
+              <input
+                type='text'
+                name='typeOfActivity'
+                id=''
+                placeholder='Tipo de atividade'
+              />
+              <input
+                type='text'
+                name='language'
+                id=''
+                placeholder='Qual língua será falada?'
+              />
+              </div>
+            </div>
+
+            {/* inputs ends*/}
 
                 {/* inputs */}
                 <input
@@ -317,7 +358,7 @@ class EventMovie extends Component {
                   seus convidados.
                 </p>
                 <div className='row'>
-                  <img src='http://interfacetreinamentos.com.br/wp-content/uploads/2016/04/img-profile-default.jpg' />
+                  <img src='http://interfacetreinamentos.com.br/wp-content/uploads/2016/04/img-profile-default.jpg' alt='' />
 
                   <input
                     type='text'
@@ -335,7 +376,7 @@ class EventMovie extends Component {
                   />
                 </div>
                 <div className='row'>
-                  <img src='http://interfacetreinamentos.com.br/wp-content/uploads/2016/04/img-profile-default.jpg' />
+                  <img src='http://interfacetreinamentos.com.br/wp-content/uploads/2016/04/img-profile-default.jpg' alt='' />
 
                   <input
                     type='text'
@@ -353,7 +394,7 @@ class EventMovie extends Component {
                   />
                 </div>
                 <div className='row'>
-                  <img src='http://interfacetreinamentos.com.br/wp-content/uploads/2016/04/img-profile-default.jpg' />
+                  <img src='http://interfacetreinamentos.com.br/wp-content/uploads/2016/04/img-profile-default.jpg' alt='' />
                   <input
                     type='text'
                     name='thirdInterationTitle'
@@ -381,8 +422,7 @@ class EventMovie extends Component {
           /> */}
             </form>
           </div>
-        </div>
-      </div>
+
     );
   }
 }
