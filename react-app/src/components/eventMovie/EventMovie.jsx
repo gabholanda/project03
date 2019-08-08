@@ -37,15 +37,27 @@ class EventMovie extends Component {
   }
 
   getEvents = () => {
-    axios
-      .get(`${process.env.REACT_APP_API_URL}/event/${this.props.match.params.eventId}`)
-      .then(responseFromApi => {
-        this.setState({
-          event: responseFromApi.data
-        });
-        this.getMovie(responseFromApi.data.movieId);
-      })
-      .catch(error => console.log(error));
+    if (this.props.eventId) {
+      axios
+        .get(`${process.env.REACT_APP_API_URL}/event/${this.props.eventId}`)
+        .then(responseFromApi => {
+          this.setState({
+            event: responseFromApi.data
+          });
+          this.getMovie(responseFromApi.data.movieId);
+        })
+        .catch(error => console.log(error));
+    } else {
+      axios
+        .get(`${process.env.REACT_APP_API_URL}/event/${this.props.match.params.eventId}`)
+        .then(responseFromApi => {
+          this.setState({
+            event: responseFromApi.data
+          });
+          this.getMovie(responseFromApi.data.movieId);
+        })
+        .catch(error => console.log(error));
+    }
   };
 
   getMovie = movieId => {
@@ -68,7 +80,14 @@ class EventMovie extends Component {
   //     })
   //     .catch(error => console.log(error));
   // };
-
+  enterEvent() {
+    axios
+      .put(`http://localhost:5000/api/join-event/${this.props.eventId}/user/${this.props.user._id}`)
+      .then(responseFromApi => {
+        console.log(responseFromApi)
+      })
+      .catch(error => console.log(error));
+  }
   componentDidMount() {
     this.getEvents();
   }
@@ -76,7 +95,6 @@ class EventMovie extends Component {
   render() {
     return (
       <>
-      {/* breadcrumb */}
         <nav aria-label='breadcrumb'>
           <ol className='breadcrumb'>
             <li className='breadcrumb-item'>
@@ -90,9 +108,7 @@ class EventMovie extends Component {
             </li>
           </ol>
         </nav>
-        {/* breadcrumb end*/}
         <div className='eventPage'>
-
           <div className='eventPage-left'>
             {/* image */}
             <img className='' src={this.state.posterV} alt='' />
@@ -106,9 +122,7 @@ class EventMovie extends Component {
               </button>
             </div>
           </div>
-
-        <div className='eventPage-right'>
-
+          <div className='eventPage-right'>
             <h3 className=''>dgdfgf{this.state.event.typeOfActivity}</h3>
             <h1 className=''>dfdsfd{this.state.event.title}</h1>
             <p className=''>ddfgdfg{this.state.event.dateMovie}</p>
@@ -147,51 +161,14 @@ class EventMovie extends Component {
               <h4>{this.state.event.host.name}</h4>
               <p>{this.state.event.host.name}</p>
             </div>
-            <button className=''>
-              <Link to='www.google.com.br'>Sair do grupo</Link>
-            </button>
-        </div>
-        </div>
-
-          <Footer />
-        </>
-          );
-        }
-      }
-          {/* <button className=''>
-              <a
-                target='_blank'
-                rel='noopener noreferrer'
-                href={this.state.movie.trailer}
-              >
-                Traler
-              </a>
-            </button>
+            <button className='' onClick={() => this.enterEvent()}>
+              Participar!
+          </button>
           </div>
-          <hr className='' />
-          <div className=''>
-            <h2 className=''>Sinopse</h2>
-            <p className=''>{this.state.movie.sinopse}</p>
-          </div>
-          <hr className='' />
-          <div>
-            <h2 className=''>Eventos</h2>
-            {this.state.events.map(event => {
-              return (
-                <div>
-                  <h3 className=''>{event.dateMovie}</h3>
-                  <h4 className=''>{event.typeOfActivity}</h4>
-                  <h3 className=''>{event.title}</h3>
-                  <h5 className=''>{event.place}</h5>
-                  <button className=''>
-                    <Link to='www.google.com.br'>Saiba Mais</Link>
-                  </button>
-                </div>
-              );
-            })}
-  
-            <button className=''>
-              <Link to='www.google.com.br'>+ Criar um evento</Link>
-            </button> */}
-
+        </div>
+        <Footer />
+      </>
+    );
+  }
+}
 export default EventMovie;

@@ -49,6 +49,12 @@ class App extends Component {
     });
   };
 
+  getEventId = id => {
+    this.setState({
+      eventId: id
+    });
+  };
+
   getTheUser = userObj => {
     console.log('-------> user atualizado', this.state.loggedInUser);
     this.setState({
@@ -71,8 +77,8 @@ class App extends Component {
               path='/'
               render={() => <Home getMovieId={this.getMovieId} />}
             />
-            <Route exact path='/filme/:movieId' component={Movie} />
-            <Route exact path='/evento/:eventId' component={Event} />
+            <Route exact path='/filme/:movieId' render={() => <Movie movieId={this.state.movieId} getEventId={this.getEventId} />} />
+            <Route exact path='/evento/:eventId' render={() => <Event eventId={this.state.eventId} user={this.state.loggedInUser} />} />
             {/* <Route exact path='/chat' component={Chat} /> */}
             <ProtectedAuthRoute
               user={this.state.loggedInUser}

@@ -13,7 +13,21 @@ class Movie extends Component {
   }
 
   getMovie = () => {
-    axios
+    if (this.props.movieId) {
+      axios
+      .get(
+        `${process.env.REACT_APP_API_URL}/filme/${
+          this.props.movieId
+        }`
+      )
+      .then(responseFromApi => {
+        this.setState({
+          movie: responseFromApi.data
+        });
+      })
+      .catch(error => console.log(error));
+    } else {
+      axios
       .get(
         `${process.env.REACT_APP_API_URL}/filme/${
           this.props.match.params.movieId
@@ -25,7 +39,8 @@ class Movie extends Component {
         });
       })
       .catch(error => console.log(error));
-  };
+    }
+  }
 
   getTheater = theaterId => {
     axios
@@ -50,7 +65,26 @@ class Movie extends Component {
   // };
 
   getEvents = () => {
-    axios
+    if (this.props.movieId) {
+      axios
+      .get(
+        `${process.env.REACT_APP_API_URL}/events/${
+          this.props.movieId
+        }`
+      )
+      .then(responseFromApi => {
+        this.setState({
+          events: responseFromApi.data
+        });
+
+        this.state.events.map(event => {
+          this.getTheater(event.theaterId);
+        });
+      })
+      .catch(error => console.log(error));
+    }
+    else {
+      axios
       .get(
         `${process.env.REACT_APP_API_URL}/events/${
           this.props.match.params.movieId
@@ -66,6 +100,8 @@ class Movie extends Component {
         });
       })
       .catch(error => console.log(error));
+    }
+    
   };
 
   // getEvents = () => {
@@ -87,7 +123,6 @@ class Movie extends Component {
   }
 
   render() {
-    console.log(this.state.events);
     const backgroundMovie = {
       backgroundImage: `linear-gradient(0deg, rgba(0,0,0,0.8827906162464986) 0%, rgba(255,255,255,0) 90%),
       url(${this.state.movie.posterH})`,
@@ -168,7 +203,7 @@ class Movie extends Component {
                       </h5>
                       {/* know more about this event */}
                       <button className='active-saiba-mais'>
-                        <Link to={`/evento/${event.id}`}>Saiba Mais</Link>
+                      <Link to={`/evento/${event.id}`} onClick={() =>  this.props.getEventId(event.id)}>Saiba Mais</Link>
                       </button>
                     </div>
                   </div>
@@ -177,7 +212,7 @@ class Movie extends Component {
 
               <br />
               <button className='create-event'>
-                <Link to={`${this.props.match.params.movieId}/criar_evento`}>
+                <Link to={`${this.props.movieId}/criar_evento`} >
                   + Quero criar um evento
                 </Link>
               </button>
