@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./CreateEvent.css";
 import axios from "axios";
 
@@ -230,7 +230,10 @@ class EventMovie extends Component {
   //   });
   // }
 
+
   render() {
+
+
     console.log(this.props)
     return (
       <div className=''>
@@ -248,7 +251,7 @@ class EventMovie extends Component {
             </li>
           </ol>
         </nav>
-
+        <div className='create-container'>
         {/* Poster side */}
         <div className='poster-side'>
           <img src={this.state.poster.posterV} alt='poster' />
@@ -283,25 +286,19 @@ class EventMovie extends Component {
                   id=''
                   placeholder='Duração do evento'
                 />
-              </div>
 
-              <div className='create-inputs2'>
                 <input
                   type='text'
                   name='typeOfActivity'
                   id=''
                   placeholder='Tipo de atividade'
-                />
+                  />
                 <input
                   type='text'
                   name='language'
                   id=''
                   placeholder='Qual língua será falada?'
-                />
-              </div>
-            </div>
-
-            {/* inputs ends*/}
+                  />
 
                 {/* inputs */}
                 <input
@@ -333,8 +330,7 @@ class EventMovie extends Component {
                   onChange={event => this.handleChange(event)}
                 />
                 {/* inputs ends*/}
-                {/* select*/}
-                <select
+                <select>
                   onChange={event => this.handleChange(event)}
                   name='city'
                 >
@@ -367,9 +363,8 @@ class EventMovie extends Component {
                   <option value='11'>Vitória</option>
                 </select>
                 {/* select ends*/}
-
             {/* date*/}
-            <input
+            <input class="datepicker"
               type='date'
               name='date'
               id=''
@@ -389,7 +384,6 @@ class EventMovie extends Component {
                 );
               })}
             </select>
-
             {/* session*/}
             <select
               onChange={event => this.handleChange(event)}
@@ -412,64 +406,95 @@ class EventMovie extends Component {
               })}
             </select>
             {/* session*/}
-            <h2>Qual será o roteiro?</h2>
-            <p>
+              </div>
+            </div>
+
+
+
+            <h2 className='create-main-title'>2.Qual será o roteiro?</h2>
+            <p className='create-text'>
               Pense que todo evento sempre existe um começo, um meio e um
               fim. Aqui você mostrará qual será o itinerário completo para o
-              seus convidados.
-                </p>
-            <div className='row'>
-              <img src='http://interfacetreinamentos.com.br/wp-content/uploads/2016/04/img-profile-default.jpg' alt='' />
+              seus convidados.Cada interação você pode descrever em até 140 caracteres.
+              </p>
 
+            {/* interações */}
+            <div className='all-interations'>
+
+            <div className='interation'>
+
+              <img src='../images/001-one.svg' alt='' />
+              <div className='interation-description'>
+              
               <input
                 type='text'
                 name='firstInterationTitle'
                 id=''
-                placeholder='Primeira Interação'
+                placeholder='Título da Primeira Interação'
                 onChange={event => this.handleChange(event)}
               />
               <textarea
+                className='description-area'
+                maxlength='140'
                 type='text'
                 name='firstInterationDescription'
                 id=''
-                placeholder='Descreva em poucas palavras o que será feito.'
+                placeholder='Descreva em 140 caracteres o que você fará primeiro.'
                 onChange={event => this.handleChange(event)}
               />
+              </div>
             </div>
-            <div className='row'>
-              <img src='http://interfacetreinamentos.com.br/wp-content/uploads/2016/04/img-profile-default.jpg' alt='' />
 
-              <input
-                type='text'
-                name='secondInterationTitle'
-                id=''
-                placeholder='Segunda Interação'
-                onChange={event => this.handleChange(event)}
-              />
-              <textarea
-                type='text'
-                name='secondInterationDescription'
-                id=''
-                placeholder='Descreva em poucas palavras o que será feito.'
-                onChange={event => this.handleChange(event)}
-              />
+            <div className='interation'>
+
+            <img src='../images/002-two.svg' alt='second' />
+            <div className='interation-description'>
+
+            <input
+              type='text'
+              name='secondInterationTitle'
+              maxlength='140'
+              id=''
+              placeholder='Título para a Segunda Interação!'
+              onChange={event => this.handleChange(event)}
+            />
+            <textarea
+            className='description-area'
+            maxlength='140'
+              type='text'
+              name='secondInterationDescription'
+              id=''
+              placeholder='E após o encontro? Descreva sua segunda interação'
+              onChange={event => this.handleChange(event)}
+            />
             </div>
-            <div className='row'>
-              <img src='http://interfacetreinamentos.com.br/wp-content/uploads/2016/04/img-profile-default.jpg' alt='' />
-              <input
-                type='text'
-                name='thirdInterationTitle'
-                id=''
-                placeholder='Terceira Interação'
-                onChange={event => this.handleChange(event)}
-              />
-              <textarea
-                type='text'
-                name='thirdInterationDescription'
-                id=''
-                placeholder='Descreva em poucas palavras o que será feito.'
-                onChange={event => this.handleChange(event)}
-              />
+            </div>
+
+            <div className='interation'>
+
+            <img src='../images/003-three.svg' alt='' />
+            <div className='interation-description'>
+
+            <input
+              type='text'
+              name='thirdInterationTitle'
+              id=''
+              placeholder='Terceira Interação'
+              onChange={event => this.handleChange(event)}
+            />
+            <textarea
+            className='description-area'
+            maxlength='140'
+              type='text'
+              name='thirdInterationDescription'
+              id=''
+              placeholder='O que você fará no final?'
+              onChange={event => this.handleChange(event)}
+            />
+            </div>
+            </div>
+
+
             </div>
           </div>
           <button type='submit'>Criar esse evento</button>
@@ -482,6 +507,7 @@ class EventMovie extends Component {
             onChange={event => this.handleChange(event)}
           /> */}
         </form>
+        </div>  
       </div>
     );
   }
