@@ -127,7 +127,7 @@ router.get("/event/:id", (req, res, next) => {
   }
 
   Event.findById(req.params.id)
-
+  .populate('host')
     .then(response => {
       res.status(200).json(response);
     })
