@@ -134,11 +134,11 @@ class Movie extends Component {
                     <h2 className='eventos'>Eventos</h2>
                     {this.state.events.map(event => {
                       return (
-                        <div key={event.id}>
-                          <h3 className=''>{event.dateMovie}</h3>
-                          <h4 className=''>{event.typeOfActivity}</h4>
-                          <h3 className=''>{event.title}</h3>
-                          <h5 className=''>{event.place}</h5>
+                        <div className='movie-events'key={event.id}>
+                          <h3 className='movie-title'>{event.dateMovie}</h3>
+                          <h4 className='movie-title'>{event.typeOfActivity}</h4>
+                          <h3 className='movie-title'>{event.title}</h3>
+                          <h5 className='movie-title'>{event.place}</h5>
 
                           {/* know more about this event */}
                           <button className=''>
