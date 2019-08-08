@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./Profile.css";
+import Footer from "../footer/footer";
 // import axios from "axios";
 
 
@@ -52,48 +53,59 @@ class Profile extends Component {
     } else {
       console.log('STATUS TRUE')
       return (
+        <div>
         <div className='myProfile'>
+
           <div className='profile-left'>
           <div className='profile-avatar'>
             <img src={this.state.user.image}/>
           </div>
 
+          <Link to ="/edit/profile">
+          <button className='button-edit-profile'>editar perfil</button>
+          </Link>
+
           </div>
+
           <div className="profile-right">
+            <div className="about">
+              <h2 className='profile-info'>Meu nome é</h2>
+          <h1 className='profile-dados'>{this.state.user.name} </h1>
+          <h2 className='profile-info'>E-mail</h2>
+          <h3 className='profile-headers'>{this.state.user.email}</h3>
+          <h2 className='profile-info'>Cidade</h2>
+          <p>{this.state.user.city}</p>
+          <h2 className='profile-info'>Sobre mim</h2>
+          <p>{this.state.user.about}</p>
+            <hr className='profile-div'/>
 
-          <div className="about">
           </div>
 
-          <h1>My name is {this.state.user.name} </h1>
-          <h3>Email</h3>
-          <p>{this.state.user.email}</p>
-
-          <h3>Cidade</h3>
-          <p>{this.state.user.city}</p>
-          <h3>Sobre mim</h3>
-
-          <p>{this.state.user.about}}</p>
-
-          <div className="about-info">
-            <h3>Meu filme favorito é</h3>
-          {<p>{this.state.user.favoriteMovie}</p> && this.state.user.favoriteMovie} 
-            <h3>Hobbies</h3>
+          <div className="about-movies">
+          <h2 className='profile-film-info'>Filme favorito</h2>
+          {<p>{this.state.user.favoriteMovie}
+          </p> && this.state.user.favoriteMovie} 
+          <h2 className='profile-film-info'>Hobbies</h2>
          {<p>{this.state.user.hobbies}</p> && this.state.user.hobbies}
-            <h3>Lugar favorito</h3>
+         <h2 className='profile-film-info'>Lugar favorito</h2>
           {<p>{this.state.user.favoritePlace}</p> && this.state.user.favoritePlace}
 
           </div>
+          <hr className='profile-div'/>
 
-          <div class="my-events">
-          <h1>Eventos Ativos</h1>
-          <h3>tipo de atividade</h3>
-          <h3>dia/mês</h3>
-          <h3>título do evento</h3>
-          <h4>local</h4>
-          <button>Saiba Mais</button>
+            <h1 className='profile-dados'>Eventos Ativos</h1>
+
+            <div class="active-events">
+            <h3 className='active-type'>tipo de atividade</h3>
+            <h2 className='active-title'>título do evento</h2>
+            <h3 className='active-type'>dia/mês</h3>
+            <h4 className='active-type'>local</h4>
+            <button className='active-saiba-mais'>Saiba Mais</button>
 
           </div>
           </div>
+        </div>
+        <Footer/>
         </div>
       );
     }
