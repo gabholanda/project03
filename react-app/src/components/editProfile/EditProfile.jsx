@@ -74,7 +74,7 @@ class EditProfile extends Component {
 
         
         <div className='profile-edit-left'>
-           <img className='profile-avatar' src={this.state.image} />
+           <img className='profile-avatar' src={this.state.image} alt="my-image-profile"/>
           <input className='button-send-file'type="file" name="image" onChange={e => this.handleFileUpload(e)} />
             <label>image:</label>
 
