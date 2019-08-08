@@ -42,7 +42,7 @@ router.get("/events/:movieId", (req, res, next) => {
 router.get("/events-by-user/:userId", (req, res, next) => {
   const userId = req.params.userId;
 
-  Event.find({ host: { $eq: userId } })
+  Event.find({ members: { $eq: userId } })
     .then(allTheEvents => {
       const event = allTheEvents.map(event => {
         return {
@@ -101,6 +101,7 @@ router.post("/events", (req, res, next) => {
     movieId: movieId,
     members: [host]
   });
+  console.log('chegou até aqui')
   Event.create(newEvent)
     .then(response => {
       User.findByIdAndUpdate(host._id, { $push: { events: newEvent, host: newEvent } })
@@ -110,33 +111,6 @@ router.post("/events", (req, res, next) => {
         .catch(err => res.status(400).json(err));
     })
     .catch(e => res.status(200).json(e));
-
-  // User receives the event as it's host and event list
-
-  // Event.create({
-  //   title: eventTitle,
-  //   duration: eventDuration,
-  //   typeOfActivity: typeOfActivity,
-  //   language: language,
-  //   city: city,
-  //   date: date,
-  //   theaterId: theaterId,
-  //   session: sessionId,
-  //   firstInterationTitle,
-  //   firstInterationDescription,
-  //   secondInterationTitle,
-  //   secondInterationDescription,
-  //   thirdInterationTitle,
-  //   thirdInterationDescription,
-  //   host: host,
-  //   movieId: movieId
-  // })
-  //   .then(response => {
-  //     console.log(response);
-  //   })
-  //   .catch(err => {
-  //     res.json(err);
-  //   });
 });
 
 // GET route => to get a specific event/detailed view

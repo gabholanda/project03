@@ -57,11 +57,11 @@
               <input type='submit' value='Entrar'/>
             <button className='signup-google'>
               <img src='./images/google-logo.svg' alt="google-logo" />
-              <Link to='/evento/criar'>Entrar pelo Google</Link>
+              <Link to='/'>Entrar pelo Google</Link>
             </button>
             <hr className='login-div' />
             <p className='login-cta'>Não possui conta?</p>
-            <Link className='signup-create'to='/evento/criar'>Clique aqui</Link>
+            <Link className='signup-create'to='/signup'>Clique aqui</Link>
           </form>
   
           </div>

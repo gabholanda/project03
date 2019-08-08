@@ -1,12 +1,13 @@
 import React, { Component, Fragment } from "react";
 import AuthService from "./auth-service";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import Footer from "../footer/footer";
 import "./signup.css";
 class Signup extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      redirect: false,
       username: '',
       password: '',
       name: '',
@@ -24,6 +25,7 @@ class Signup extends Component {
     this.service.signup(username, password, name, email)
       .then(response => {
         this.setState({
+          redirect: true,
           username: "",
           password: "",
           name: "",
@@ -37,6 +39,9 @@ class Signup extends Component {
     this.setState({ [name]: value });
   };
   render() {
+    if (this.state.redirect) {
+      return <Redirect to='/login' />
+    }
     return (
       <Fragment>
         <div className='form-container'>
