@@ -6,9 +6,7 @@ const router = express.Router();
 //GET route => Top Movie
 router.get("/destaque", (req, res, next) => {
   axios
-    .get(
-      `${process.env.INGRESSOS_DESTAQUE_API}`
-    )
+    .get(`${process.env.INGRESSOS_DESTAQUE_API}`)
     .then(movies => {
       const movie = movies.data.map(movie => {
         return {
@@ -25,9 +23,7 @@ router.get("/destaque", (req, res, next) => {
 //GET route => Top Movies
 router.get("/destaques", (req, res, next) => {
   axios
-    .get(
-      `${process.env.INGRESSOS_HIGHLIGHTS_API}`
-    )
+    .get(`${process.env.INGRESSOS_HIGHLIGHTS_API}`)
     .then(movies => {
       const movie = movies.data.map(movie => {
         return {
@@ -47,9 +43,7 @@ router.get("/destaques", (req, res, next) => {
 // GET route => On the cinema
 router.get("/cartaz", (req, res, next) => {
   axios
-    .get(
-      `${process.env.INGRESSOS_CARTAZ_API}`
-    )
+    .get(`${process.env.INGRESSOS_CARTAZ_API}`)
     .then(movies => {
       const movie = movies.data.map(movie => {
         return { id: movie.id, title: movie.title, image: movie.images[0].url };
@@ -62,9 +56,7 @@ router.get("/cartaz", (req, res, next) => {
 // GET route => coming soon movies
 router.get("/breve", (req, res, next) => {
   axios
-    .get(
-      `${process.env.INGRESSOS_BREVE_API}`
-    )
+    .get(`${process.env.INGRESSOS_BREVE_API}`)
     .then(movies => {
       const movie = movies.data.map(movie => {
         return { id: movie.id, title: movie.title, image: movie.images[0].url };
@@ -78,16 +70,18 @@ router.get("/breve", (req, res, next) => {
 router.get("/filme/:movieId", (req, res, next) => {
   const movieId = req.params.movieId;
   axios
-    .get(
-      `${process.env.INGRESSOS_EVENTS}/${movieId}/partnership/ironhackapp`
-    )
+    .get(`${process.env.INGRESSOS_EVENTS}/${movieId}/partnership/ironhackapp`)
     .then(movie => {
+      let trailer = "0";
+      if (movie.data.trailers[0]) {
+        trailer = movie.data.trailers[0].url;
+      }
       const movieInfo = {
         id: movie.data.id,
         title: movie.data.title,
         genre: movie.data.genres,
         duration: movie.data.duration,
-        trailer: movie.data.trailers[0].url,
+        trailer: trailer,
         sinopse: movie.data.synopsis,
         posterV: movie.data.images[0].url,
         posterH: movie.data.images[1].url
@@ -104,7 +98,9 @@ router.get(
     const { cityId, eventId, date } = req.params;
     axios
       .get(
-        `${process.env.INGRESSOS_SESSIONS}/${cityId}/event/${eventId}/partnership/ironhackapp?date=${date}`
+        `${
+          process.env.INGRESSOS_SESSIONS
+        }/${cityId}/event/${eventId}/partnership/ironhackapp?date=${date}`
       )
       .then(theaters => {
         const theater = theaters.data[0].theaters.map(theater => {
