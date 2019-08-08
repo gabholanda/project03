@@ -28,7 +28,7 @@ class Movies extends Component {
 
   getMovieHigh = () => {
     axios
-      .get(`http://localhost:5000/api/destaques`)
+      .get(`${process.env.REACT_APP_API_URL}/destaques`)
       .then(responseFromApi => {
         this.setState({
           moviesHigh: responseFromApi.data
@@ -39,7 +39,7 @@ class Movies extends Component {
 
   getMovie = () => {
     axios
-      .get(`http://localhost:5000/api/cartaz`)
+      .get(`${process.env.REACT_APP_API_URL}/cartaz`)
       .then(responseFromApi => {
         this.setState({
           movies: responseFromApi.data
@@ -50,7 +50,7 @@ class Movies extends Component {
 
   getMovieSoon = () => {
     axios
-      .get(`http://localhost:5000/api/breve`)
+      .get(`${process.env.REACT_APP_API_URL}/breve`)
       .then(responseFromApi => {
         this.setState({
           moviesSoon: responseFromApi.data

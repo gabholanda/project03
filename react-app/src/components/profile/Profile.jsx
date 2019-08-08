@@ -14,7 +14,9 @@ class Profile extends Component {
 
   getEvents = () => {
     axios
-      .get(`http://localhost:5000/api/events-by-user/${this.state.user._id}`)
+      .get(
+        `${process.env.REACT_APP_API_URL}/events-by-user/${this.state.user._id}`
+      )
       .then(responseFromApi => {
         this.setState({
           events: responseFromApi.data
