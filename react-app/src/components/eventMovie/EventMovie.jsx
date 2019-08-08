@@ -93,6 +93,7 @@ class EventMovie extends Component {
   }
 
   render() {
+    console.log(this.state.event.host)
     return (
       <>
         <nav aria-label='breadcrumb'>
@@ -114,12 +115,9 @@ class EventMovie extends Component {
             <img className='' src={this.state.posterV} alt='' />
             {/* buttons */}
             <div>
-              <button className=''>
+              {/* <button className=''>
                 <Link to='www.google.com.br'>Sair do grupo</Link>
-              </button>
-              <button className=''>
-                <Link to='www.google.com.br'>Editar evento</Link>
-              </button>
+              </button> */}
             </div>
           </div>
           <div className='eventPage-right'>
