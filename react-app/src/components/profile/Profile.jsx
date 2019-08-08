@@ -30,43 +30,55 @@ class Profile extends Component {
       )
     } else {
       return (
-        <div>
+        <>
         <div className='myProfile'>
 
           <div className='profile-left'>
+            <div className='avatar-container'>
           <div className='profile-avatar'>
             <img src={this.state.user.image} alt="my-image-profile"/>
-
           </div>
-
           <Link to ="/edit/profile">
           <button className='button-edit-profile'>editar perfil</button>
           </Link>
+
+            </div>
+
 
           </div>
 
           <div className="profile-right">
             <div className="about">
               <h2 className='profile-info'>Meu nome é</h2>
-          <h1 className='profile-dados'>{this.state.user.name} </h1>
+          <h2 className='profile-dados'>{this.state.user.name} </h2>
           <h2 className='profile-info'>E-mail</h2>
-          <h3 className='profile-headers'>{this.state.user.email}</h3>
+          <h3 className='profile-dados'>{this.state.user.email}</h3>
           <h2 className='profile-info'>Cidade</h2>
-          <p>{this.state.user.city}</p>
+          <h3 className='profile-dados'>{this.state.user.city}</h3>
           <h2 className='profile-info'>Sobre mim</h2>
-          <p>{this.state.user.about}</p>
+          <h2 className='profile-dados'>{this.state.user.about}</h2>
             <hr className='profile-div'/>
 
           </div>
 
           <div className="about-movies">
           <h2 className='profile-film-info'>Filme favorito</h2>
-          {<p>{this.state.user.favoriteMovie}
-          </p> && this.state.user.favoriteMovie} 
+          <div className='about-movies-answers'>
+            {<p>{this.state.user.favoriteMovie}
+            </p> && this.state.user.favoriteMovie} 
+          </div>
+
           <h2 className='profile-film-info'>Hobbies</h2>
-         {<p>{this.state.user.hobbies}</p> && this.state.user.hobbies}
+          <div className='about-movies-answers'>
+            {<p>{this.state.user.hobbies}
+            </p> && this.state.user.hobbies}
+          </div>
+
          <h2 className='profile-film-info'>Lugar favorito</h2>
-          {<p>{this.state.user.favoritePlace}</p> && this.state.user.favoritePlace}
+         <div className='about-movies-answers'>
+            {<p>{this.state.user.favoritePlace}
+            </p> && this.state.user.favoritePlace}
+          </div>
 
           </div>
           <hr className='profile-div'/>
@@ -85,7 +97,7 @@ class Profile extends Component {
         </div>
         <Footer/>
 
-        </div>
+        </>
       );
     }
   }
