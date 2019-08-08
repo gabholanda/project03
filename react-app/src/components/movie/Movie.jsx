@@ -53,6 +53,10 @@ class Movie extends Component {
         this.setState({
           events: responseFromApi.data
         });
+
+        this.state.events.map(event => {
+          this.getTheater(event.theaterId);
+        });
       })
       .catch(error => console.log(error));
   };
@@ -76,6 +80,7 @@ class Movie extends Component {
   }
 
   render() {
+    console.log(this.state.events);
     const backgroundMovie = {
       backgroundImage: `url(${this.state.movie.posterH})`,
       height: "500px",
@@ -138,7 +143,7 @@ class Movie extends Component {
               {/* events */}
               <h2 className='eventos'>Eventos</h2>
               {this.state.events.map(event => {
-                this.getTheater(event.theaterId);
+                // this.getTheater(event.theaterId);
                 return (
                   <div key={event.id}>
                     <h3 className=''>{event.movieDate}</h3>
