@@ -95,59 +95,82 @@ class EventMovie extends Component {
 
           <div className='eventPage-left'>
             {/* image */}
-            <img className='' src={this.state.posterV} alt='' />
+            <img className='event-poster' src={this.state.posterV} alt='' />
             {/* buttons */}
             <div>
-              <button className=''>
-                <Link to='www.google.com.br'>Sair do grupo</Link>
-              </button>
-              <button className=''>
+              <button className='event-buttons'>
                 <Link to='www.google.com.br'>Editar evento</Link>
+              </button>
+              <button className='event-buttons-exit '>
+                <Link to='www.google.com.br'>Sair do grupo</Link>
               </button>
             </div>
           </div>
 
         <div className='eventPage-right'>
 
-            <h3 className=''>dgdfgf{this.state.event.typeOfActivity}</h3>
-            <h1 className=''>dfdsfd{this.state.event.title}</h1>
-            <p className=''>ddfgdfg{this.state.event.dateMovie}</p>
-            <hr />
-            <p className=''>
-              O evento tem duração de {this.state.event.duration} minutos
-            </p>
-            <p className=''>As pessoas falam {this.state.event.language}</p>
-            <p className=''>
-              {this.state.event.participants} pessoas irão a esse evento
-            </p>
+            <h3 className='event-activity'>Atividade{this.state.event.typeOfActivity}</h3>
+            <h1 className='event-title'>titulo{this.state.event.title}</h1>
+            <p className='event-date'>ddfgdfg{this.state.event.dateMovie}</p>
+            <hr className='event-div'/>
+            <div className='event-important-info'>
+              <p className=''>
+                O evento tem duração de<br/> {this.state.event.duration} minutos
+              </p>
+              <p className=''>o evento será falado em <br/>{this.state.event.language}</p>
+              <p className=''>
+                {this.state.event.participants} pessoas <br/>irão a esse evento
+              </p>
+            </div>
+
+            {/* O que iremos fazer */}
             <div>
-              <h2>O que vamos fazer?</h2>
-              <div>
-                <img src='' alt='' />
-                <h4>{this.state.event.firstInterationTitle}</h4>
+              <h2 className='event-todo-title'>O que vamos fazer?</h2>
+
+              <div className='interation'>
+                {/* <img src='' alt='' /> */}
+                <h4>1. {this.state.event.firstInterationTitle}</h4>
                 <p>{this.state.event.firstInterationDescription}</p>
               </div>
-              <div>
-                <img src='' alt='' />
-                <h4>{this.state.event.secondInterationTitle}</h4>
+              <div className='interation'>
+                {/* <img src='' alt='' /> */}
+                <h4>2. {this.state.event.secondInterationTitle}</h4>
                 <p>{this.state.event.secondInterationDescription}</p>
               </div>
-              <div>
-                <img src='' alt='' />
-                <h4>{this.state.event.thirdInterationTitle}</h4>
+              <div className='interation'>
+                {/* <img src='' alt='' /> */}
+                <h4>3. {this.state.event.thirdInterationTitle}</h4>
                 <p>{this.state.event.thirdInterationDescription}</p>
               </div>
             </div>
-            <div>
-              <h2>Local do Filme</h2>
+
+            {/* maps */}
+            <div className='event-maps-container'>
+              <h2 className='event-maps-title'>Local do Filme</h2>
+              <div className='maps'>
+                <img src='../images/maps.png' alt='cinex logotype' />
+              </div>
               {/* // GOOGLE MAPS HERE */}
             </div>
-            <div>
-              <img src='' alt='' />
-              <h4>{this.state.event.host.name}</h4>
-              <p>{this.state.event.host.name}</p>
+
+            {/* host */}
+            <h2 className='event-host-title'>Host do Evento</h2>
+
+              <div className='event-host'>
+              <div className='host-image'>
+                <img src='' alt='host image here please' />
+              </div>
+            
+
+              <div className='host-div'>
+                <div className='host-info'>
+                  <h4>{this.state.event.host.name}</h4>
+                  <p>{this.state.event.host.name}</p>
+                </div>
+              </div>
             </div>
-            <button className=''>
+
+            <button className='event-button-exit2'>
               <Link to='www.google.com.br'>Sair do grupo</Link>
             </button>
         </div>

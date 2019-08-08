@@ -39,7 +39,7 @@ class Profile extends Component {
             <img src={this.state.user.image} alt="my-image-profile"/>
           </div>
           <Link to ="/edit/profile">
-          <button className='button-edit-profile'>editar perfil</button>
+            <button className='button-edit-profile'>editar perfil</button>
           </Link>
 
             </div>
