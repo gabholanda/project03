@@ -38,7 +38,7 @@ class EventMovie extends Component {
 
   getEvents = () => {
     axios
-      .get(`http://localhost:5000/api/event/${this.props.match.params.eventId}`)
+      .get(`${process.env.REACT_APP_API_URL}/event/${this.props.match.params.eventId}`)
       .then(responseFromApi => {
         this.setState({
           event: responseFromApi.data
@@ -50,7 +50,7 @@ class EventMovie extends Component {
 
   getMovie = movieId => {
     axios
-      .get(`http://localhost:5000/api/filme/${movieId}`)
+      .get(`${process.env.REACT_APP_API_URL}/filme/${movieId}`)
       .then(responseFromApi => {
         this.setState({
           posterV: responseFromApi.data.posterV

@@ -14,7 +14,11 @@ class Movie extends Component {
 
   getMovie = () => {
     axios
-      .get(`http://localhost:5000/api/filme/${this.props.match.params.movieId}`)
+      .get(
+        `${process.env.REACT_APP_API_URL}/filme/${
+          this.props.match.params.movieId
+        }`
+      )
       .then(responseFromApi => {
         this.setState({
           movie: responseFromApi.data
@@ -25,7 +29,7 @@ class Movie extends Component {
 
   getTheater = theaterId => {
     axios
-      .get(`http://localhost:5000/api/cinema/${theaterId}`)
+      .get(`${process.env.REACT_APP_API_URL}/cinema/${theaterId}`)
       .then(responseFromApi => {
         this.setState({
           theaterName: responseFromApi.data
@@ -48,7 +52,9 @@ class Movie extends Component {
   getEvents = () => {
     axios
       .get(
-        `http://localhost:5000/api/events/${this.props.match.params.movieId}`
+        `${process.env.REACT_APP_API_URL}/events/${
+          this.props.match.params.movieId
+        }`
       )
       .then(responseFromApi => {
         this.setState({
@@ -89,7 +95,7 @@ class Movie extends Component {
       backgroundPosition: "center",
       backgroundSize: "cover",
       backgroundRepeat: "no-repeat",
-      objectFit: "cover",
+      objectFit: "cover"
       // filter: "blur(5px)"
     };
 
@@ -144,32 +150,30 @@ class Movie extends Component {
 
               {/* events */}
               <h2 className='eventos'>Eventos</h2>
-              
 
               {this.state.events.map(event => {
                 // this.getTheater(event.theaterId);
                 return (
                   <div className='movie-events'>
-                  <div className='' className={event.id}>
-                    <div className='active-aligned'>
-                    <h3 className='movie-type'>{event.movieDate}</h3>
-                    <h4 className='movie-type'>{event.typeOfActivity}</h4>
+                    <div className='' className={event.id}>
+                      <div className='active-aligned'>
+                        <h3 className='movie-type'>{event.movieDate}</h3>
+                        <h4 className='movie-type'>{event.typeOfActivity}</h4>
+                      </div>
+                      <h3 className='movie-title'>{event.title}</h3>
+                      <h5 className='movie-type'>
+                        {this.state.theaterName.name}
+                        {" - "}
+                        {this.state.theaterName.address}
+                      </h5>
+                      {/* know more about this event */}
+                      <button className='active-saiba-mais'>
+                        <Link to={`/evento/${event.id}`}>Saiba Mais</Link>
+                      </button>
                     </div>
-                    <h3 className='movie-title'>{event.title}</h3>
-                    <h5 className='movie-type'>
-                      {this.state.theaterName.name}
-                      {" - "}
-                      {this.state.theaterName.address}
-                    </h5>
-                    {/* know more about this event */}
-                    <button className='active-saiba-mais'>
-                      <Link to={`/evento/${event.id}`}>Saiba Mais</Link>
-                    </button>
-                  </div>
                   </div>
                 );
               })}
-                
 
               <br />
               <button className='create-event'>
