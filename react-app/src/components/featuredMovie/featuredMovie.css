@@ -1,3 +1,8 @@
+.featured-movie-bg::before{
+  content: "";
+  background-color: blue;
+}
+
 .featured-movie-bg {
   display: flex;
   justify-content: flex-start;
@@ -14,7 +19,7 @@
  }
  .featured-info h1 {
   font-weight: 800;
-  color: #c4c4c4;
+  color: #191a1b;
   font-size: 50px;
  }
  p {
