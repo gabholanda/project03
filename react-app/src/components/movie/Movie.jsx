@@ -74,6 +74,7 @@ class Movie extends Component {
       backgroundSize:"cover",
       backgroundRepeat:"no-repeat",
       objectFit:"cover",
+      filter: "blur(5px)",
       }
 
 
@@ -151,12 +152,12 @@ class Movie extends Component {
                   <br/>
                     <button className='create-event'>
                       <Link to={`${this.props.match.params.movieId}/criar_evento`}>
-                        + Criar um evento
+                        + Quero criar um evento
                       </Link>
                     </button>
             </div>
           </div>
-  </div>
+        </div>
       </div>
     );
   }

@@ -392,6 +392,7 @@ class EventMovie extends Component {
               </div>
               </div>
               <hr className='div-interations'/>
+              
               <div className='interation'>
                 <img className='image-interation'src='http://interfacetreinamentos.com.br/wp-content/uploads/2016/04/img-profile-default.jpg' alt='' />
 
