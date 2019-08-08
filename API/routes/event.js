@@ -75,19 +75,14 @@ router.post("/events", (req, res, next) => {
     thirdInterationTitle,
     thirdInterationDescription,
     host: host,
-    movieId: movieId
+    movieId: movieId,
+    members: [host]
   });
   Event.create(newEvent)
     .then(response => {
       User.findByIdAndUpdate(host._id, { $push: { events: newEvent, host: newEvent } })
         .then(user => {
-          console.log(user)
-          // The event receives the event host as a member
-          Event.findOneAndUpdate({ host: user }, { $push: { members: user } })
-            .then(() =>
-              res.status(200).json({ message: "Event created successfuly" })
-            )
-            .catch(err => res.json(err));
+          res.status(200).json({ message: "Event created successfuly" })
         })
         .catch(err => res.status(400).json(err));
     })
@@ -178,7 +173,6 @@ router.delete("/events/:id", (req, res, next) => {
 router.put("/join-event/:eventId/user/:userId", (req, res, next) => {
   const userId = req.params.userId;
   const eventId = req.params.eventId;
-  console.log('ENTROU')
   User.findByIdAndUpdate(userId, { $push: { events: eventId } })
     .then(user => {
       Event.findByIdAndUpdate(eventId, { $push: { members: userId } })
