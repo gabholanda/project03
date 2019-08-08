@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./EventMovie.css";
 import axios from "axios";
+import Footer from "../footer/footer";
 
 class EventMovie extends Component {
   constructor(props) {
@@ -64,6 +65,7 @@ class EventMovie extends Component {
   render() {
       return (
         <div className=''>
+
           {/* breadcrumb */}
           <nav aria-label='breadcrumb'>
             <ol className='breadcrumb'>
@@ -80,20 +82,31 @@ class EventMovie extends Component {
           </nav>
           {/* breadcrumb end */}
 
-          <img className='' src={this.state.movie.posterV} alt='poster-movie' />
-          <div>
-            <button className=''>
-              <Link to='www.google.com.br'>Sair do grupo</Link>
-            </button>
-            <button className=''>
-              <Link to='www.google.com.br'>Editar evento</Link>
-            </button>
+          <div className='eventPage-container'>
+
+            <div className='eventPage-left'>
+            <img className='' src={this.state.movie.posterV} alt='poster-movie' />
+            <div>
+                <button className=''>
+                <Link to='www.google.com.br'>Sair do grupo</Link>
+                </button>
+                <button className=''>
+                <Link to='www.google.com.br'>Editar evento</Link>
+                </button>
+              </div>
+            </div>
+
+            <div className='eventPage-right'>
+              <h3 className=''>{this.state.event.typeOfActivity}</h3>
+              <h1 className=''>{this.state.event.title}</h1>
+              <p className=''>{this.state.event.dateMovie}</p>
+              <hr />
+
+
+            </div>
+
           </div>
           <div className=''>
-            <h3 className=''>{this.state.event.typeOfActivity}</h3>
-            <h1 className=''>{this.state.event.title}</h1>
-            <p className=''>{this.state.event.dateMovie}</p>
-            <hr />
             <p className=''>
               O evento tem duração de {this.state.event.duration} minutos
             </p>
@@ -167,6 +180,7 @@ class EventMovie extends Component {
               <Link to='www.google.com.br'>+ Criar um evento</Link>
             </button> */}
           </div>
+          <Footer />
         </div>
       );
     }
