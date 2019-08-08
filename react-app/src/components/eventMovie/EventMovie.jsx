@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./EventMovie.css";
 import axios from "axios";
+import Footer from "../footer/footer";
 
 class EventMovie extends Component {
   constructor(props) {
@@ -174,8 +175,9 @@ class EventMovie extends Component {
             <button className=''>
               <Link to='www.google.com.br'>+ Criar um evento</Link>
             </button> */}
+          </div>
+          <Footer />
         </div>
-      </div>
     );
   }
 }

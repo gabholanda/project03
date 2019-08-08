@@ -3,6 +3,7 @@ import "./Movie.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "./Movie.css";
+import Footer from "../footer/footer";
 
 class Movie extends Component {
   constructor(props) {
@@ -179,6 +180,7 @@ class Movie extends Component {
             </div>
           </div>
         </div>
+        <Footer />
       </div>
     );
   }
