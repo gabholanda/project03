@@ -85,7 +85,7 @@ class App extends Component {
               path='/signup'
               render={() => <Signup getUser={this.getTheUser} />}
             />
-            <ProtectedRoute
+            <ProtectedAuthRoute
               exact
               path='/edit/profile'
               render={(props) => <EditProfile {...props} user={this.state.loggedInUser} />}

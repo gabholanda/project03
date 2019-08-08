@@ -56,11 +56,14 @@ class Profile extends Component {
         <div>
         <div className='myProfile'>
 
-
           <div className='profile-left'>
           <div className='profile-avatar'>
             <img src={this.state.user.image}/>
           </div>
+
+          <Link to ="/edit/profile">
+          <button className='button-edit-profile'>editar perfil</button>
+          </Link>
 
           </div>
 
