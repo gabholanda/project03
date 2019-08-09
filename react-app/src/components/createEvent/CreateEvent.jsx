@@ -151,7 +151,6 @@ class EventMovie extends Component {
     axios
       .post(`${process.env.REACT_APP_API_URL}/events`, { form })
       .then(responseFromApi => {
-        console.log(responseFromApi) // Descomentar isso se quiser ver se criou mesmo
         this.setState({
           redirect: true,
           city: 1,
@@ -233,7 +232,6 @@ class EventMovie extends Component {
   // }
 
   render() {
-    console.log(this.state);
     if (this.state.redirect) {
       return <Redirect to='/' />;
     } else {
