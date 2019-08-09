@@ -114,7 +114,6 @@
   font-size: 20px;
 }
 
-
 .movie-div{
   height: 1px;
   width: 600px;
@@ -196,3 +195,82 @@
   border: none;
   border-radius: 3px;
 }
+
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+
+  .movie-poster{
+    display: none;
+  }
+
+ .title-genre{
+    margin-top:5px;
+  }
+
+  .bg-movie-onmovie {
+    border-bottom:1px solid #c4c4c4;
+    opacity: 0.3;
+  }
+
+  .title-movie{
+    margin-top:1px;
+    font-weight: 800;
+    width: 200px;
+    font-size: 25px;
+    color:white;
+
+  }
+
+  .movie-info{
+    padding: 10px 0px;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    flex-wrap: wrap;
+  }
+
+  .sinopse{
+    margin-top: 150px;
+    width: 200px;
+  }
+
+  .sinopse h2{
+    padding-top: 100px;
+    font-weight: 800;
+    font-size: 35px;
+    padding-bottom: 1%;
+    color:white;
+  }
+
+  .movie-div{
+    width: 90px;
+    margin-left: 0px;
+  }
+
+  .movie-details {
+    display: flex;
+    justify-content: flex-start;
+  }
+  
+  .movie-div{
+    margin-top:0;
+    margin-bottom:0;
+    border:0.5px solid #c4c4c4;
+    box-shadow:0px 21px 31px -18px rgba(0,0,0,0.75);
+  }
+
+  .movie-events{
+    color:#212121;
+    padding: 5%;
+    width: 250px;
+    background-color: #c4c4c4;;
+    border-radius: 3px;
+    box-shadow:0px 21px 31px -18px rgba(0,0,0,0.75);
+    margin-bottom: 20px;
+  }
+
+  .create-event{
+    margin-bottom: 30px;
+  }
+
+  }

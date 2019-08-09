@@ -5,7 +5,7 @@ import { Switch, Route } from "react-router-dom";
 
 import ProtectedRoute from "./components/auth/protected-routes"
 import ProtectedAuthRoute from './components/auth/protected-auth-routes'
-
+// import HamburgerMenu from "./hamburger.jsx";
 import Home from "./components/home/home";
 import Signup from "./components/auth/Signup";
 import Login from "./components/auth/Login";
@@ -67,6 +67,7 @@ class App extends Component {
     if (this.state.loggedInUser) {
       return (
         <div className='App'>
+          {/* <HamburgerMenu/> */}
           <Navbar
             userInSession={this.state.loggedInUser}
             getUser={this.getTheUser}

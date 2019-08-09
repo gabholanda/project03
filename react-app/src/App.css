@@ -1,27 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,700&display=swap");
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "IBM Plex Sans", sans-serif;
-}
 
-html, body {
-  min-height: 100vh;
-  min-width: 100vw;
-}
-
-#app {
-  min-height: 100vh;
-  min-width: 100vw;
-}
-
-.pc-show {
-  display: block;
-}
-.mobile-show {
-  display: none;
-}
 @media (max-width: 768px) {
   .pc-show {
     display: none !important;
@@ -33,4 +11,48 @@ html, body {
   .nav-hamburger {
     border: 1px solid red;
   }
+
+  /* home */
+
+  .featured-link {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    width: 100%;
+    background-color: #c4c4c4;
+    color: red;
+    border-style: none;
+    border-radius: 3px;
+    text-decoration: none;
+   }
+
 }
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+
+  .featured-link {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    width: 40%;
+    background-color: #c4c4c4;
+    color: #191a1b;
+    border-style: none;
+    border-radius: 3px;
+    text-decoration: none;
+   }
+
+   .feature-movie-size {
+    height: 60vh;
+  }
+
+  .featured-info h1 {
+    font-weight: 800;
+    color: #f6f6f6;
+    font-size: 35px;
+    width:60%;
+    text-shadow: 1px 5px 20px  #3b3b3b
+   }
+   
+  }
+

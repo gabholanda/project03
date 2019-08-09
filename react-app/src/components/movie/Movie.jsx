@@ -178,7 +178,7 @@ class Movie extends Component {
               {/* others info */}
               <div className='sinopse'>
                 <h2 className=''>Sinopse</h2>
-                <p className=''>{this.state.movie.sinopse}</p>
+                <p className='sinopse-info'>{this.state.movie.sinopse}</p>
               </div>
 
               <hr className='movie-div' />
