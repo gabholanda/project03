@@ -44,9 +44,9 @@ class Profile extends Component {
           <div className='myProfile'>
             <div className='profile-left'>
               <div className='avatar-container'>
-                <div className='profile-avatar'>
-                  <img src={this.state.user.image} alt='my-image-profile' />
-                </div>
+                <figure className='profile-avatar'>
+                  <img src={this.state.user.image} alt='my-profile' />
+                </figure>
                 <Link to='/edit/profile'>
                   <button className='button-edit-profile'>editar perfil</button>
                 </Link>
@@ -67,18 +67,18 @@ class Profile extends Component {
               </div>
 
               <div className='about-movies'>
-                <h2 className='profile-film-info'>Filme favorito</h2>
+                <h2 className='profile-film-info'>Filme favorito: </h2>
                 <div className='about-movies-answers'>
                   {<p>{this.state.user.favoriteMovie}</p> &&
                     this.state.user.favoriteMovie}
                 </div>
 
-                <h2 className='profile-film-info'>Hobbies</h2>
+                <h2 className='profile-film-info'>Hobbies: </h2>
                 <div className='about-movies-answers'>
                   {<p>{this.state.user.hobbies}</p> && this.state.user.hobbies}
                 </div>
 
-                <h2 className='profile-film-info'>Lugar favorito</h2>
+                <h2 className='profile-film-info'>Lugar favorito: </h2>
                 <div className='about-movies-answers'>
                   {<p>{this.state.user.favoritePlace}</p> &&
                     this.state.user.favoritePlace}
@@ -93,7 +93,7 @@ class Profile extends Component {
                     <h3 className='active-type'>{event.typeOfActivity}</h3>
                     <h2 className='active-title'>{event.title}</h2>
                     <h3 className='active-type'>{event.movieDate}</h3>
-                    <h4 className='active-type'>local</h4>
+                    <h4 className='active-type'>local: </h4>
                     <button className='active-saiba-mais'>Saiba Mais</button>
                   </div>
                 );
