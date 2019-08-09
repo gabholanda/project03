@@ -17,11 +17,13 @@
   width: 100%;
   background-color:#212121;
 }
+
 .signup-screen {
   min-height: 100vh;
   min-width: 100vw;
   background-color: #191A1B;
 }
+
 .signup-call{
   margin-left: 10%;
   align-self: center;
@@ -129,7 +131,7 @@
   margin-bottom: 10px;
 }
 
-.signup-create{
+.login-button{
   display: flex;
   align-items: center;
   justify-content: center;
@@ -160,4 +162,46 @@
 
 .signup-form input:-internal-autofill-selected {
   background-color: #212121;
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+  
+  .back-home-signup{
+    display: none;
+  }
+
+  .signup-box{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .signup-call{
+    margin-top: 10%;
+    margin-left: 0;
+    margin-bottom: 20px;
+    padding: 0px 30px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .signup-call img{
+    display: none;
+  }
+  
+  .login-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #191a1b;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #ffea2f;
+    padding-left: 10px;
+    font-size: 15px;
+    height: 40px;
+    width: 100%;
+    border:none;
+    border-radius: 3px;
+  }
+  
 }

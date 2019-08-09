@@ -94,7 +94,7 @@ class Signup extends Component {
                 <p className='signup-cta'>
                   Já possui uma conta?
             </p>
-                <Link className='signup-create' to={"/login"}> Entrar </Link>
+                <Link className='login-button' to={"/login"}> Entrar </Link>
               </form>
 
             </div>
