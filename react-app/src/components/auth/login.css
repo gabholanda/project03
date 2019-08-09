@@ -135,3 +135,59 @@
 .login-form input:-internal-autofill-selected {
   background-color: #212121;
 }
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+  
+  .back-home{
+    display:none;
+  }
+
+  .login-div{
+    border: 0.5px solid #ffea2f;
+    width: 200px;
+    box-shadow: black;
+    margin-bottom: 30px;
+  }
+
+  .login-title{
+    display:flex;
+    text-align: center;
+    align-self: center;
+    padding: 5%;
+    font-weight: 800;
+    color:#c4c4c4;
+    font-size: 20px;
+    margin-bottom: 20px;
+    
+  }
+
+  .login-form input{
+    background-color: #191a1b;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #c4c4c4;
+    padding-left: 1%;
+    font-size: 15px;
+    height: 40px;
+    width: 100%;
+    border:none;
+    border-radius: 3px;
+  }
+
+  .signup-google{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #191a1b;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #c4c4c4;
+    padding: 10px 10px;
+    font-size: 15px;
+    width: 100%;
+    border:none;
+    border-radius: 3px;
+    text-decoration: none;
+  }
+  
+}
