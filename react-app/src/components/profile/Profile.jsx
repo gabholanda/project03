@@ -87,7 +87,7 @@ class Profile extends Component {
               <h1 className='profile-dados'>Eventos Ativos</h1>
               {this.state.events.map(event => {
                 return (
-                  <div class='active-events'>
+                  <div className='active-events'>
                     <h3 className='active-type'>{event.typeOfActivity}</h3>
                     <h2 className='active-title'>{event.title}</h2>
                     <h3 className='active-type'>{event.movieDate}</h3>
