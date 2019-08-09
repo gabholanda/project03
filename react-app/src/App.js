@@ -21,7 +21,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loggedInUser: null
+      loggedInUser: null,
+      movieId: null,
     };
     this.service = new AuthService();
   }

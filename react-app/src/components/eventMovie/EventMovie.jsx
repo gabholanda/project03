@@ -3,6 +3,7 @@ import { Link, Redirect } from "react-router-dom";
 import "./EventMovie.css";
 import MapContainer from '../maps/Maps'
 import axios from "axios";
+import GoogleApiWrapper from '../Map/Map';
 import Footer from "../footer/footer";
 
 class EventMovie extends Component {
@@ -217,9 +218,36 @@ class EventMovie extends Component {
 
           <Footer />
         </>
+<<<<<<< HEAD
+          );
+        }
+      }
+        //    <button className=''>
+        //       <a
+        //         target='_blank'
+        //         rel='noopener noreferrer'
+        //         href={this.state.movie.trailer}
+        //       >
+        //         Traler
+        //       </a>
+        //     </button>
+        //   </div>
+        //   <hr className='' />
+        //   <div className=''>
+        //     <h2 className=''>Sinopse</h2>
+        //     <p className=''>{this.state.movie.sinopse}</p>
+        //   </div>
+        // </div>
+        // <Footer />
+      // </>
+    // );
+  // }
+// }
+=======
       );
     }
   }
 }
+>>>>>>> master
 export default EventMovie;
 
