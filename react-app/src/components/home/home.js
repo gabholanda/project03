@@ -127,7 +127,6 @@ class Movies extends Component {
             ))}
           </Slider>
         </div>
-
         <hr className='home-div' />
         <div className='emBreve'>
           <div className='movie-title-section'>

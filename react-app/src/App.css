@@ -5,6 +5,17 @@
   box-sizing: border-box;
   font-family: "IBM Plex Sans", sans-serif;
 }
+
+html, body {
+  min-height: 100vh;
+  min-width: 100vw;
+}
+
+#app {
+  min-height: 100vh;
+  min-width: 100vw;
+}
+
 .pc-show {
   display: block;
 }

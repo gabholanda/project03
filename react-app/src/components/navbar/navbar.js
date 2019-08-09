@@ -26,9 +26,9 @@ class Navbar extends Component {
     if (this.state.loggedInUser) {
       return (
         <>
-          <div className='mobile-show'>
+          {/* <div className='mobile-show'>
             <HamburgerMenu />
-          </div>
+          </div> */}
           <div className='main-navbar'>
             <Link to='/' className='navbar-brand '>
               <img src='../images/logo.svg' alt='cinex logotype' />
@@ -56,9 +56,9 @@ class Navbar extends Component {
     } else {
       return (
         <>
-          <div className='mobile-show'>
+          {/* <div className='mobile-show'>
             <HamburgerMenu />
-          </div>
+          </div> */}
           <div className='main-navbar'>
             <Link to='/' className='navbar-brand '>
               <img src='../images/logo.svg' alt='cinex logotype' />

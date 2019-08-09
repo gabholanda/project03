@@ -44,18 +44,20 @@ class Signup extends Component {
     }
     return (
       <Fragment>
+        <div className="signup-screen">
         <div className='form-container'>
           <div className='signup-container'>
             <div className='signup-box'>
+              <Link to='/' className='back-home-signup'>
+                <img src='./images/close.svg' alt="home" />
+              </Link>
               <div className='signup-call'>
                 <img src='../images/logo.svg' alt='cinex logotype' />
                 <h3 className='signup-title'>Escolha um filme, entre em um grupo e faça amigos de uma maneira diferente!</h3>
                 <p className='signup-description'>Conheça uma plataforma diferente de tudo o que você já testou. Você simplesmente vai amar!</p>
               </div>
               <form className='signup-form' onSubmit={this.handleFormSubmit}>
-                <Link to='/'>
-                  <img className='back-home-signup' src='./images/close.svg' alt="home" />
-                </Link>
+
                 <input
                   type='text'
                   placeholder='Seu nome'
@@ -99,6 +101,7 @@ class Signup extends Component {
           </div>
         </div>
         <Footer />
+        </div>
       </Fragment>
     );
   }
