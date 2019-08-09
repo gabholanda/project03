@@ -92,7 +92,11 @@ class Profile extends Component {
                     <h2 className='active-title'>{event.title}</h2>
                     <h3 className='active-type'>{event.movieDate}</h3>
                     <h4 className='active-type'>local: </h4>
-                    <button className='active-saiba-mais'>Saiba Mais</button>
+                    <button className='active-saiba-mais'>
+                      <Link to={`/evento/${event.id}`}>
+                        Saiba Mais
+                    </Link>
+                    </button>
                   </div>
                 );
               })}
