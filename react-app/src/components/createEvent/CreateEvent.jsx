@@ -385,10 +385,8 @@ class EventMovie extends Component {
                   </p>
 
                   <div className='interation'>
-                    <img src='../images/001-one.svg' alt='number' />
-
-                      src='http://interfacetreinamentos.com.br/wp-content/uploads/2016/04/img-profile-default.jpg'
-                      alt=''
+                    <img src='/images/001-one.svg'
+                    alt='number' 
                     />
 
                     <div className='interation-description'>
@@ -409,13 +407,13 @@ class EventMovie extends Component {
                       />
                     </div>
                   </div>
-                  <hr className='div-interations' />
 
+
+                  <hr className='div-interations' />
                   <div className='interation'>
                     <img
                       className='image-interation'
-                      src='http://interfacetreinamentos.com.br/wp-content/uploads/2016/04/img-profile-default.jpg'
-                      alt=''
+                      src='/images/002-two.svg' alt='number' 
                     />
 
                     <div className='interation-description'>
@@ -438,8 +436,7 @@ class EventMovie extends Component {
                   <hr className='div-interations' />
                   <div className='interation'>
                     <img
-                      src='http://interfacetreinamentos.com.br/wp-content/uploads/2016/04/img-profile-default.jpg'
-                      alt=''
+                      src='/images/003-three.svg' alt='number' 
                     />
 
                     <div className='interation-description'>

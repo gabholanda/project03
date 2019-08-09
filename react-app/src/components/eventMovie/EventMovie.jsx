@@ -210,7 +210,7 @@ class EventMovie extends Component {
                 </div>
               </div>
 
-              <button className='event-button-exit2' onClick={() => this.enterEvent()}>
+              <button className='event-button-join' onClick={() => this.enterEvent()}>
                 Participar!
               </button>
             </div>

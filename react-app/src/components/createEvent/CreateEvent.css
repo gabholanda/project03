@@ -27,8 +27,13 @@
 
 /* Right side */
 
+.info-side{
+  padding: 10px 40px;
+}
+
 .create-form{
   display: flex;
+  width: 100%;
   flex-direction: column;
   flex-wrap: wrap;
   border-radius: 3px;
@@ -38,7 +43,7 @@
 .create-main-title {
   margin-top: 40px;
   text-align: left ;
-  color:#ffea2f;
+  color:#d8cd6d;
   font-weight: 800;
   font-size: 30px;
 }
@@ -60,7 +65,7 @@
 
 .create-div{
   margin-top:20px;
-  width: 450px;
+  width: 100%;
   margin-bottom:20px;
   border:0.5px solid #c4c4c4;
   box-shadow:0px 21px 31px -18px rgba(0,0,0,0.75);
@@ -82,12 +87,12 @@
 .create-form input{
   background-color: #191a1b;
   margin-bottom: 20px;
-  text-align: center;
+  text-align: left;
   color: #c4c4c4;
   padding-left: 10px;
   font-size: 15px;
   height: 40px;
-  width: 400px;
+  width: 100%;
   border:none;
   border-radius: 3px;
 }
@@ -100,7 +105,7 @@
   padding-left: 10px;
   font-size: 15px;
   height: 40px;
-  width: 400px;
+  width: 100%;
   border:none;
   border-radius: 3px;
 }
@@ -112,6 +117,7 @@
 
 
 .interation{
+  background-color: #2c2c2c;
   display: flex;
   align-items: flex-start;
   padding-top: 30px;
@@ -128,9 +134,11 @@
 }
 
 .interation-description{
+  text-align: left !important;
   display: flex;
+  width: 100%;
   flex-direction: column;
-  align-items: center;
+  justify-self: flex-start;
 }
 
 .interation img{
@@ -140,16 +148,17 @@
 
 .div-interations{
   margin-top:40px;
-  width: 450px;
+  width: 100%;
   margin-bottom:20px;
   border:0.5px solid #c4c4c4;
   box-shadow:0px 21px 31px -18px rgba(0,0,0,0.75);
 }
 
 textarea {
+  text-align: left;
   resize: none;
   height: 50px; 
-  width: 400px; 
+  width: 100%;
   border:3px;
   padding: 10px;
   background-color: #191a1b;
