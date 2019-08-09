@@ -10,12 +10,15 @@
 }
 
 .profile-edit-left{
+  border: 3px solid red;
+  
   display: flex;
   flex-direction: column;
   margin-right: 20px;
 }
 
 .profile-avatar{
+  border: 1px solid red;
   box-shadow:0px 21px 31px -18px rgba(0,0,0,0.75);
 }
 

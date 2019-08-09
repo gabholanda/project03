@@ -3,6 +3,7 @@
 }
 
 .breadcrumb{
+  padding-left: 40px !important;
   margin:0 !important;
   background-color: black !important;
   border-radius: 0 !important;
@@ -10,7 +11,6 @@
 }
 
 .breadcrumb-item a {
-  margin-left: 31px;
   color: #c4c4c4 !important;
   text-decoration: none;
 }

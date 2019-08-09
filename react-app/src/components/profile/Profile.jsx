@@ -61,8 +61,8 @@ class Profile extends Component {
                 <h3 className='profile-dados'>{this.state.user.city}</h3>
                 <h2 className='profile-info'>Sobre mim</h2>
                 <h2 className='profile-dados'>{this.state.user.about}</h2>
-                <hr className='profile-div' />
               </div>
+                <hr className='profile-div' />
 
               <div className='about-movies'>
                 <h2 className='profile-film-info'>Filme favorito: </h2>
@@ -82,6 +82,7 @@ class Profile extends Component {
                     this.state.user.favoritePlace}
                 </div>
               </div>
+
               <hr className='profile-div' />
 
               <h1 className='profile-dados'>Eventos Ativos</h1>
