@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./EventMovie.css";
 import axios from "axios";
+import GoogleApiWrapper from '../Map/Map';
 import Footer from "../footer/footer";
 
 class EventMovie extends Component {
@@ -164,9 +165,9 @@ class EventMovie extends Component {
             <div className='event-maps-container'>
               <h2 className='event-maps-title'>Local do Filme</h2>
               <div className='maps'>
-                <img src='../images/maps.png' alt='cinex logotype' />
+              <GoogleApiWrapper/>
+                {/* <img src='../images/maps.png' alt='cinex logotype' /> */}
               </div>
-              {/* // GOOGLE MAPS HERE */}
             </div>
 
             {/* host */}
@@ -197,25 +198,25 @@ class EventMovie extends Component {
           );
         }
       }
-          {/* <button className=''>
-              <a
-                target='_blank'
-                rel='noopener noreferrer'
-                href={this.state.movie.trailer}
-              >
-                Traler
-              </a>
-            </button>
-          </div>
-          <hr className='' />
-          <div className=''>
-            <h2 className=''>Sinopse</h2>
-            <p className=''>{this.state.movie.sinopse}</p>
-          </div>
-        </div>
-        <Footer />
-      </>
-    );
-  }
-}
+        //    <button className=''>
+        //       <a
+        //         target='_blank'
+        //         rel='noopener noreferrer'
+        //         href={this.state.movie.trailer}
+        //       >
+        //         Traler
+        //       </a>
+        //     </button>
+        //   </div>
+        //   <hr className='' />
+        //   <div className=''>
+        //     <h2 className=''>Sinopse</h2>
+        //     <p className=''>{this.state.movie.sinopse}</p>
+        //   </div>
+        // </div>
+        // <Footer />
+      // </>
+    // );
+  // }
+// }
 export default EventMovie;

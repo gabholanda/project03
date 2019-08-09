@@ -385,7 +385,8 @@ class EventMovie extends Component {
                   </p>
 
                   <div className='interation'>
-                    <img
+                    <img src='../images/001-one.svg' alt='number' />
+
                       src='http://interfacetreinamentos.com.br/wp-content/uploads/2016/04/img-profile-default.jpg'
                       alt=''
                     />
