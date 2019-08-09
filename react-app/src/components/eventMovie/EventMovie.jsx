@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import "./EventMovie.css";
+import MapContainer from '../maps/Maps'
 import axios from "axios";
 import GoogleApiWrapper from '../Map/Map';
 import Footer from "../footer/footer";
@@ -13,6 +14,7 @@ class EventMovie extends Component {
       redirect: false,
       posterV: "",
       movie: 0,
+      geolocation:"",
       event: {
         participants: "",
         _id: "",
@@ -38,6 +40,18 @@ class EventMovie extends Component {
     };
   }
 
+  getTheater = id => {
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/cinema/${id}`)
+      .then(responseFromApi => {
+        console.log(responseFromApi.data.geolocation, '----------<<<');
+        this.setState({
+          geolocation: responseFromApi.data.geolocation
+        });
+      })
+      .catch(error => console.log(error));
+  };
+
   getEvents = () => {
     if (this.props.eventId) {
       axios
@@ -47,6 +61,7 @@ class EventMovie extends Component {
             event: responseFromApi.data
           });
           this.getMovie(responseFromApi.data.movieId);
+          this.getTheater(responseFromApi.data.theaterId);
         })
         .catch(error => console.log(error));
     } else {
@@ -97,6 +112,7 @@ class EventMovie extends Component {
   }
 
   render() {
+    console.log(this.state.geolocation)
     if (this.state.redirect) {
       return <Redirect to='/' />;
     } else {
@@ -115,6 +131,7 @@ class EventMovie extends Component {
             </li>
             </ol>
           </nav>
+
           <div className='eventPage'>
             <div className='eventPage-left'>
               {/* image */}
@@ -134,7 +151,7 @@ class EventMovie extends Component {
 
               <h3 className='event-activity'>Atividade{this.state.event.typeOfActivity}</h3>
               <h1 className='event-title'>titulo{this.state.event.title}</h1>
-              <p className='event-date'>ddfgdfg{this.state.event.dateMovie}</p>
+              <h3 className='event-date'>ddfgdfg{this.state.event.dateMovie}</h3>
               <hr className='event-div' />
               <div className='event-important-info'>
                 <p className=''>
@@ -171,7 +188,7 @@ class EventMovie extends Component {
               <div className='event-maps-container'>
                 <h2 className='event-maps-title'>Local do Filme</h2>
                 <div className='maps'>
-                  <img src='../images/maps.png' alt='cinex logotype' />
+                  <MapContainer location={this.state.geolocation}/>
                 </div>
                 {/* // GOOGLE MAPS HERE */}
               </div>

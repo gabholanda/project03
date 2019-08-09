@@ -14,7 +14,6 @@ const FeaturedMovie = props => {
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     objectFit: "cover",
-
   }
 
   return (
@@ -24,7 +23,7 @@ const FeaturedMovie = props => {
         <div className='featured-info'>
           <h1>{props.title}</h1>
           <p>{props.description}</p>
-          <Link to={props.way} className='featured-link'>
+          <Link to={props.way} className='featured-link' style={{textDecoration:'none'}}>
             <img className='search-icon' src='../images/play.svg' alt="search-icon" />
             Veja mais
           </Link>

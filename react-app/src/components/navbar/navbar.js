@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./navbar.css";
-import HamburgerMenu from "./hamburger.jsx";
+// import HamburgerMenu from "./hamburger.jsx";
 import AuthService from "../auth/auth-service";
 
 class Navbar extends Component {
@@ -26,9 +26,7 @@ class Navbar extends Component {
     if (this.state.loggedInUser) {
       return (
         <>
-          {/* <div className='mobile-show'>
-            <HamburgerMenu />
-          </div> */}
+          {/* <HamburguerMenu/> */}
           <div className='main-navbar'>
             <Link to='/' className='navbar-brand '>
               <img src='../images/logo.svg' alt='cinex logotype' />
@@ -76,10 +74,10 @@ class Navbar extends Component {
               <Link to='#'>
                 <div className='avatar' />
               </Link>
-              <Link to='/login' className='login'>
+              <Link to='/login' className='login' style={{textDecoration:'none'}}>
                 Login
               </Link>
-              <Link to='/signup' className='signup'>
+              <Link to='/signup' className='signup' style={{textDecoration:'none'}}>
                 Signup
               </Link>
             </div>

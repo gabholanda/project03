@@ -53,3 +53,13 @@
 .slider__container{
   padding: 30px;
 }
+
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+  .slider__container{
+    padding: 10px;
+  }
+  .slider-wrapper{
+    padding: 15px 0px;
+  }
+}
