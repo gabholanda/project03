@@ -57,7 +57,6 @@ class App extends Component {
   };
 
   getTheUser = userObj => {
-    console.log('-------> user atualizado', this.state.loggedInUser);
     this.setState({
       loggedInUser: userObj
     });

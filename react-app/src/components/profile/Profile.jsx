@@ -21,7 +21,6 @@ class Profile extends Component {
         this.setState({
           events: responseFromApi.data
         });
-        console.log(responseFromApi.data);
       })
       .catch(error => console.log(error));
   };
@@ -31,7 +30,6 @@ class Profile extends Component {
       status: true,
       user: this.props.user
     });
-    console.log("------------>", this.props.user);
     this.getEvents();
   }
 

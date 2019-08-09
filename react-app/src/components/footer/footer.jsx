@@ -7,7 +7,7 @@ const Footer = props => {
     <div>
       <div className='footer-container'>
       <img className='footer-logo' src='../images/logo_footer.svg' alt='cinex logotype' />
-      <p>Feito com &#x2764; para IronHack - Project 3</p>
+      {/* <p>Feito com &#x2764; para IronHack - Project 3</p> */}
 
       <ul className='footer-links'>
         <Link to='#'><li>Sobre o CineXp</li></Link>
