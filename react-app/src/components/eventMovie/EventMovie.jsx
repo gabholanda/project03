@@ -14,7 +14,7 @@ class EventMovie extends Component {
       redirect: false,
       posterV: "",
       movie: 0,
-      geolocation:"",
+      geolocation: "",
       event: {
         participants: "",
         _id: "",
@@ -186,18 +186,19 @@ class EventMovie extends Component {
               <div className='event-maps-container'>
                 <h2 className='event-maps-title'>Local do Filme</h2>
                 <div className='maps'>
-                  <MapContainer location={this.state.geolocation}/>
+                  <MapContainer location={this.state.geolocation} />
                 </div>
                 {/* // GOOGLE MAPS HERE */}
               </div>
 
               {/* host */}
-              <h2 className='event-host-title'>Host do Evento</h2>
+
 
               <div className='event-host'>
-                <div className='host-image'>
+                <h2 className='event-host-title'>Host do Evento:  </h2>
+                <figure className='host-image'>
                   <img src={this.state.event.host.image} alt='event-host' />
-                </div>
+                </figure>
 
 
                 <div className='host-div'>

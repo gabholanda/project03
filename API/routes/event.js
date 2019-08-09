@@ -101,7 +101,6 @@ router.post("/events", (req, res, next) => {
     movieId: movieId,
     members: [host]
   });
-  console.log('chegou até aqui')
   Event.create(newEvent)
     .then(response => {
       User.findByIdAndUpdate(host._id, { $push: { events: newEvent, host: newEvent } })
