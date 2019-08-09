@@ -81,6 +81,8 @@ class Movies extends Component {
           // description={this.state.moviesHigh[0].description}
           image={this.state.moviesHigh[0].poster}
           way={`filme/${this.state.moviesHigh[0].id}`}
+          movieId={this.state.moviesHigh[0].id}
+          getMovieId={this.props.getMovieId}
         />
         <div className='destaques'>
           <div className='movie-title-section'>

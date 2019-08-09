@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import "./otheProfile.css";
 
 
@@ -7,7 +7,7 @@ const otherProfile = (props) => {
   return (
     <div className='friendProfile'>
     <div className="image">
-    <img src={props.friend.image}/>
+    <img src={props.friend.image} alt =''/>
     </div>
     <div className="about">
 

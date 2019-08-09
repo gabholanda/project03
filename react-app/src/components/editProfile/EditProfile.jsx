@@ -25,7 +25,6 @@ class EditProfile extends Component {
     event.preventDefault();
     
     const {name, image, city, favoriteMovie, about, hobbies, favoritePlace} = this.state;
-    console.log("...............", process.env.REACT_APP_API_URL)
 
     axios.put(`${process.env.REACT_APP_API_URL}/editUser/${this.props.user._id}`, { name, image, city, favoriteMovie, about, hobbies, favoritePlace })
     .then((user) => {
@@ -46,8 +45,6 @@ class EditProfile extends Component {
   }
 
   handleFileUpload = e => {
-    console.log("The file to be uploaded is: ", e.target.files[0]);
-
     const uploadData = new FormData();
     // imageUrl => this name has to be the same as in the model since we pass
     // req.body to .create() method when creating a new thing in '/api/things/create' POST route
@@ -74,7 +71,7 @@ class EditProfile extends Component {
 
         
         <div className='profile-edit-left'>
-           <img className='profile-avatar' src={this.state.image} alt="my-image-profile"/>
+           <img className='profile-avatar' src={this.state.image} alt="my-profile"/>
           <input className='button-send-file'type="file" name="image" onChange={e => this.handleFileUpload(e)} />
             <label>image:</label>
 

@@ -33,8 +33,8 @@ class EventMovie extends Component {
         thirdInterationDescription: "",
         movieId: "",
         host: {
-          name: ""
-          // Inserir aqui informações extras do host para descrever o evento
+          name: "",
+          image: ""// Inserir aqui informações extras do host para descrever o evento
         }
       }
     };
@@ -44,7 +44,6 @@ class EventMovie extends Component {
     axios
       .get(`${process.env.REACT_APP_API_URL}/cinema/${id}`)
       .then(responseFromApi => {
-        console.log(responseFromApi.data.geolocation, '----------<<<');
         this.setState({
           geolocation: responseFromApi.data.geolocation
         });
@@ -112,7 +111,6 @@ class EventMovie extends Component {
   }
 
   render() {
-    console.log(this.state.geolocation)
     if (this.state.redirect) {
       return <Redirect to='/' />;
     } else {
@@ -198,14 +196,14 @@ class EventMovie extends Component {
 
               <div className='event-host'>
                 <div className='host-image'>
-                  <img src='' alt='host image here please' />
+                  <img src={this.state.event.host.image} alt='event-host' />
                 </div>
 
 
                 <div className='host-div'>
                   <div className='host-info'>
                     <h4>{this.state.event.host.name}</h4>
-                    <p>{this.state.event.host.name}</p>
+                    <p>{this.state.event.host.about}</p>
                   </div>
                 </div>
               </div>

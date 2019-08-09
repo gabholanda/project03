@@ -4,7 +4,6 @@ import { Route, Redirect } from 'react-router-dom';
 //<ProtectedRoute user={this.state.loggedInUser} path='/projects/:id' component={ProjectDetails} />
 
 const protectedRoute = ({ render: Render, user, ...rest }) => {
-  console.log({ render: Render, user, ...rest })
   return (
     <Route
       {...rest}

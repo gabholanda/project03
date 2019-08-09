@@ -21,7 +21,6 @@ class Profile extends Component {
         this.setState({
           events: responseFromApi.data
         });
-        console.log(responseFromApi.data);
       })
       .catch(error => console.log(error));
   };
@@ -31,7 +30,6 @@ class Profile extends Component {
       status: true,
       user: this.props.user
     });
-    console.log("------------>", this.props.user);
     this.getEvents();
   }
 
@@ -90,12 +88,16 @@ class Profile extends Component {
               <h1 className='profile-dados'>Eventos Ativos</h1>
               {this.state.events.map(event => {
                 return (
-                  <div class='active-events'>
+                  <div className='active-events'>
                     <h3 className='active-type'>{event.typeOfActivity}</h3>
                     <h2 className='active-title'>{event.title}</h2>
                     <h3 className='active-type'>{event.movieDate}</h3>
                     <h4 className='active-type'>local: </h4>
-                    <button className='active-saiba-mais'>Saiba Mais</button>
+                    <button className='active-saiba-mais'>
+                      <Link to={`/evento/${event.id}`}>
+                        Saiba Mais
+                    </Link>
+                    </button>
                   </div>
                 );
               })}
