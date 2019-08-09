@@ -145,9 +145,11 @@ router.get("/cinema/:theaterId", (req, res, next) => {
   axios
     .get(`${process.env.INGRESSOS_CINEMA}/${theaterId}?partnership=ironhackapp`)
     .then(theater => {
+      log(theater)
       const theaterName = {
         name: theater.data.name,
-        address: theater.data.address
+        address: theater.data.address,
+        geolocation: theater.data.geolocation,
       };
       res.json(theaterName);
     })
