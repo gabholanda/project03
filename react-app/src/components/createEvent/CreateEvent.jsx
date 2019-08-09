@@ -8,7 +8,7 @@ class EventMovie extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      redirect: false,
+      // redirect: false,
       city: 1,
       date: "",
       theaterId: "oi",
@@ -112,7 +112,7 @@ class EventMovie extends Component {
 
   FormSubmit(e) {
     e.preventDefault();
-    const host = this.props.user;
+    const host = this.props.user._id;
     const city = this.state.city;
     const date = this.state.date;
     const theaterId = this.state.theaterId;
@@ -151,7 +151,7 @@ class EventMovie extends Component {
     axios
       .post(`${process.env.REACT_APP_API_URL}/events`, { form })
       .then(responseFromApi => {
-        //console.log(responseFromApi) // Descomentar isso se quiser ver se criou mesmo
+        console.log(responseFromApi) // Descomentar isso se quiser ver se criou mesmo
         this.setState({
           redirect: true,
           city: 1,

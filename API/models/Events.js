@@ -18,7 +18,7 @@ const EventSchema = new Schema(
     thirdInterationTitle: String,
     thirdInterationDescription: String,
     host: { type: Schema.Types.ObjectId, ref: 'User' },
-    members: { type: Schema.Types.ObjectId, ref: 'User' },
+    members: [{ type: Schema.Types.ObjectId, ref: 'User' }],
     participants: { type: Number, default: 0 },
     movieId: String
   },
