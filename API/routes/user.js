@@ -90,7 +90,6 @@ router.post('/login', (req, res, next) => {
     }
 
     if (!theUser) {
-      console.log(!theUser)
       // "failureDetails" contains the error messages
       // from our logic in "LocalStrategy" { message: '...' }.
       res.status(401).json(failureDetails);
@@ -113,7 +112,6 @@ router.post('/login', (req, res, next) => {
 // PUT route => to update a specific project
 router.put('/editUser/:id', uploader.single("image"), (req, res, next) => {
   if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
-    console.log(req.params._id)
     res.status(400).json({ message: 'Specified id is not valid' });
     return;
   }
