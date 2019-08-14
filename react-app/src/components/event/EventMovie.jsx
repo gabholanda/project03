@@ -3,7 +3,7 @@ import { Link, Redirect } from "react-router-dom";
 import "./EventMovie.css";
 import MapContainer from '../maps/Maps'
 import axios from "axios";
-import GoogleApiWrapper from '../Map/Map';
+// import GoogleApiWrapper from '../Map/Map';
 import Footer from "../footer/footer";
 
 class EventMovie extends Component {
@@ -86,19 +86,10 @@ class EventMovie extends Component {
       })
       .catch(error => console.log(error));
   };
-  // getEvents = () => {
-  //   axios
-  //     .get(`${process.env.REACT_APP_API_URL}/event/${this.props.match.params.eventId}`)
-  //     .then(responseFromApi => {
-  //       this.setState({
-  //         event: responseFromApi.data
-  //       });
-  //     })
-  //     .catch(error => console.log(error));
-  // };
+
   enterEvent() {
     axios
-      .put(`http://localhost:5000/api/join-event/${this.props.eventId}/user/${this.props.user._id}`)
+      .put(`${process.env.REACT_APP_API_URL}/join-event/${this.props.eventId}/user/${this.props.user._id}`)
       .then(responseFromApi => {
         this.setState({
           redirect: true
@@ -136,12 +127,12 @@ class EventMovie extends Component {
               <img className='event-poster' src={this.state.posterV} alt='' />
               {/* buttons */}
               <div>
-                <button className='event-buttons'>
+                {/* <button className='event-buttons'>
                   <Link to='www.google.com.br'>Editar evento</Link>
                 </button>
                 <button className='event-buttons-exit '>
                   <Link to='www.google.com.br'>Sair do grupo</Link>
-                </button>
+                </button> */}
               </div>
             </div>
 

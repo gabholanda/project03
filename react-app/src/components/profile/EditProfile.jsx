@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './EditProfile.css';
 import service from '../../api/service'
-import { Redirect } from 'react-router-dom'
 import Footer from "../footer/footer";
 
 class EditProfile extends Component {

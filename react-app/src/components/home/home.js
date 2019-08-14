@@ -1,13 +1,11 @@
 import React, { Component } from "react";
-import Slider from "../NetflixSlider";
-import { Link } from "react-router-dom";
+import Movies from '../movie/movies';
 import axios from "axios";
 import "./home.css";
-import "../featuredMovie/featuredMovie";
-import FeaturedMovie from "../featuredMovie/featuredMovie";
+import FeaturedMovie from "../movie/featuredMovie";
 import Footer from "../footer/footer";
 
-class Movies extends Component {
+class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -88,67 +86,24 @@ class Movies extends Component {
           <div className='movie-title-section'>
             <h2 className='home-destaques'>Destaques</h2>
           </div>
-          <Slider>
-            {this.state.moviesHigh.map(movie => (
-              <Link
-                to={`filme/${movie.id}`}
-                onClick={() => {
-                  if (this.props.getMovieId) {
-                    this.props.getMovieId(movie.id);
-                  }
-                }}
-                key={movie.id}
-              >
-                <Slider.Item movie={movie} key={movie.id}>
-                  item1
-                </Slider.Item>
-              </Link>
-            ))}
-          </Slider>
+          <Movies movies={this.state.moviesHigh}
+            getMovieId={this.props.getMovieId} />
         </div>
         <hr className='home-div' />
         <div className='emCartaz'>
           <div className='movie-title-section'>
             <h2 className='title-emCartaz'>Em Cartaz</h2>
           </div>
-          <Slider>
-            {this.state.movies.map(movie => (
-              <Link
-                to={`filme/${movie.id}`}
-                onClick={() => {
-                  if(this.props.getMovieId) {
-                    this.props.getMovieId(movie.id)
-                  }
-                }}
-                key={movie.id}
-              >
-                <Slider.Item movie={movie} key={movie.id}>
-                  item1
-                </Slider.Item>
-              </Link>
-            ))}
-          </Slider>
+          <Movies movies={this.state.movies}
+            getMovieId={this.props.getMovieId} />
         </div>
         <hr className='home-div' />
         <div className='emBreve'>
           <div className='movie-title-section'>
             <div>
               <h2 className='title-emBreve'>Em Breve</h2>
-              <Slider>
-                {this.state.moviesSoon.map(movie => (
-                  <Link
-                    to={`filme/${movie.id}`}
-                    onClick={() => {
-                      if (this.props.getMovieId) {
-                        this.props.getMovieId(movie.id);
-                      }
-                    }}
-                    key={movie.id}
-                  >
-                    <Slider.Item movie={movie} key={movie.id} />
-                  </Link>
-                ))}
-              </Slider>
+              <Movies movies={this.state.moviesSoon}
+                getMovieId={this.props.getMovieId} />
             </div>
           </div>
         </div>
@@ -158,4 +113,4 @@ class Movies extends Component {
   }
 }
 
-export default Movies;
+export default Home;

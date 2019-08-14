@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import "./CreateEvent.css";
 import axios from "axios";
 
@@ -90,7 +90,7 @@ class EventMovie extends Component {
     axios
       .get(
         `${process.env.REACT_APP_API_URL}/sessions/city/${city}/event/${
-          this.state.movieId
+        this.state.movieId
         }/date/${date}`
       )
       .then(responseFromApi => {
@@ -361,7 +361,7 @@ class EventMovie extends Component {
                           return room.sessions.map(session => {
                             return (
                               <option key={session.id} value={session.id}>
-                                {session.realDate.dayOfWeek} -{" "}
+                                {session.realDate.dayOfWeek} - {" "}
                                 {session.realDate.hour}- {room.name} - R$
                                 {session.price}
                               </option>
@@ -384,7 +384,7 @@ class EventMovie extends Component {
 
                   <div className='interation'>
                     <img src='/images/001-one.svg'
-                    alt='number' 
+                      alt='number'
                     />
 
                     <div className='interation-description'>
@@ -411,7 +411,7 @@ class EventMovie extends Component {
                   <div className='interation'>
                     <img
                       className='image-interation'
-                      src='/images/002-two.svg' alt='number' 
+                      src='/images/002-two.svg' alt='number'
                     />
 
                     <div className='interation-description'>
@@ -434,7 +434,7 @@ class EventMovie extends Component {
                   <hr className='div-interations' />
                   <div className='interation'>
                     <img
-                      src='/images/003-three.svg' alt='number' 
+                      src='/images/003-three.svg' alt='number'
                     />
 
                     <div className='interation-description'>

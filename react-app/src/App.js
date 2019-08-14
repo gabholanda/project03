@@ -5,17 +5,18 @@ import { Switch, Route } from "react-router-dom";
 
 import ProtectedRoute from "./components/auth/protected-routes"
 import ProtectedAuthRoute from './components/auth/protected-auth-routes'
-// import HamburgerMenu from "./hamburger.jsx";
-import Home from "./components/home/home";
 import Signup from "./components/auth/Signup";
 import Login from "./components/auth/Login";
-import Movie from "./components/movie/Movie.jsx";
-import Event from "./components/eventMovie/EventMovie.jsx";
-// import Chat from "./components/eventChat/EventChat.jsx";
-import CreateEvent from "./components/createEvent/CreateEvent.jsx";
-import EditProfile from "./components/editProfile/EditProfile.jsx";
-import Profile from "./components/profile/Profile.jsx";
+// import HamburgerMenu from "./hamburger.jsx";
+import Home from "./components/home/home";
 import AuthService from "./components/auth/auth-service";
+import Movie from "./components/movie/Movie.jsx";
+import Event from "./components/event/EventMovie.jsx";
+// import Chat from "./components/eventChat/EventChat.jsx";
+import CreateEvent from "./components/event/CreateEvent.jsx";
+import EditProfile from "./components/profile/EditProfile.jsx";
+import Profile from "./components/profile/Profile.jsx";
+
 
 class App extends Component {
   constructor(props) {
@@ -61,7 +62,7 @@ class App extends Component {
       loggedInUser: userObj
     });
   };
-  
+
   render() {
     this.fetchUser();
     if (this.state.loggedInUser) {
@@ -97,13 +98,13 @@ class App extends Component {
               user={this.state.loggedInUser}
               exact
               path='/edit/profile'
-              render={(props) => <EditProfile {...props} user={this.state.loggedInUser} getUser={this.getTheUser}/>}
+              render={(props) => <EditProfile {...props} user={this.state.loggedInUser} getUser={this.getTheUser} />}
             />
             <ProtectedRoute
               user={this.state.loggedInUser}
               exact
               path='/usuario/perfil'
-              render={(props) => <Profile {...props} user={this.state.loggedInUser} getUser={this.getTheUser}/>}
+              render={(props) => <Profile {...props} user={this.state.loggedInUser} getUser={this.getTheUser} />}
             />
             <ProtectedRoute
               user={this.state.loggedInUser}

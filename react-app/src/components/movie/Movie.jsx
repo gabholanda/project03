@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "./Movie.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import "./Movie.css";
 import Footer from "../footer/footer";
 
 class Movie extends Component {
@@ -78,7 +77,7 @@ class Movie extends Component {
           });
 
           this.state.events.map(event => {
-            this.getTheater(event.theaterId);
+            return this.getTheater(event.theaterId);
           });
         })
         .catch(error => console.log(error));
@@ -96,7 +95,7 @@ class Movie extends Component {
           });
 
           this.state.events.map(event => {
-            this.getTheater(event.theaterId);
+            return this.getTheater(event.theaterId);
           });
         })
         .catch(error => console.log(error));
