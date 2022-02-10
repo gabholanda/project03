@@ -10,7 +10,7 @@
     "bootstrap": "^4.3.1",
     "classnames": "^2.2.6",
     "google-maps-react": "^2.0.2",
-    "node-sass": "^4.11.0",
+    "node-sass": "^7.0.0",
     "react": "^16.8.6",
     "react-burger-menu": "^2.6.11",
     "react-dom": "^16.8.6",
